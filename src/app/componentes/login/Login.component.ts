@@ -1,14 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../data.service';
+import { FormControl, FormGroup, Validators, FormsModule, AbstractControl } from '@angular/forms';
+import { FormValidators } from '@syncfusion/ej2-angular-inputs';
+import { Router } from '@angular/router';
+import { Usuario } from 'src/app/componentes/registro/modelo/usuarios';
+
 @Component({
     selector:'app-login',
     templateUrl:'./Login.component.html',
     styleUrls:['./Login.component.css'],
 })
 export class LoginComponent{
+    reactForm: FormGroup;
 
-    constructor(private dataService: DataService) { }
+    constructor(private dataService: DataService, private router: Router) {
+        this.reactForm = new FormGroup({
+            'email_check': new FormControl('', [FormValidators.email]),
+            'password': new FormControl('', [FormValidators.required]),
+        });
+    }
 
+    
+
+
+
+    ngOnInit(): void {
+        let formId: HTMLElement = <HTMLElement>document.getElementById('formId')!;
+        if (formId != null) {
+            formId.addEventListener(
+                'submit',
+                (e: Event) => {
+                    e.preventDefault();
+                    if (this.reactForm.valid) {
+                        //this.iniciarSesion(Event, this.usuario.correo, this.usuario.contrasena);
+                        this.reactForm.reset();
+                    } else {
+                        // validating whole form ---> agrege el if
+                        Object.keys(this.reactForm.controls).forEach(field => {
+                            const control = this.reactForm.get(field);
+                            if (control != null) {
+                                control.markAsTouched({ onlySelf: true });
+                            }
+                        });
+                    }
+                });
+        } 
+    }
+
+    redirectRegistro = () =>{
+        this.router.navigateByUrl('registro');
+    };
+
+    get email_check() { return this.reactForm.get('email_check'); }
+    get password() { return this.reactForm.get('password'); }
+
+   
     public iniciarSesion(event:any, correo:string, contrasena:string):void {
         //llamar a la api y comprobar usuario valido
         event.preventDefault()
@@ -64,4 +110,6 @@ export class LoginComponent{
         
 
     }
+
+    
 }

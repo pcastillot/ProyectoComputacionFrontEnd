@@ -1,50 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
-        <!-- Google Fonts -->
-
-        <!-- Estilos -->
-        <link href="//cdn.syncfusion.com/ej2/material.css" rel="stylesheet" />
-        <title>Registro de Usuarios</title>
-    </head>
-
-    <body>
-        <!-- Formularios -->
-        <div class="contenedor-formularios">
-            <!-- Contenido de los Formularios -->
-            <div class="contenido-tab">
-                <!-- Iniciar Sesion -->
-                <div id="iniciar-sesion">
-                    <h1>CREAR CUENTA</h1>
-                    <form>
-                        <div class="contenedor-input">
-                            <input #nombre [(ngModel)]="usuario.nombre" type="text" placeholder="Nombre" name="nombre">
-                        </div>
-
-                        <div class="contenedor-input">
-                            <input #apellidos [(ngModel)]="usuario.apellido" type="text" placeholder="Apellidos" name = "apelido">
-                        </div>
-
-                        <div class="contenedor-input">
-                            <input #email [(ngModel)]="usuario.correo" type="email" placeholder="Correo electronico" name = "correo">
-                        </div>
-
-                        <div class="contenedor-input">
-                            <input #pwd [(ngModel)]="usuario.contrasena" type="password" placeholder="Contraseña" name = "contrasena">
-                        </div>
-                        <div class="contenedor-input" style='width: 250px'>
-                            <ejs-combobox #municipio id='municipios' [dataSource]='municipios' [autofill]='true' [fields]='localFields' [placeholder]='localWaterMark' [popupHeight]='height'></ejs-combobox>
-                        </div>
-                        <button (click)="crearUsuario($event)">
-                            REGISTRARSE
-                        </button>
-                    </form>
-                </div>
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper" style="margin-bottom: 25px;">
+      <div class="formtitle">
+        <span>Registro de usuario</span>
+      </div>
+  
+      <form
+        id="formId"
+        [formGroup]="reactForm"
+        #formDir="ngForm"
+        class="form-horizontal"
+        novalidate=""
+      >
+        <div class="form-group">
+          <div class="e-float-input">
+            <input [(ngModel)]="usuario.nombre" id="nombre" type="text" formControlName="nombre" />
+            <span class="e-float-line"></span>
+            <label for="nombre" class="e-float-text">Nombre</label>
+          </div>
+          <div *ngIf="nombre!.errors">
+            <div *ngIf="nombre!.errors.required && nombre!.touched" class="e-error">
+              Debe rellenar este campo.
             </div>
+          </div>
         </div>
-    </body>
-</html>
+  
+        <div class="form-group">
+          <div class="e-float-input">
+            <input [(ngModel)]="usuario.apellido" id="apellido" type="text" formControlName="apellido" />
+            <span class="e-float-line"></span>
+            <label for="apellido" class="e-float-text">Apellido</label>
+          </div>
+          <div *ngIf="apellido!.errors">
+            <div *ngIf="apellido!.errors.required && apellido!.touched" class="e-error">
+              Debe rellenar este campo.
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <div class="e-float-input">
+            <input [(ngModel)]="usuario.correo" id="email_check" type="text" formControlName="email_check" />
+            <span class="e-float-line"></span>
+            <label for="email_check" class="e-float-text">Email</label>
+          </div>
+          <div *ngIf="email_check!.errors ">
+            <div
+              *ngIf="email_check!.errors.email && email_check!.touched"
+              class="e-error"
+            >
+              Introduce un correo válido.
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <div class="e-float-input">
+            <input [(ngModel)]="usuario.contrasena" id="password" type="password" formControlName="password" />
+            <span class="e-float-line"></span>
+            <label for="password" class="e-float-text">Contraseña</label>
+            <div *ngIf="password!.errors">
+              <div *ngIf="password!.errors.required && password!.touched" class="e-error">
+                Debe rellenar este campo.
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <div class="e-float-input">
+            <input
+              id="password_repeat"
+              type="password"
+              formControlName="password_repeat"
+            />
+            <span class="e-float-line"></span>
+            <label for="password_repeat" class="e-float-text"
+              >Repita la contraseña</label
+            >
+            <div *ngIf="password_repeat!.errors">
+              <div *ngIf="password_repeat!.errors.required && password_repeat!.touched" class="e-error">
+                Debe rellenar este campo.
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <div class="e-float-input">
+            
+            <span class="e-float-line"></span>
+            <label for="municipios" class="e-float-text">Municipio</label>
+          </div>
+          <ejs-combobox #municipio id='municipios' [dataSource]='municipios' [autofill]='true' [fields]='localFields' [placeholder]='localWaterMark' [popupHeight]='height'></ejs-combobox>
+        </div>
+  
+        <div class="row">
+          <div
+            style="width: 320px;margin:0px auto;height: 100px;padding-top: 25px;"
+          >
+            <div style="display: inline-block;">
+              <button
+                id="validateSubmit"
+                class="samplebtn e-control e-btn e-primary"
+                type="submit"
+                style="height:40px;width: 150px;margin-left: 90px;"
+                data-ripple="true"
+                (click)='crearUsuario($event, municipio.value)'
+              >
+                Registro
+              </button>
+            </div>
+            
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  

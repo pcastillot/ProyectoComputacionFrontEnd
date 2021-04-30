@@ -1,7 +1,16 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { Municipio } from './modelo/municipio';
 import { DataService } from '../../data.service';
-import {Usuario} from './modelo/usuarios';
+import {Usuario} from 'src/app/componentes/registro/modelo/usuarios';
+import { FormValidators } from "@syncfusion/ej2-angular-inputs";
+import { Router } from '@angular/router';
+import {
+    FormControl,
+    FormGroup,
+    Validators,
+    FormsModule,
+    AbstractControl
+  } from "@angular/forms";
 
 @Component({
     selector:'app-registro',
@@ -10,22 +19,40 @@ import {Usuario} from './modelo/usuarios';
 })
 export class RegistroComponent implements OnInit{
 
-    //LLAMAR A LA API, PARA QUE EXTRAIGO LOS OBJETOS DE LOS MUNICIPIS (METODO INDEX -> MunicipiosController).
-    //municipios: string[] = ['Getafe', 'Madrid', 'Villaciciosa de Odon', 'Mostoles', 'Alcorcon'];
+    reactForm: FormGroup;
 
-    /* PRUEBA DE RELLANAR EL ARRAY DE MUNICIPIOS.
-    municipios1 = new Municipio(222, 'Getafe', 111);
-    municipios2 = new Municipio(333, 'Alcorcon', 111);
+    constructor(private dataService: DataService, private router: Router) {
+        this.reactForm = new FormGroup({
+        nombre: new FormControl("", [FormValidators.required]),
+        apellido: new FormControl("", [FormValidators.required]),
+        email_check: new FormControl("", [FormValidators.email]),
+        password: new FormControl("", [FormValidators.required]),
+        password_repeat: new FormControl("", [FormValidators.required]),
+        municipio: new FormControl("", [FormValidators.required])
+        });
+    }
 
-    municipios: Municipio[] = [this.municipios1, this.municipios2]; //rellenarlo
-    */
     municipios: Municipio[] =[];
 
-    constructor(private dataService: DataService) { }
-
+    //ON INIT
     ngOnInit(): void {
         this.dataService.sendGetRequest('Municipios').subscribe((data: any)=>{
             this.municipios = data;
+        });
+
+        let formId: HTMLElement = <HTMLElement>document.getElementById("formId");
+        document.getElementById("formId")!.addEventListener("submit", (e: Event) => {
+        e.preventDefault();
+        if (this.reactForm.valid) {
+            alert("Customer details added!");
+            this.reactForm.reset();
+        } else {
+            // validating whole form
+            Object.keys(this.reactForm.controls).forEach(field => {
+            const control = this.reactForm.get(field);
+            control!.markAsTouched({ onlySelf: true });
+            });
+        }
         });
     }
 
@@ -35,22 +62,38 @@ export class RegistroComponent implements OnInit{
     // set the height of the popup element.
     public height: string = '250px';
 
-    /* registrarUsuario(event:any, nombre:string,apellidos:string,email:string, password:string, cb_municipio:any):void {
-        event.preventDefault();
-        console.log("REGISTRANDO USUARIO ...");
-        console.log(nombre);
-        console.log(apellidos);
-        console.log(email);
-        console.log(password);
-        console.log(cb_municipio);
-        //buenas tardess
-    } */
+    
     usuario = new Usuario();
-    public crearUsuario(event:any){
-        event.preventDefault()
 
-        
-            this.dataService.addUser(this.usuario).subscribe((data: any)=>{    
+    //FUNCION CREAR USUARIO
+    public crearUsuario(event:any, municipio:any){
+        event.preventDefault()
+            this.usuario.idMunicipio = municipio;
+            this.dataService.addUser(this.usuario).subscribe((data: any)=>{   
+                this.router.navigateByUrl('login')
             });    
-}
+    }
+
+
+
+    //GETTERS
+    get nombre() {
+        return this.reactForm.get("nombre");
+    }
+    get apellido() {
+        return this.reactForm.get("apellido");
+    }
+
+    get email_check() {
+        return this.reactForm.get("email_check");
+    }
+    get password() {
+        return this.reactForm.get("password");
+    }
+    get password_repeat() {
+        return this.reactForm.get("password_repeat");
+    }
+    get municipio() {
+        return this.reactForm.get("municipio");
+    }
 }
