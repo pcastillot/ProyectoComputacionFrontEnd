@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+        <!-- Google Fonts -->
+
+        <!-- Estilos -->
+        <title>Formulario Login</title>
+    </head>
+
+    <body>
+        <div>
+            <h1>Login</h1>
+        </div>
+        <div>
+            <form (submit)="iniciarSesion( $event, email.value, password.value)">     
+                <br>
+                <input #email type="email" placeholder="Correo electronico">
+                <br>
+                <input #password type="password" placeholder="Contraseña">
+                <br>
+                <button type="submit">
+                    Iniciar sesion
+                </button> 
+            </form>
+        </div>
+    </body>
+</html>
