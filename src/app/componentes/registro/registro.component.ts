@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Municipio } from './modelo/municipio';
 import { DataService } from '../../data.service';
+import {Usuario} from './modelo/usuarios';
 
 @Component({
     selector:'app-registro',
@@ -34,7 +35,7 @@ export class RegistroComponent implements OnInit{
     // set the height of the popup element.
     public height: string = '250px';
 
-    registrarUsuario(event:any, nombre:string,apellidos:string,email:string, password:string, cb_municipio:any):void {
+    /* registrarUsuario(event:any, nombre:string,apellidos:string,email:string, password:string, cb_municipio:any):void {
         event.preventDefault();
         console.log("REGISTRANDO USUARIO ...");
         console.log(nombre);
@@ -43,5 +44,13 @@ export class RegistroComponent implements OnInit{
         console.log(password);
         console.log(cb_municipio);
         //buenas tardess
-    }
+    } */
+    usuario = new Usuario();
+    public crearUsuario(event:any){
+        event.preventDefault()
+
+        
+            this.dataService.addUser(this.usuario).subscribe((data: any)=>{    
+            });    
+}
 }

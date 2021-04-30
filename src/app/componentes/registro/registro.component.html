@@ -20,26 +20,26 @@
                 <!-- Iniciar Sesion -->
                 <div id="iniciar-sesion">
                     <h1>CREAR CUENTA</h1>
-                    <form (submit) = "registrarUsuario($event, email.value, pwd.value, nombre.value, apellidos.value, municipio.value)">
+                    <form>
                         <div class="contenedor-input">
-                            <input #nombre type="text" placeholder="Nombre" id="usuarioTxt">
+                            <input #nombre [(ngModel)]="usuario.nombre" type="text" placeholder="Nombre" name="nombre">
                         </div>
 
                         <div class="contenedor-input">
-                            <input #apellidos type="text" placeholder="Apellidos" id="usuarioTxt">
+                            <input #apellidos [(ngModel)]="usuario.apellido" type="text" placeholder="Apellidos" name = "apelido">
                         </div>
 
                         <div class="contenedor-input">
-                            <input #email type="email" placeholder="Correo electronico" id="usuarioTxt">
+                            <input #email [(ngModel)]="usuario.correo" type="email" placeholder="Correo electronico" name = "correo">
                         </div>
 
                         <div class="contenedor-input">
-                            <input #pwd type="password" placeholder="Contraseña" id="passwordTxt">
+                            <input #pwd [(ngModel)]="usuario.contrasena" type="password" placeholder="Contraseña" name = "contrasena">
                         </div>
                         <div class="contenedor-input" style='width: 250px'>
                             <ejs-combobox #municipio id='municipios' [dataSource]='municipios' [autofill]='true' [fields]='localFields' [placeholder]='localWaterMark' [popupHeight]='height'></ejs-combobox>
                         </div>
-                        <button type="submit">
+                        <button (click)="crearUsuario($event)">
                             REGISTRARSE
                         </button>
                     </form>
