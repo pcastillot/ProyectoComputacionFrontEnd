@@ -12,6 +12,7 @@ import { Usuario } from 'src/app/componentes/registro/modelo/usuarios';
 })
 export class LoginComponent{
     reactForm: FormGroup;
+    usuario = new Usuario();
 
     constructor(private dataService: DataService, private router: Router) {
         this.reactForm = new FormGroup({
@@ -32,7 +33,7 @@ export class LoginComponent{
                 (e: Event) => {
                     e.preventDefault();
                     if (this.reactForm.valid) {
-                        //this.iniciarSesion(Event, this.usuario.correo, this.usuario.contrasena);
+                        this.iniciarSesion(this.usuario.correo, this.usuario.contrasena);
                         this.reactForm.reset();
                     } else {
                         // validating whole form ---> agrege el if
@@ -55,9 +56,9 @@ export class LoginComponent{
     get password() { return this.reactForm.get('password'); }
 
    
-    public iniciarSesion(event:any, correo:string, contrasena:string):void {
+    public iniciarSesion(correo:string, contrasena:string):void {
         //llamar a la api y comprobar usuario valido
-        event.preventDefault()
+        //event.preventDefault()
         var existe = 0;
         var passOK = 0;
         var isAdmin = 0;
@@ -83,10 +84,12 @@ export class LoginComponent{
 
                         if(isAdmin==1){
                             console.log("Iniciaste sesión como Administrador")
+                            alert("Iniciaste sesión como Administrador:\nCorreo: " + correo)
                         }
     
                         else{
                             console.log("Iniciaste sesión como Usuario")
+                            alert("Iniciaste sesión como Usuario:\nCorreo: " + correo)
                         }
                     });
 
@@ -95,6 +98,7 @@ export class LoginComponent{
 
                 else{
                     console.log("Correo y/o contraseña incorrecta")
+                    alert("Credenciales incorrectas")
                 }
                 });
                 
@@ -102,6 +106,7 @@ export class LoginComponent{
 
             else{
                 console.log("Correo y/o contraseña incorrecta")
+                alert("Credenciales incorrectas")
             }
                 
             });
