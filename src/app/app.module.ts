@@ -8,12 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './componentes/login/Login.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './componentes/navbar/navbar.component';
+import { NavbarModule, WavesModule, ButtonsModule, IconsModule } from 'angular-bootstrap-md'
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ComboBoxModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NavbarModule,
+    WavesModule, 
+    ButtonsModule,
+    IconsModule
 
   ],
   providers: [],
