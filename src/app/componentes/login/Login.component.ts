@@ -12,7 +12,7 @@ import { Usuario } from 'src/app/componentes/registro/modelo/usuarios';
 })
 export class LoginComponent{
     reactForm: FormGroup;
-    usuario = new Usuario();
+    usuario:Usuario = new Usuario();
 
     constructor(private dataService: DataService, private router: Router) {
         this.reactForm = new FormGroup({
