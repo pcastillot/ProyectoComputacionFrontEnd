@@ -9,7 +9,9 @@ import { LoginComponent } from './componentes/login/Login.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
-import { NavbarModule, WavesModule, ButtonsModule, IconsModule } from 'angular-bootstrap-md'
+import { NavbarModule, WavesModule, ButtonsModule, IconsModule } from 'angular-bootstrap-md';
+import { InicioComponent } from './componentes/Inicio/inicio.component';
+
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { NavbarModule, WavesModule, ButtonsModule, IconsModule } from 'angular-b
     LoginComponent,
     RegistroComponent,
     NavbarComponent,
+    InicioComponent,
   ],
   imports: [
     BrowserModule,
