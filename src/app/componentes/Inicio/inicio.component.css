@@ -107,6 +107,8 @@ button:focus{
   margin-left: 5%;
   margin-bottom: 5%;
 
+  float: left;
+
   background:#ffffff;
   border:solid 1px #ccc;
   border-radius:15px;
@@ -119,6 +121,8 @@ button:focus{
   margin-right: 5%;
   margin-left: 5%;
   margin-bottom: 5%;
+
+  float: right;
 
   background:#ffffff;
   border:solid 1px #ccc;
@@ -133,6 +137,8 @@ button:focus{
   margin-left: 5%;
   margin-bottom: 5%;
 
+  float: left;
+
   background:#ffffff;
   border:solid 1px #ccc;
   border-radius:15px;
@@ -145,6 +151,8 @@ button:focus{
   margin-right: 5%;
   margin-left: 5%;
   margin-bottom: 5%;
+
+  float: right;
 
   background:#ffffff;
   border:solid 1px #ccc;
