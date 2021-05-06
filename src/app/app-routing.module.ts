@@ -5,17 +5,19 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { HomepageResolver } from './resolvers/homepage.resolver';
+import { InicioComponent } from './componentes/Inicio/inicio.component';
 
 const routes: Routes = [
   { path: 'homepage', component:LoginComponent, resolve:{'itemList': HomepageResolver}},
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'navbar', component: NavbarComponent },
+  { path: 'inicio', component: InicioComponent },
   {
     path:'',
     redirectTo: 'homepage',
     pathMatch: 'full'
-  }
+  },
 ];
 
 @NgModule({
