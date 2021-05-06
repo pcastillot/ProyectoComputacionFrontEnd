@@ -39,6 +39,11 @@ button:focus{
 }
 
 .col{
+  background:#ffffff;
+  border:solid 1px #ccc;
+  border-radius:15px;
+  box-shadow: 0px 20px 15px -15px #818181;
+
   margin-top: 5%;
   margin-bottom: 5%;
   margin-right: 10px;
@@ -48,10 +53,13 @@ button:focus{
   float: left;
   flex-grow: 1;
   width: 45%;
-  border-radius: 10px;
-  border: 1px solid #000000;
 }
 .col2{
+  background:#ffffff;
+  border:solid 1px #ccc;
+  border-radius:15px;
+  box-shadow: 0px 20px 15px -15px #818181;
+
   margin-top: 5%;
   margin-bottom: 5%;
   margin-right: 10px;
@@ -61,8 +69,6 @@ button:focus{
   float: right;
   flex-grow: 1;
   width: 45%;
-  border-radius: 10px;
-  border: 1px solid #000000;
 }
 
 .col-inicio-02{
@@ -74,17 +80,76 @@ button:focus{
 }
 
 .col-inicio-03{
-    margin-top: 5%;
-    margin-right: 5%;
-    margin-left: 5%;
-    margin-bottom: 5%;
-    text-align: center;
+  max-width: 1;
+  background-image: url('https://pixabay.com/get/g7cdb4c2d8d5d82da1f23eaffce72f4dfa08b993d8b6653a92ac22fdee595187d5f71c0eed36893920f167e8aa98fc585c12d13511990ddff991e57b46d1f57b3_1920.jpg');
+  background-size: 100%;
+  margin-top: 5%;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 5%;
+  text-align: center;
+  align-items: center;
+  border-radius: 10px;
+  height: 25cm;
 }
 
 .col-inicio-04{
-    margin-top: 5%;
-    margin-right: 5%;
-    margin-left: 5%;
-    margin-bottom: 5%;
-    text-align: center;
+  margin-top: 5%;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 5%;
+  text-align: center;
+}
+
+.sebas{
+  margin-top: 5%;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 5%;
+
+  background:#ffffff;
+  border:solid 1px #ccc;
+  border-radius:15px;
+  box-shadow: 0px 20px 15px -15px #818181;
+  height:8cm;
+  width:15cm;
+}
+.carlos{
+  margin-top: 5%;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 5%;
+
+  background:#ffffff;
+  border:solid 1px #ccc;
+  border-radius:15px;
+  box-shadow: 0px 20px 15px -15px #818181;
+  height:8cm;
+  width:15cm;
+}
+.pedro{
+  margin-top: 5%;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 5%;
+
+  background:#ffffff;
+  border:solid 1px #ccc;
+  border-radius:15px;
+  box-shadow: 0px 20px 15px -15px #818181;
+  height:8cm;
+  width:15cm;
+}
+.javi{
+  margin-top: 5%;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 5%;
+
+  background:#ffffff;
+  border:solid 1px #ccc;
+  border-radius:15px;
+  box-shadow: 0px 20px 15px -15px #818181;
+  height:8cm;
+  width:15cm;
 }
