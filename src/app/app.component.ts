@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  condicion: boolean = true;
   title = 'vida';
+
+  cambiarCondicion():void{
+    this.condicion=false;
+  }
+
 }

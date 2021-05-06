@@ -6,12 +6,13 @@ import { SplashScreenStateService } from 'src/app/services/splash-screen-state.s
   templateUrl: './splash.component.html',
   styleUrls: ['./splash.component.scss']
 })
+
 export class SplashComponent implements OnInit {
 
-  // The screen starts with the maximum opacity
+  // La ventana empieza con la maxima opacidad
   public opacityChange = 1;
   public splashTransition:string;
-  // First access the splash is visible
+  // el primer acceso al Splash esta activado
   public showSplash = true;
 
   readonly ANIMATION_DURATION = 1;
@@ -31,7 +32,7 @@ export class SplashComponent implements OnInit {
     this.opacityChange = 0;
     setTimeout(() => {
       // After the transition is ended the showSplash will be hided
-      this.showSplash = !this.showSplash;
+      this.showSplash = false;
     }, 1000);
   }
 
