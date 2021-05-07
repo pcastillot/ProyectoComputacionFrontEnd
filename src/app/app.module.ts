@@ -15,6 +15,7 @@ import { SplashScreenStateService } from './services/splash-screen-state.service
 import { SplashComponent } from './componentes/splash/splash.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { HomepageResolver } from './resolvers/homepage.resolver';
+import { pVentanaComponent } from './componentes/PrimeraVentana/pVentana.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HomepageResolver } from './resolvers/homepage.resolver';
     NavbarComponent,
     InicioComponent,
     SplashComponent,
-    HomepageComponent
+    HomepageComponent,
+    pVentanaComponent
   ],
   imports: [
     BrowserModule,
