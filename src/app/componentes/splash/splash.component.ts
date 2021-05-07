@@ -32,7 +32,7 @@ export class SplashComponent implements OnInit {
     this.opacityChange = 0;
     setTimeout(() => {
       // After the transition is ended the showSplash will be hided
-      this.showSplash = false;
+      this.showSplash = !this.showSplash;
     }, 1000);
   }
 
