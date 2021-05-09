@@ -11,6 +11,7 @@ import {
     FormsModule,
     AbstractControl
   } from "@angular/forms";
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector:'app-registro',
@@ -36,7 +37,7 @@ export class RegistroComponent implements OnInit{
 
     //ON INIT
     ngOnInit(): void {
-        this.dataService.sendGetRequest('Municipios').subscribe((data: any)=>{
+        this.dataService.sendGetRequest(environment.getMunicipios).subscribe((data: any)=>{
             this.municipios = data;
         });
 

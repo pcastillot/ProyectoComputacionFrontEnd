@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators, FormsModule, AbstractControl } from
 import { FormValidators } from '@syncfusion/ej2-angular-inputs';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/componentes/registro/modelo/usuarios';
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector:'app-login',
@@ -67,18 +68,18 @@ export class LoginComponent{
          contrasena);
 
         //Comprobar si existe el correo
-        this.dataService.sendGetRequest('Usuarios/existeUsuario/' + correo).subscribe((data: any)=>{
+        this.dataService.sendGetRequest(environment.existeUsuario + correo).subscribe((data: any)=>{
             existe = data;
             console.log("Existe: " + existe);
             //Si existe comprobamos contrasena
             if(existe==1){
-                this.dataService.sendGetRequest('Usuarios/checkPassword/' + correo + "/" + contrasena).subscribe((data: any)=>{
+                this.dataService.sendGetRequest(environment.checkPassword + correo + "/" + contrasena).subscribe((data: any)=>{
                     passOK = data;
                     console.log("passOK: " + passOK);
 
                     //Si la contrasena es correcta comprueba si es administrador
                 if(passOK==1){
-                    this.dataService.sendGetRequest('Usuarios/isAdmin/' + correo).subscribe((data: any)=>{
+                    this.dataService.sendGetRequest(environment.isAdmin + correo).subscribe((data: any)=>{
                         isAdmin = data;
                         console.log("isAdmin: " + isAdmin);
 

@@ -3,6 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  existeUsuario: "Usuarios/existeUsuario/",
+  checkPassword: "Usuarios/checkPassword/",
+  isAdmin: "Usuarios/isAdmin/",
+  getMunicipios: "Municipios",
+  crearUser: "Usuarios/createUser/",
   production: false
 };
 

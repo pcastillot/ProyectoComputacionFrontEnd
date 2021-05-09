@@ -16,6 +16,7 @@ import { SplashComponent } from './componentes/splash/splash.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { HomepageResolver } from './resolvers/homepage.resolver';
 import { pVentanaComponent } from './componentes/PrimeraVentana/pVentana.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { pVentanaComponent } from './componentes/PrimeraVentana/pVentana.compone
     NavbarModule,
     WavesModule, 
     ButtonsModule,
-    IconsModule
+    IconsModule,
+    NgbModule
 
   ],
   providers: [SplashScreenStateService, HomepageResolver],
