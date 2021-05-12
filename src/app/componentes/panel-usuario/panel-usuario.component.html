@@ -53,7 +53,7 @@
 
             <div class="form-group">
                 <div class="e-float-input">
-                    <input id="apellidos" type="text" formControlName="check">
+                    <input id="apellidos" type="text" formControlName="apellidos">
                     <span class="e-float-line"></span>
                     <label for="apellidos" class="e-float-text">Apellidos</label>
                 </div>
@@ -108,7 +108,7 @@
             <div class="row btn-guardar-cambios">
                 <div style="width: 320px;margin:0px auto;height: 100px;padding-top: 25px;">
                     <div style="display: inline-block;">
-                        <button id="validateSubmit" class="samplebtn e-control e-btn e-primary" type="submit" style="height:40px;width: 150px;" data-ripple="true">Guardar cambios</button>
+                        <button id="validateSubmit" (click)="guardarCambios()" class="samplebtn e-control e-btn e-primary" type="submit" style="height:40px;width: 150px;" data-ripple="true">Guardar cambios</button>
                     </div>
                     
                 </div>

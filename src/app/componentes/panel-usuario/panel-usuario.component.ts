@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormsModule, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FormValidators } from '@syncfusion/ej2-angular-inputs';
 import { DataService } from 'src/app/data.service';
 import { Municipio } from 'src/app/modelo/municipio';
@@ -17,14 +18,14 @@ export class PanelUsuarioComponent implements OnInit {
   reactForm: FormGroup;
   usuario = new Usuario();
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private router: Router) {
     this.reactForm = new FormGroup({
       'check': new FormControl('', [FormValidators.required]),
       'email_check': new FormControl('', [FormValidators.email]),
       'password': new FormControl('', [FormValidators.required]),
       'municipios': new FormControl('', [FormValidators.required]),
       'password_repeat': new FormControl('', [FormValidators.required]),
-      'apellidos':new FormControl('', [FormValidators.required]),
+      'apellidos': new FormControl('', [FormValidators.required]),
     });
   }
   municipios: Municipio[] =[];
@@ -43,6 +44,7 @@ export class PanelUsuarioComponent implements OnInit {
 
           //Funcion a ejecutar cuando el usuario haga click en el boton submit
           alert('Ejecutando cambios');
+          this.guardarCambios();
           this.reactForm.reset();
         } else {
           // validating whole form
@@ -59,6 +61,11 @@ export class PanelUsuarioComponent implements OnInit {
   public cambiarImagenPerfil(event:any) {
     event.preventDefault()
     alert("Cambiando imagen del perfil")
+  }
+
+  public guardarCambios(){
+    alert("Guardando cambios")
+    this.router.navigateByUrl('inicio')
   }
 
   public localFields: Object = { text: 'MUNICIPIO', value: 'CODMU' };
