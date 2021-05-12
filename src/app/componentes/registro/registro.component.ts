@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
-import { Municipio } from './modelo/municipio';
+import { Municipio } from '../../modelo/municipio';
 import { DataService } from '../../data.service';
-import {Usuario} from 'src/app/componentes/registro/modelo/usuarios';
+import {Usuario} from 'src/app/modelo/usuarios';
 import { FormValidators } from "@syncfusion/ej2-angular-inputs";
 import { Router } from '@angular/router';
 import {
@@ -69,10 +69,10 @@ export class RegistroComponent implements OnInit{
     //FUNCION CREAR USUARIO
     public crearUsuario(event:any, municipio:any){
         event.preventDefault()
-            this.usuario.idMunicipio = municipio;
-            this.dataService.addUser(this.usuario).subscribe((data: any)=>{   
-                this.router.navigateByUrl('login')
-            });    
+        this.usuario.idMunicipio = municipio;
+        this.dataService.addUser(this.usuario).subscribe((data: any)=>{   
+            this.router.navigateByUrl('login')
+        });    
     }
 
 

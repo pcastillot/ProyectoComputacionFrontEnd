@@ -3,7 +3,7 @@ import { DataService } from '../../data.service';
 import { FormControl, FormGroup, Validators, FormsModule, AbstractControl } from '@angular/forms';
 import { FormValidators } from '@syncfusion/ej2-angular-inputs';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/componentes/registro/modelo/usuarios';
+import { Usuario } from 'src/app/modelo/usuarios';
 import { environment } from 'src/environments/environment'
 
 @Component({

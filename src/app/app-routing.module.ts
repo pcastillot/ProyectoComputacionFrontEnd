@@ -6,6 +6,7 @@ import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { HomepageResolver } from './resolvers/homepage.resolver';
 import { InicioComponent } from './componentes/Inicio/inicio.component';
 import { pVentanaComponent } from './componentes/PrimeraVentana/pVentana.component';
+import { PanelUsuarioComponent } from './componentes/panel-usuario/panel-usuario.component'
 
 const routes: Routes = [
   { path: 'homepage', component:LoginComponent, resolve:{'itemList': HomepageResolver}},
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'navbar', component: NavbarComponent },
   { path: 'inicio', component: InicioComponent },
   { path: 'pVentana', component: pVentanaComponent},
+  { path: 'panelUsuario', component: PanelUsuarioComponent},
   {
     path:'',
     redirectTo: 'homepage',

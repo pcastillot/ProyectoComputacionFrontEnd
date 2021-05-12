@@ -17,6 +17,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { HomepageResolver } from './resolvers/homepage.resolver';
 import { pVentanaComponent } from './componentes/PrimeraVentana/pVentana.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PanelUsuarioComponent } from './componentes/panel-usuario/panel-usuario.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     InicioComponent,
     SplashComponent,
     HomepageComponent,
-    pVentanaComponent
+    pVentanaComponent,
+    PanelUsuarioComponent
   ],
   imports: [
     BrowserModule,
