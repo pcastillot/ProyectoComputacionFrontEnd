@@ -7,6 +7,9 @@ export const environment = {
   checkPassword: "Usuarios/checkPassword/",
   isAdmin: "Usuarios/isAdmin/",
   getMunicipios: "Municipios",
+  getComunidades:"Comunidades",
+  getProvincias_comunidad:"Provincias/showFromComunidad/",
+  getMunicipios_provicia:"Municipios/showFromProvincia/",
   crearUser: "Usuarios/createUser/",
   production: false
 };

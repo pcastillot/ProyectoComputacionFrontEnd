@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ComboBoxModule } from '@syncfusion/ej2-angular-dropdowns';
+import { DropDownTreeModule } from '@syncfusion/ej2-angular-dropdowns';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { ListViewModule } from '@syncfusion/ej2-angular-lists';
 import { ListMenuPanelComponent } from './componentes/list-menu-panel/list-menu-panel.component';
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 import { CambiarContrasenaComponent } from './componentes/cambiar-contrasena/cambiar-contrasena.component';
+import { TurismoComponent } from './componentes/turismo/turismo.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { CambiarContrasenaComponent } from './componentes/cambiar-contrasena/cam
     pVentanaComponent,
     PanelUsuarioComponent,
     ListMenuPanelComponent,
-    CambiarContrasenaComponent
+    CambiarContrasenaComponent,
+    TurismoComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,7 @@ import { CambiarContrasenaComponent } from './componentes/cambiar-contrasena/cam
     NgbModule,
     ListViewModule,
     ButtonModule,
-
+    DropDownTreeModule
   ],
   providers: [SplashScreenStateService, HomepageResolver],
   bootstrap: [AppComponent]

@@ -1,36 +1,37 @@
 export class Municipio{
 
-    private cod_mun: number;
-    private nombre_mun:string;
-    private cod_prov:number;
+    private CODMU: number;
+    private MUNICIPIO:string;
+    private CODPROV:number;
     
-    constructor(cod_num:number, nombre_mun:string, cod_prov:number){
-        this.cod_mun = cod_num;
-        this.nombre_mun = nombre_mun;
-        this.cod_prov = cod_prov;
+    constructor(codMun:number, municipio:string, codProv:number){
+        this.CODMU = codMun;
+        this.MUNICIPIO = municipio;
+        this.CODPROV = codProv;
     }
 
-    public get getCod_mun():number{
-        return this.cod_mun;
-    }
-    public get getNombre_mun():string{
-        return this.nombre_mun;
+    public get getCodmun():number{
+        return this.CODMU;
     }
 
-    public get getCod_prov():number{
-        return this.cod_prov;
+    public set setCodmun(cod_mun_new: number) {
+        this.CODMU = cod_mun_new;
     }
 
-
-    public set setCod_mun(cod_mun_new:number){
-        this.cod_mun = cod_mun_new;
-    }
-    public set setNombre_mun(nombre_mun_new:string){
-        this.nombre_mun = nombre_mun_new;
+    public get getMunicipio():string{
+        return this.MUNICIPIO;
     }
 
-    public set setCod_prov(cod_prov_new:number){
-        this.cod_prov = cod_prov_new;
+    public set setMunicipio(nombre_mun_new: string) {
+        this.MUNICIPIO = nombre_mun_new;
+    }
+
+    public get getCodprov():number{
+        return this.CODPROV;
+    }
+
+    public set setCodprov(cod_prov_new:number){
+        this.CODPROV = cod_prov_new;
     }
 
 }

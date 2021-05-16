@@ -15,6 +15,10 @@ export class DataService {
     return this.httpClient.get(this.REST_API_SERVER + extension);
   }
 
+  public getComunidades(comunidades:string){
+    return this.httpClient.get(this.REST_API_SERVER + comunidades);
+  }
+
   public addUser(usuario:Usuario){
     const headers = { 'content-type': 'application/json'}
     const body=JSON.stringify(usuario)

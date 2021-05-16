@@ -8,6 +8,7 @@ import { InicioComponent } from './componentes/Inicio/inicio.component';
 import { pVentanaComponent } from './componentes/PrimeraVentana/pVentana.component';
 import { PanelUsuarioComponent } from './componentes/panel-usuario/panel-usuario.component'
 import { CambiarContrasenaComponent } from './componentes/cambiar-contrasena/cambiar-contrasena.component';
+import { TurismoComponent } from './componentes/turismo/turismo.component';
 
 const routes: Routes = [
   { path: 'homepage', component:LoginComponent, resolve:{'itemList': HomepageResolver}},
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'pVentana', component: pVentanaComponent},
   { path: 'panelUsuario', component: PanelUsuarioComponent},
   { path: 'cambiarContrasena', component: CambiarContrasenaComponent},
+  { path: 'turismo', component: TurismoComponent},
   {
     path:'',
     redirectTo: 'homepage',
