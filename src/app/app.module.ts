@@ -24,6 +24,10 @@ import { ListMenuPanelComponent } from './componentes/list-menu-panel/list-menu-
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 import { CambiarContrasenaComponent } from './componentes/cambiar-contrasena/cambiar-contrasena.component';
 import { TurismoComponent } from './componentes/turismo/turismo.component';
+import { HospitalesComponent } from './componentes/hospitales/hospitales.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { MapComponent } from './componentes/map/map.component';
+
 
 
 @NgModule({
@@ -40,6 +44,8 @@ import { TurismoComponent } from './componentes/turismo/turismo.component';
     ListMenuPanelComponent,
     CambiarContrasenaComponent,
     TurismoComponent,
+    MapComponent,
+    HospitalesComponent,
     
   ],
   imports: [
@@ -56,7 +62,8 @@ import { TurismoComponent } from './componentes/turismo/turismo.component';
     NgbModule,
     ListViewModule,
     ButtonModule,
-    DropDownTreeModule
+    DropDownTreeModule,
+    GoogleMapsModule,
   ],
   providers: [SplashScreenStateService, HomepageResolver],
   bootstrap: [AppComponent]
