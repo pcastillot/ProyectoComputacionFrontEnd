@@ -18,6 +18,10 @@ import { HomepageResolver } from './resolvers/homepage.resolver';
 import { pVentanaComponent } from './componentes/PrimeraVentana/pVentana.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PanelUsuarioComponent } from './componentes/panel-usuario/panel-usuario.component';
+import { ListViewModule } from '@syncfusion/ej2-angular-lists';
+import { ListMenuPanelComponent } from './componentes/list-menu-panel/list-menu-panel.component';
+import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
+import { CambiarContrasenaComponent } from './componentes/cambiar-contrasena/cambiar-contrasena.component';
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import { PanelUsuarioComponent } from './componentes/panel-usuario/panel-usuario
     SplashComponent,
     HomepageComponent,
     pVentanaComponent,
-    PanelUsuarioComponent
+    PanelUsuarioComponent,
+    ListMenuPanelComponent,
+    CambiarContrasenaComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +49,9 @@ import { PanelUsuarioComponent } from './componentes/panel-usuario/panel-usuario
     WavesModule, 
     ButtonsModule,
     IconsModule,
-    NgbModule
+    NgbModule,
+    ListViewModule,
+    ButtonModule,
 
   ],
   providers: [SplashScreenStateService, HomepageResolver],

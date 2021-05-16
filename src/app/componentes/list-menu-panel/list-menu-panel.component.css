@@ -1,0 +1,38 @@
+#menu-panel{
+    text-align: right;
+    height: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+    margin-right: 120px;
+}
+
+.element-container{
+    position: absolute;
+    width: 100%;
+    top: 37%;
+}
+
+button{
+    margin-bottom: 50px;
+}
+
+@media (max-width: 767px){
+    #menu-panel{
+        width: 100%;
+        margin-bottom: 100px;
+        margin-right: 0px;
+        text-align: center;
+    }
+
+    .element-container{
+        width: 96%;
+        top: 0%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    button{
+        margin-bottom: 15px;
+    }
+}
