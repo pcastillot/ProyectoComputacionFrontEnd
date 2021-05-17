@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'cambiarContrasena', component: CambiarContrasenaComponent},
   { path: 'turismo', component: TurismoComponent},
   { path: 'hospitales', component: HospitalesComponent},
+  { path: 'registro2', component: RegistroComponent },
   {
     path:'',
     redirectTo: 'homepage',
