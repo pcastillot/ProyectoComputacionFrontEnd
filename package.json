@@ -31,7 +31,7 @@
     "@syncfusion/ej2-angular-lists": "^19.1.63",
     "@syncfusion/ej2-angular-notifications": "^19.1.54",
     "@types/chart.js": "^2.9.32",
-    "angular-bootstrap-md": "^11.0.0",
+    "angular-bootstrap-md": "^11.1.0",
     "animate.css": "^4.1.1",
     "bootstrap": "^4.6.0",
     "chart.js": "^2.9.4",
@@ -45,7 +45,7 @@
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.1102.11",
+    "@angular-devkit/build-angular": "^0.1102.13",
     "@angular/cli": "^11.2.11",
     "@angular/compiler-cli": "^11.2.12",
     "@types/jasmine": "~3.6.0",

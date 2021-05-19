@@ -13,6 +13,10 @@ export class pVentanaComponent implements OnInit{
     constructor(private router: Router){};
 
     ngOnInit(): void {
+        for (var i = 0; i < this.router.config.length; i++) {
+            var routePath:any = this.router.config[i].path;
+            console.log(routePath);
+        }
     }
 
     redirectLogin(){

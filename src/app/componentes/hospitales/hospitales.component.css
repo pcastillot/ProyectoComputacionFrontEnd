@@ -1,5 +1,6 @@
 .info{
     padding-top: 20px;
+    padding-bottom: 20px;
     margin-bottom: 45px;
     margin-left: auto;
     margin-right: auto;
@@ -7,8 +8,24 @@
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
     border-radius: 5px;
     background: #f9f9f9;
-    width: 800px;
-  }
-  .tittle{
-      text-align: center;
-  }
+}
+.tittle{
+    text-align: center;
+    padding: 10px;
+    font-size: 24px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.70);
+}
+
+label{
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 20px;
+    margin-bottom: -3px;
+}
+
+.mapa{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
