@@ -27,6 +27,7 @@ import { TurismoComponent } from './componentes/turismo/turismo.component';
 import { HospitalesComponent } from './componentes/hospitales/hospitales.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MapComponent } from './componentes/map/map.component';
+import { AboutUsComponent } from './componentes/about-us/about-us.component';
 
 
 
@@ -46,6 +47,7 @@ import { MapComponent } from './componentes/map/map.component';
     TurismoComponent,
     MapComponent,
     HospitalesComponent,
+    AboutUsComponent,
     
   ],
   imports: [

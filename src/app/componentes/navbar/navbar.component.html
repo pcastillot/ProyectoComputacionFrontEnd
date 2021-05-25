@@ -11,32 +11,39 @@
       <!-- Links -->
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
+          <a class="nav-link waves-light" mdbWavesEffect>Búsqueda<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect>Features</a>
+          <a class="nav-link waves-light" mdbWavesEffect>Mapa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>
+          <a class="nav-link waves-light" mdbWavesEffect>Sobre nosotros</a>
         </li>
+
+        
   
         <!-- Dropdown -->
         <div ngbDropdown>
           <a ngbDropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" style="color: rgb(255, 255, 255);" mdbWavesEffect>
-            Basic dropdown<span class="caret"></span></a>
+            Ajustes<span class="caret"></span></a>
           <div ngbDropdownMenu>
-            <a class="dropdown-item waves-light" href="#" mdbWavesEffect ngbDropdownItem>Action - 1</a>
-            <a ngbDropdownItem>Another Action</a>
-            <a ngbDropdownItem>Something else is here</a>
+            <a class="dropdown-item waves-light" href="#" mdbWavesEffect ngbDropdownItem>Perfil</a>
+            <a ngbDropdownItem>Configuración</a>  
           </div>
         </div>
+
+        <!-- Search -->
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+        </form>
   
       </ul>
       <!-- Links -->
   
       <ul class="navbar-nav ml-auto nav-flex-icons">
         <li class="nav-item">
-          <a class="nav-link">1 <mdb-icon fas icon="envelope"></mdb-icon></a>
+          <!-- <a class="nav-link">1 <mdb-icon fas icon="envelope"></mdb-icon></a> -->
         </li>
         <div class="nav-item avatar" ngbDropdown>
           <a ngbDropdownToggle mdbWavesEffect id="dropdownConfig" type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
