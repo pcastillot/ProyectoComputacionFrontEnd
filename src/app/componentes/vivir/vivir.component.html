@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+
+<div class="col-lg-12 control-section">
+    <div id="wrapper" style='margin-top: 20px'>
+        <div id='content' class='card col-lg-6 col-md-8 col-sm-11 control-wrapper' style="margin: 50px auto 0;">
+            
+            <span class="title">Dónde vivir</span>
+            <br>
+            <div class="row">
+                <ejs-dropdownlist #comunidad id="comunidad" class="col-7 dropdownlist" [dataSource]="comunidades" [fields]="comunidadesFields" (change?)="onComunidadChange();" [placeholder]="comunidadWatermark"></ejs-dropdownlist>
+                <button ejs-button class="col-2 e-outline boton" (click)='onComunidadChange();' [isPrimary]="true">Confirmar</button>
+                <div class="col-1"></div>
+            </div>
+            <div class="row">
+                <span id="errorComunidad" [hidden]="true" class="e-error error col-7">Debe introducir una comunidad</span>
+                <div class="col-3"></div>
+            </div>
+            
+            <div class="padding-top row">
+                <ejs-dropdownlist #provincia id="provincia" class="col-7 dropdownlist" [dataSource]="provincias" [fields]="provinciasFields" [placeholder]="provinciaWatermark" [enabled]="false"></ejs-dropdownlist>
+                <button ejs-button #btnProvincia id="btnProvincia" class="col-2 e-outline boton" (click)='provinciaChange();' [disabled]="true" [isPrimary]="true">Confirmar</button>
+                <div class="col-1"></div>
+            </div>  
+            <div class="row">
+                <span id="errorProvincia" [hidden]="true" class="e-error error col-7">Debe introducir una provincia</span>
+                <div class="col-3"></div>
+            </div>
+
+            <div class="padding-top row">
+                <ejs-dropdownlist #municipio id="municipio" class="col-7 dropdownlist" [dataSource]="municipios" [fields]="municipiosFields" [placeholder]="municipioWatermark" [enabled]="false"></ejs-dropdownlist>
+                <div class="col-3"></div>
+            </div>  
+            <div class="row">
+                <span id="errorMunicipio" [hidden]="true" class="e-error error col-7">Debe introducir un municipio</span>
+                <div class="col-3"></div>
+            </div>
+
+            <div  class="row check-group">
+                <ejs-checkbox #checkboxColegios label="Colegios" [checked]="true"></ejs-checkbox>
+                <ejs-checkbox #checkboxHospitales label="Hospitales" [checked]="true"></ejs-checkbox>
+                <ejs-checkbox #checkboxViviendas label="Viviendas" [checked]="true"></ejs-checkbox>
+            </div>
+
+            <div class="boton-buscar">
+                <button #btnBuscar id="validateSubmit btnBuscar" (click)="buscar()" class="samplebtn e-control e-btn e-primary" style="height:40px;width: 150px;" data-ripple="true">Buscar</button>
+            </div>
+            
+        </div>
+    </div>
+</div>

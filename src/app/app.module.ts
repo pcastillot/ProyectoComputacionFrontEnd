@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ComboBoxModule } from '@syncfusion/ej2-angular-dropdowns';
+import { ComboBoxModule, DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { DropDownTreeModule } from '@syncfusion/ej2-angular-dropdowns';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,13 +21,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PanelUsuarioComponent } from './componentes/panel-usuario/panel-usuario.component';
 import { ListViewModule } from '@syncfusion/ej2-angular-lists';
 import { ListMenuPanelComponent } from './componentes/list-menu-panel/list-menu-panel.component';
-import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
+import { ButtonModule, CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
 import { CambiarContrasenaComponent } from './componentes/cambiar-contrasena/cambiar-contrasena.component';
 import { TurismoComponent } from './componentes/turismo/turismo.component';
 import { HospitalesComponent } from './componentes/hospitales/hospitales.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MapComponent } from './componentes/map/map.component';
 import { AboutUsComponent } from './componentes/about-us/about-us.component';
+import { VivirComponent } from './componentes/vivir/vivir.component';
 
 
 
@@ -47,6 +48,7 @@ import { AboutUsComponent } from './componentes/about-us/about-us.component';
     TurismoComponent,
     MapComponent,
     HospitalesComponent,
+    VivirComponent,
     AboutUsComponent,
     
   ],
@@ -66,6 +68,8 @@ import { AboutUsComponent } from './componentes/about-us/about-us.component';
     ButtonModule,
     DropDownTreeModule,
     GoogleMapsModule,
+    DropDownListModule,
+    CheckBoxModule,
   ],
   providers: [SplashScreenStateService, HomepageResolver],
   bootstrap: [AppComponent]

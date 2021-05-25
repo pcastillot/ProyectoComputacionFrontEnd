@@ -10,7 +10,7 @@
 .element-container{
     position: absolute;
     width: 100%;
-    top: 37%;
+    margin-top: 100px;
 }
 
 button{

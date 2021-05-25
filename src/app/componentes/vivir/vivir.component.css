@@ -1,0 +1,57 @@
+ejs-dropdownlist{
+    margin-bottom: 20px ;
+}
+
+.card{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 45px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.title{
+    text-align: center;
+    padding: 10px;
+    font-size: 24px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.70);
+    margin-bottom: 15px;
+}
+
+.check-group{
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 15px;
+}
+
+ejs-checkbox{
+    margin-right: 30px;
+}
+
+.e-label{
+    font-size: 15px;
+}
+
+.boton-buscar{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.dropdownlist{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.boton{
+    height: 30px;
+}
+
+.error{
+    margin-left: 80px;
+    margin-top: -20px;
+    margin-bottom: 25px;
+}

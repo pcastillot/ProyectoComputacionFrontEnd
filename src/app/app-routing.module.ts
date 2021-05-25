@@ -12,6 +12,7 @@ import { TurismoComponent } from './componentes/turismo/turismo.component';
 import { MapComponent } from './componentes/map/map.component';
 import { HospitalesComponent } from './componentes/hospitales/hospitales.component';
 import { AboutUsComponent } from './componentes/about-us/about-us.component';
+import { VivirComponent } from './componentes/vivir/vivir.component'
 
 
 const routes: Routes = [
@@ -25,8 +26,9 @@ const routes: Routes = [
   { path: 'cambiarContrasena', component: CambiarContrasenaComponent},
   { path: 'turismo', component: TurismoComponent},
   { path: 'hospitales', component: HospitalesComponent},
-  { path: 'registro2', component: RegistroComponent},
+  { path: 'registro2', component: RegistroComponent },
   { path: 'aboutus', component: AboutUsComponent},
+  { path: 'vivir', component: VivirComponent},
   {
     path:'',
     redirectTo: 'homepage',
