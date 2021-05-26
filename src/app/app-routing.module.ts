@@ -9,7 +9,6 @@ import { pVentanaComponent } from './componentes/PrimeraVentana/pVentana.compone
 import { PanelUsuarioComponent } from './componentes/panel-usuario/panel-usuario.component'
 import { CambiarContrasenaComponent } from './componentes/cambiar-contrasena/cambiar-contrasena.component';
 import { TurismoComponent } from './componentes/turismo/turismo.component';
-import { MapComponent } from './componentes/map/map.component';
 import { HospitalesComponent } from './componentes/hospitales/hospitales.component';
 import { AboutUsComponent } from './componentes/about-us/about-us.component';
 import { VivirComponent } from './componentes/vivir/vivir.component'
