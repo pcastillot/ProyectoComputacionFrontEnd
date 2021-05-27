@@ -4,13 +4,13 @@ import { Subscription, Subject } from 'rxjs';
 @Injectable()
 export class SplashScreenStateService {
 
-  subject = new Subject();
+    subject = new Subject();
 
-  subscribe(onNext:any): Subscription {
-    return this.subject.subscribe(onNext);
-  }
+    subscribe(onNext: any): Subscription {
+        return this.subject.subscribe(onNext);
+    }
 
-  stop() {
-    this.subject.next(false);
-  }
+    stop() {
+        this.subject.next(false);
+    }
 }

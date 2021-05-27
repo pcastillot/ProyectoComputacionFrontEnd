@@ -1,8 +1,8 @@
 export class Municipio{
 
-    private CODMU: number;
-    private MUNICIPIO:string;
-    private CODPROV:number;
+    public CODMU: number;
+    public MUNICIPIO:string;
+    public CODPROV:number;
     
     constructor(codMun:number, municipio:string, codProv:number){
         this.CODMU = codMun;

@@ -1,7 +1,7 @@
 export class Provincia {
-    private CODPROV: number;
-    private NOMBRE: string;
-    private CODAUTO: number;
+    public CODPROV: number;
+    public NOMBRE: string;
+    public CODAUTO: number;
 
     constructor(codprov: number, nomber: string, codauto: number) {
         this.CODPROV = codprov;

@@ -1,7 +1,7 @@
 export class Comunidad{
-    private CODAUTO:number;
-    private AUTONOMIA:string;
-    private TEXTO_AUTONOMIA:string;
+    public CODAUTO:number;
+    public AUTONOMIA:string;
+    public TEXTO_AUTONOMIA:string;
 
     constructor(codAuto:number, autonomia:string, textoAutonomia:string){
         this.CODAUTO = codAuto;

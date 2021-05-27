@@ -8,6 +8,7 @@ export const environment = {
   isAdmin: "Usuarios/isAdmin/",
   getMunicipios: "Municipios",
   getComunidades:"Comunidades",
+  getProvincias:"Provincias",
   getProvincias_comunidad:"Provincias/showFromComunidad/",
   getMunicipios_provicia:"Municipios/showFromProvincia/",
   crearUser: "Usuarios/createUser/",
