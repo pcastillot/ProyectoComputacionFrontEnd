@@ -33,6 +33,7 @@ import { VivirComponent } from './componentes/vivir/vivir.component';
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
 import { FiltrosComponent } from './componentes/filtros/filtros.component';
 import { ResultadosBusquedaComponent } from './componentes/resultados-busqueda/resultados-busqueda.component';
+import { ColegiosComponent } from './componentes/colegios/colegios.component';
 
 
 
@@ -57,6 +58,7 @@ import { ResultadosBusquedaComponent } from './componentes/resultados-busqueda/r
     BusquedaComponent,
     FiltrosComponent,
     ResultadosBusquedaComponent,
+    ColegiosComponent,
     
   ],
   imports: [

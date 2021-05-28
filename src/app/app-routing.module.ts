@@ -13,6 +13,7 @@ import { HospitalesComponent } from './componentes/hospitales/hospitales.compone
 import { AboutUsComponent } from './componentes/about-us/about-us.component';
 import { VivirComponent } from './componentes/vivir/vivir.component';
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component'
+import { ColegiosComponent } from './componentes/colegios/colegios.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'aboutus', component: AboutUsComponent},
   { path: 'vivir', component: VivirComponent},
   { path: 'busqueda', component: BusquedaComponent},
+  { path: 'colegios', component: ColegiosComponent},
   {
     path:'',
     redirectTo: 'homepage',
