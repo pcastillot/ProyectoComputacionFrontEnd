@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+
+<div class="row barra-busqueda">
+    <input class="input-busqueda form-control col-7" type="text" placeholder="Búsqueda" aria-label="">
+    <button id="validateSubmit" (click)="busqueda($event)" class="samplebtn btn-busqueda e-control e-btn e-primary col-1" data-ripple="true">Buscar</button>
+</div>
+
+<div class="divider-new"></div>
+
+<div class="row">
+
+    <div class="filtros col-2">
+        <app-filtros class="filtros"></app-filtros>
+    </div>
+
+    <div class="resultados col-8">
+        
+    </div>
+
+
+</div>

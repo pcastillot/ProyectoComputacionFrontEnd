@@ -58,11 +58,6 @@ export class PanelUsuarioComponent implements OnInit {
     
   }
 
-  public cambiarImagenPerfil(event:any) {
-    event.preventDefault()
-    alert("Cambiando imagen del perfil")
-  }
-
   public guardarCambios(){
     alert("Guardando cambios")
     this.router.navigateByUrl('inicio')

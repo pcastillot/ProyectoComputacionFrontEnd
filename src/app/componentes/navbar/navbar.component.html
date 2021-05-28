@@ -1,9 +1,9 @@
-<div>
+
 <!--Navbar-->
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark pink lighten-1" [containerInside]="false">
 
     <!-- Navbar brand -->
-    <mdb-navbar-brand><a class="navbar-brand" href="#">Vida</a></mdb-navbar-brand>
+    <mdb-navbar-brand><a class="navbar-brand" href="inicio">Vida</a></mdb-navbar-brand>
   
     <!-- Collapsible content -->
     <links>
@@ -11,13 +11,13 @@
       <!-- Links -->
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link waves-light" mdbWavesEffect>Búsqueda<span class="sr-only">(current)</span></a>
+          <a class="nav-link waves-light" href="vivir" mdbWavesEffect>Vivir<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect>Mapa</a>
+          <a class="nav-link waves-light" href="turismo" mdbWavesEffect>Turismo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect>Sobre nosotros</a>
+          <a class="nav-link waves-light" href="aboutus" mdbWavesEffect>Sobre nosotros</a>
         </li>
 
         
@@ -27,8 +27,8 @@
           <a ngbDropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" style="color: rgb(255, 255, 255);" mdbWavesEffect>
             Ajustes<span class="caret"></span></a>
           <div ngbDropdownMenu>
-            <a class="dropdown-item waves-light" href="#" mdbWavesEffect ngbDropdownItem>Perfil</a>
-            <a ngbDropdownItem>Configuración</a>  
+            <a class="dropdown-item waves-light" href="panelUsuario" mdbWavesEffect ngbDropdownItem>Configuración</a>
+            <a ngbDropdownItem>Perfil</a>  
           </div>
         </div>
 
@@ -40,26 +40,12 @@
   
       </ul>
       <!-- Links -->
-  
-      <ul class="navbar-nav ml-auto nav-flex-icons">
-        <li class="nav-item">
-          <!-- <a class="nav-link">1 <mdb-icon fas icon="envelope"></mdb-icon></a> -->
-        </li>
-        <div class="nav-item avatar" ngbDropdown>
-          <a ngbDropdownToggle mdbWavesEffect id="dropdownConfig" type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt="" class="img-fluid rounded-circle z-depth-0 perfil"></a>
-          <div id="dropdown-menu-perfil" ngbDropdownMenu>
-            <a ngbDropdownItem class="dropdown-item waves-light" mdbWavesEffect href="panelUsuario">My account</a>
-            <a ngbDropdownItem class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
-          </div>
-        </div>
-      </ul>
+
     </links>
     <!-- Collapsible content -->
   
   </mdb-navbar>
   <!--/.Navbar-->
-  </div>
 <!--
 <body>
   <div>

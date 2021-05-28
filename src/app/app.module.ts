@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ComboBoxModule, DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { DropDownTreeModule } from '@syncfusion/ej2-angular-dropdowns';
+import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { MapComponent } from './componentes/map/map.component';
 import { AboutUsComponent } from './componentes/about-us/about-us.component';
 import { VivirComponent } from './componentes/vivir/vivir.component';
+import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
+import { FiltrosComponent } from './componentes/filtros/filtros.component';
+import { ResultadosBusquedaComponent } from './componentes/resultados-busqueda/resultados-busqueda.component';
 
 
 
@@ -50,6 +54,9 @@ import { VivirComponent } from './componentes/vivir/vivir.component';
     HospitalesComponent,
     VivirComponent,
     AboutUsComponent,
+    BusquedaComponent,
+    FiltrosComponent,
+    ResultadosBusquedaComponent,
     
   ],
   imports: [
@@ -70,6 +77,7 @@ import { VivirComponent } from './componentes/vivir/vivir.component';
     GoogleMapsModule,
     DropDownListModule,
     CheckBoxModule,
+    SidebarModule,
   ],
   providers: [SplashScreenStateService, HomepageResolver],
   bootstrap: [AppComponent]

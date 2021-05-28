@@ -11,7 +11,8 @@ import { CambiarContrasenaComponent } from './componentes/cambiar-contrasena/cam
 import { TurismoComponent } from './componentes/turismo/turismo.component';
 import { HospitalesComponent } from './componentes/hospitales/hospitales.component';
 import { AboutUsComponent } from './componentes/about-us/about-us.component';
-import { VivirComponent } from './componentes/vivir/vivir.component'
+import { VivirComponent } from './componentes/vivir/vivir.component';
+import { BusquedaComponent } from './componentes/busqueda/busqueda.component'
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'registro2', component: RegistroComponent },
   { path: 'aboutus', component: AboutUsComponent},
   { path: 'vivir', component: VivirComponent},
+  { path: 'busqueda', component: BusquedaComponent},
   {
     path:'',
     redirectTo: 'homepage',
