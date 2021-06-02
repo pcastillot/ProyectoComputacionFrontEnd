@@ -10,3 +10,9 @@ mdb-navbar{
 #dropdown-menu-perfil{
     left: -70px;
 }
+.navbar-brand{
+    font:bold;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+}
