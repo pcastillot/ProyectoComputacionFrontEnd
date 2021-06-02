@@ -14,7 +14,7 @@ export class HomepageResolver implements Resolve<any> {
       setTimeout(() => {
         this.splashScreenStateService.stop();
       }, 5000);
-      this.router.navigateByUrl('pVentana');
+      this.router.navigateByUrl('inicio');
     });
   }
 

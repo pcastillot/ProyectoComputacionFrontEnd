@@ -99,25 +99,8 @@ button:focus{
   margin-top: 5%;
   margin-right: 5%;
   margin-left: 5%;
-  margin-bottom: 7%;
-  
+  margin-bottom: 5%;
   text-align: center;
-
-  background-image: url('https://pixabay.com/get/gf7086645be7b7370d4801020076c09d508e67de549653ac3aeeb9bf88c977ae266a595c3f81dcdcbcbb001d5bc8ba995_1280.jpg');
-  background-size: 100%;
-
-  border-radius: 10px;
-
-  padding-top: 5%;
-  padding-bottom: 5%;
-  padding-left: 3%;
-  padding-right: 3%;
-}
-
-.quienesSomos{
-  background-color: #000000;
-  border-radius: 10px;
-  opacity: 0.5;
 }
 
 .col-inicio-03{
