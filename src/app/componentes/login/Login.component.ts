@@ -52,6 +52,9 @@ export class LoginComponent{
     redirectRegistro = () =>{
         this.router.navigateByUrl('registro');
     };
+    redirectInicio = () =>{
+        this.router.navigateByUrl('inicio');
+    };
 
     get email_check() { return this.reactForm.get('email_check'); }
     get password() { return this.reactForm.get('password'); }
@@ -63,6 +66,8 @@ export class LoginComponent{
         var existe = 0;
         var passOK = 0;
         var isAdmin = 0;
+
+        
 
         console.log("Correo: " + correo + "\nPass: " +
          contrasena);
@@ -83,9 +88,13 @@ export class LoginComponent{
                         isAdmin = data;
                         console.log("isAdmin: " + isAdmin);
 
+                        localStorage.setItem('idSession', correo);
+                        console.log(localStorage.getItem('idSession'));
+
                         if(isAdmin==1){
                             console.log("Iniciaste sesión como Administrador")
                             alert("Iniciaste sesión como Administrador:\nCorreo: " + correo)
+                           
                         }
     
                         else{
