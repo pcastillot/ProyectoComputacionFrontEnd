@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ComboBoxModule, DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { DropDownTreeModule } from '@syncfusion/ej2-angular-dropdowns';
 import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
+import { GridAllModule } from '@syncfusion/ej2-angular-grids';
+import { DialogModule } from '@syncfusion/ej2-angular-popups';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +36,7 @@ import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
 import { FiltrosComponent } from './componentes/filtros/filtros.component';
 import { ResultadosBusquedaComponent } from './componentes/resultados-busqueda/resultados-busqueda.component';
 import { ColegiosComponent } from './componentes/colegios/colegios.component';
+import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component';
 
 
 
@@ -59,6 +62,7 @@ import { ColegiosComponent } from './componentes/colegios/colegios.component';
     FiltrosComponent,
     ResultadosBusquedaComponent,
     ColegiosComponent,
+    PanelAdminComponent,
     
   ],
   imports: [
@@ -80,6 +84,8 @@ import { ColegiosComponent } from './componentes/colegios/colegios.component';
     DropDownListModule,
     CheckBoxModule,
     SidebarModule,
+    GridAllModule,
+    DialogModule,
   ],
   providers: [SplashScreenStateService, HomepageResolver],
   bootstrap: [AppComponent]

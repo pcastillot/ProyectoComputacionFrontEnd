@@ -16,3 +16,13 @@ mdb-navbar{
     height: auto;
     cursor: pointer;
 }
+
+.cerrar-sesion{
+    cursor: pointer;
+}
+
+.bienvenida{
+    font-weight: bold;
+    color: rgba(255,255,255,1);
+    margin-right: 10px;
+}

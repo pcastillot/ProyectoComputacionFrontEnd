@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+
+<div class="row">
+    <div class="lista col-2 content-wrapper">
+        <div style="margin: 0px auto; padding-top: 40px;">
+            <ejs-dropdownlist id='games' #sample [dataSource]='tablas' [value]='value' [fields]='fields' [placeholder]='waterMark' [popupHeight]='height'></ejs-dropdownlist>
+        </div>
+    </div>
+    <button id="validateSubmit" (click)="cambiarTabla(sample.value)" class="col-1 btnTabla samplebtn e-control e-btn e-primary" data-ripple="true">Cambiar</button>
+
+    
+</div>
+
+<div class="row">
+    <div class="control-section col-11 center panel">
+        <ejs-grid #grid class="grid" [allowSorting]='true' [dataSource]='data' allowPaging='true' showColumnChooser='true' [toolbar]="toolbar" [pageSettings]='pageSettings' [editSettings]='editSettings'>
+            <e-columns>
+            </e-columns>
+        </ejs-grid>
+    </div>
+</div>
+
+

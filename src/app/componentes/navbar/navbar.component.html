@@ -34,16 +34,29 @@
             <a class="dropdown-item waves-light" href="panelUsuario" mdbWavesEffect ngbDropdownItem>Configuración</a>
             <a ngbDropdownItem>Perfil</a>  
           </div>
-        </div>       
+        </div>  
+        
+        <li *ngIf="isAdmin" class="nav-item">
+          <a class="nav-link waves-light" href="panelAdmin" mdbWavesEffect>Panel Administrador</a>
+        </li>
   
       </ul>
 
-      <ul class="navbar-nav mr-right">
+      <ul *ngIf="idUsuario===null" class="navbar-nav mr-right">
         <li class="navbar-text">
           <a class="nav-link waves-light" href="login" mdbWavesEffect>LOGIN</a>
         </li>
         <li class="navbar-text">
           <a class="nav-link" href="registro">REGISTRO</a>
+        </li>
+      </ul>
+      
+      <ul *ngIf="idUsuario!=null" class="navbar-nav mr-right">
+        <li class="navbar-text">
+          <span class="nav-link bienvenida" style="color: rgb(255, 255, 255);">Bienvenido {{nombreUsuario}}</span>
+        </li>
+        <li class="navbar-text">
+          <span class="nav-link cerrar-sesion" (click)="cerrarSesion()">Cerrar Sesión</span>
         </li>
       </ul>
       <!-- Links -->
