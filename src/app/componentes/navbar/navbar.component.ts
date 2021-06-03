@@ -28,4 +28,8 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('login');
   };
 
+  redirectInicio = () =>{
+    this.router.navigateByUrl('inicio');
+  };
+
 }
