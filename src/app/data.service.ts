@@ -18,6 +18,9 @@ export class DataService {
   public getComunidades(comunidades:string){
     return this.httpClient.get(this.REST_API_SERVER + comunidades);
   }
+  public getUserId(){
+    return this.httpClient.get(this.REST_API_SERVER);
+  }
 
   public addUser(usuario:Usuario){
     const headers = { 'content-type': 'application/json'}
