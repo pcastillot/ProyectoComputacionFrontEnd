@@ -87,20 +87,28 @@ export class LoginComponent{
                     this.dataService.sendGetRequest(environment.isAdmin + correo).subscribe((data: any)=>{
                         isAdmin = data;
                         console.log("isAdmin: " + isAdmin);
+                        this.dataService.sendGetRequest(environment.getIdFromCorreo + correo).subscribe((data: any)=>{
+                            let idUsuario = data.idUsuario;
+                            localStorage.setItem('idSession', idUsuario);
+                            console.log(localStorage.getItem('idSession'));
 
-                        localStorage.setItem('idSession', correo);
-                        console.log(localStorage.getItem('idSession'));
-
-                        if(isAdmin==1){
-                            console.log("Iniciaste sesión como Administrador")
-                            alert("Iniciaste sesión como Administrador:\nCorreo: " + correo)
-                           
-                        }
+                            if(isAdmin==1){
+                                console.log("Iniciaste sesión como Administrador")
+                                alert("Iniciaste sesión como Administrador:\nCorreo: " + correo)
+                               
+                            }
+        
+                            else{
+                                console.log("Iniciaste sesión como Usuario")
+                                alert("Iniciaste sesión como Usuario:\nCorreo: " + correo)
+                            }
     
-                        else{
-                            console.log("Iniciaste sesión como Usuario")
-                            alert("Iniciaste sesión como Usuario:\nCorreo: " + correo)
-                        }
+                            this.redirectInicio();
+                        
+                        });
+                        
+
+                        
                     });
 
                     

@@ -6,14 +6,20 @@
                 <h1>Turismo</h1>
                 <hr>
                 <p>Te gustaria descubrir nuevos rincones de la españa vaciada?</p>
-                <button (click) = "redirect('turismo')">Iniciar búsqueda</button>
+                <button ejs-button class='dlgbtn' #confirmButton (click)="redirect('turismo')">Iniciar búsqueda</button>
             </div>
             <div class="col2">
                 <h1>Vivir</h1>
                 <hr>
                 <p>Descubre zonas increibles en espacios tranquilos para vivir tranquilo.</p>
-                <button (click)="redirect('vivir')">Iniciar búsqueda</button>
+                <button ejs-button class='dlgbtn' #confirmButton (click)="redirect('vivir')">Iniciar búsqueda</button>
             </div>
+            <ejs-dialog #confirmDialog [buttons]='confirmDlgButtons' [visible]='hidden' [header]='confirmHeader' [animationSettings]='animationSettings' [showCloseIcon]='confirmCloseIcon' [target]='target'
+                [width]='confirmWidth'>
+                <ng-template #content>
+                    <span>¿Desea iniciar sesión?</span>
+                </ng-template>
+            </ejs-dialog>
         </div>
     </div>
 

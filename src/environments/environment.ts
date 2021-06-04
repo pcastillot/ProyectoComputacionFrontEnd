@@ -6,12 +6,16 @@ export const environment = {
   existeUsuario: "Usuarios/existeUsuario/",
   checkPassword: "Usuarios/checkPassword/",
   isAdmin: "Usuarios/isAdmin/",
-  getMunicipios: "Municipios",
-  getComunidades:"Comunidades",
-  getProvincias:"Provincias",
+  getMunicipios: "Municipios/",
+  getComunidades:"Comunidades/",
+  getProvincias:"Provincias/",
   getProvincias_comunidad:"Provincias/showFromComunidad/",
   getMunicipios_provicia:"Municipios/showFromProvincia/",
   crearUser: "Usuarios/createUser/",
+  getUsuarios: "Usuarios/",
+  getColegios: "Colegios/",
+  getHospitales: "Hospitales/",
+  getIdFromCorreo: "Usuarios/getIdFromCorreo/",
   production: false
 };
 
