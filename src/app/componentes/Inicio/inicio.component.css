@@ -72,6 +72,8 @@ button:focus{
   float: left;
   flex-grow: 1;
   width: 45%;
+
+  background-image: url(src/app/img/Espv1.jpg);
 }
 .col2{
   background:#ffffff;
@@ -93,6 +95,8 @@ button:focus{
   float: right;
   flex-grow: 1;
   width: 45%;
+
+  background-image: url(src/app/img/Espv1.jpg);
 }
 
 .col-inicio-02{
@@ -103,96 +107,8 @@ button:focus{
   text-align: center;
 }
 
-.col-inicio-03{
-  max-width: 1;
+.principal{
 
-  margin-top: 5%;
-  margin-right: 5%;
-  margin-left: 5%;
-  margin-bottom: 5%;
+  background-image: url(src/app/img/Espv1.jpg);
 
-  text-align: center;
-  align-items: center;
-  border-radius: 10px;
-}
-
-.col-inicio-04{
-  margin-top: 5%;
-  margin-right: 5%;
-  margin-left: 5%;
-  margin-bottom: 5%;
-  text-align: center;
-}
-
-.sebas{
-  margin-top: 5%;
-  margin-right: 5%;
-  margin-left: 12%;
-  margin-bottom: 5%;
-
-  padding-top: 5%;
-  padding-bottom: 5%;
-  padding-left: 3%;
-  padding-right: 3%;
-
-  float: left;
-
-  background:#ffffff;
-  border:solid 1px #ccc;
-  border-radius:15px;
-  box-shadow: 0px 20px 15px -15px #818181;
-}
-.carlos{
-  margin-top: 5%;
-  margin-right: 12%;
-  margin-left: 5%;
-  margin-bottom: 5%;
-
-  padding-top: 5%;
-  padding-bottom: 5%;
-  padding-left: 3%;
-  padding-right: 3%;
-
-  float: right;
-
-  background:#ffffff;
-  border:solid 1px #ccc;
-  border-radius:15px;
-  box-shadow: 0px 20px 15px -15px #818181;
-}
-.pedro{
-  margin-top: 5%;
-  margin-right: 5%;
-  margin-left: 12%;
-  margin-bottom: 5%;
-
-  padding-top: 5%;
-  padding-bottom: 5%;
-  padding-left: 3%;
-  padding-right: 3%;
-
-  float: left;
-
-  background:#ffffff;
-  border:solid 1px #ccc;
-  border-radius:15px;
-  box-shadow: 0px 20px 15px -15px #818181;
-}
-.javi{
-  margin-top: 5%;
-  margin-right: 12%;
-  margin-left: 5%;
-  margin-bottom: 5%;
-
-  padding-top: 5%;
-  padding-bottom: 5%;
-  padding-left: 3%;
-  padding-right: 3%;
-
-  float: right;
-
-  background:#ffffff;
-  border:solid 1px #ccc;
-  border-radius:15px;
-  box-shadow: 0px 20px 15px -15px #818181;
 }
