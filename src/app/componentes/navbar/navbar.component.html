@@ -56,14 +56,19 @@
           <span class="nav-link bienvenida" style="color: rgb(255, 255, 255);">Bienvenido {{nombreUsuario}}</span>
         </li>
         <li class="navbar-text">
-          <span class="nav-link cerrar-sesion" (click)="cerrarSesion()">Cerrar Sesión</span>
+          <span class="nav-link cerrar-sesion" (click)="this.confirmDialog.show()">Cerrar Sesión</span>
         </li>
       </ul>
       <!-- Links -->
 
     </links>
     <!-- Collapsible content -->
-  
+    <ejs-dialog #confirmDialog [buttons]='confirmDlgButtons' [visible]='hidden' [header]='confirmHeader' [animationSettings]='animationSettings' [showCloseIcon]='confirmCloseIcon' [target]='target'
+        [width]='confirmWidth'>
+        <ng-template #content>
+            <span>¿Desea cerrar sesión?</span>
+        </ng-template>
+    </ejs-dialog>
   </mdb-navbar>
   <!--/.Navbar-->
 <!--

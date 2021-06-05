@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../../data.service';
 import { FormControl, FormGroup, Validators, FormsModule, AbstractControl } from '@angular/forms';
 import { FormValidators } from '@syncfusion/ej2-angular-inputs';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/modelo/usuarios';
-import { environment } from 'src/environments/environment'
+import { environment } from 'src/environments/environment';
+import * as jwt from 'jsonwebtoken';
+import * as fs from "fs";
+import { ButtonPropsModel, DialogComponent } from '@syncfusion/ej2-angular-popups';
 
 @Component({
     selector:'app-login',
@@ -12,8 +15,24 @@ import { environment } from 'src/environments/environment'
     styleUrls:['./Login.component.css'],
 })
 export class LoginComponent{
+
+    @ViewChild('alertDialog')
+    public alertDialog: DialogComponent;
+
     reactForm: FormGroup;
     usuario:Usuario = new Usuario();
+
+    public alertHeader: string = 'Credenciales incorrectas';
+    public alertContent: string = 'El usuario y/o contraseña son incorrectas';
+    public showCloseIcon: Boolean = false;
+    public hidden: Boolean = false;
+    public alertWidth: string = '400px';
+    public target: string = '.control-section';
+    public animationSettings: Object = { effect: 'None' };
+    public visible: Boolean = true;
+    public hide: any;
+
+    //const RSA_PRIVATE_KEY = fs.readFileSync('./jwt/private.key');
 
     constructor(private dataService: DataService, private router: Router) {
         this.reactForm = new FormGroup({
@@ -22,9 +41,15 @@ export class LoginComponent{
         });
     }
 
+    public alertDlgBtnClick = (): void => {
+        this.alertDialog.hide();
+    }
+
     
-
-
+    public alertDlgButtons: ButtonPropsModel[] = [{ 
+        click: this.alertDlgBtnClick.bind(this), 
+        buttonModel: { content: 'Aceptar', isPrimary: true } 
+    }];
 
     ngOnInit(): void {
         let formId: HTMLElement = <HTMLElement>document.getElementById('formId')!;
@@ -67,72 +92,58 @@ export class LoginComponent{
         var passOK = 0;
         var isAdmin = 0;
 
-        
-
-        console.log("Correo: " + correo + "\nPass: " +
-         contrasena);
-
         //Comprobar si existe el correo
         this.dataService.sendGetRequest(environment.existeUsuario + correo).subscribe((data: any)=>{
             existe = data;
-            console.log("Existe: " + existe);
             //Si existe comprobamos contrasena
             if(existe==1){
                 this.dataService.sendGetRequest(environment.checkPassword + correo + "/" + contrasena).subscribe((data: any)=>{
                     passOK = data;
-                    console.log("passOK: " + passOK);
 
                     //Si la contrasena es correcta comprueba si es administrador
                 if(passOK==1){
                     this.dataService.sendGetRequest(environment.isAdmin + correo).subscribe((data: any)=>{
                         isAdmin = data;
-                        console.log("isAdmin: " + isAdmin);
                         this.dataService.sendGetRequest(environment.getIdFromCorreo + correo).subscribe((data: any)=>{
                             let idUsuario = data.idUsuario;
+                            /*
+                            const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
+                                algorithm: 'RS256',
+                                expiresIn: 120,
+                                subject: "idSession"
+                            }
+                            */
                             localStorage.setItem('idSession', idUsuario);
-                            console.log(localStorage.getItem('idSession'));
 
                             if(isAdmin==1){
                                 console.log("Iniciaste sesión como Administrador")
-                                alert("Iniciaste sesión como Administrador:\nCorreo: " + correo)
                                
                             }
         
                             else{
                                 console.log("Iniciaste sesión como Usuario")
-                                alert("Iniciaste sesión como Usuario:\nCorreo: " + correo)
                             }
     
                             this.redirectInicio();
                         
                         });
                         
-
-                        
                     });
-
-                    
                 }
 
                 else{
-                    console.log("Correo y/o contraseña incorrecta")
-                    alert("Credenciales incorrectas")
+                    this.alertDialog.show();
                 }
                 });
                 
             }
 
             else{
-                console.log("Correo y/o contraseña incorrecta")
-                alert("Credenciales incorrectas")
+                this.alertDialog.show();
             }
                 
             });
         
-        
-        
-
     }
 
-    
 }

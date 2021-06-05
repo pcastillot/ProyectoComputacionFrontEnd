@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbDropdownConfig } from "@ng-bootstrap/ng-bootstrap";
+import { ButtonPropsModel, DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { DataService } from 'src/app/data.service';
 import { environment } from 'src/environments/environment';
 
@@ -12,10 +13,20 @@ import { environment } from 'src/environments/environment';
 })
 export class NavbarComponent implements OnInit {
 
+  @ViewChild('confirmDialog')
+  public confirmDialog: DialogComponent;
+
   constructor(private router: Router, config: NgbDropdownConfig, private dataService: DataService) { 
       config.placement = "bottom-right";
       config.autoClose = true;
   }
+
+  public confirmHeader: string = '¿Estás seguro?';
+  public confirmCloseIcon: Boolean = true;
+  public target: string = '.body';
+  public confirmWidth: string = '400px';
+  public animationSettings: Object = { effect: 'None' };  
+  public hidden: Boolean = false;
     
   idUsuario: any;
   nombreUsuario: string;
@@ -39,6 +50,20 @@ export class NavbarComponent implements OnInit {
 
   }
 
+  public confirmDlgBtnClick = (): void => {
+    this.confirmDialog.hide();
+  }
+
+  
+
+  public hideDialog = () => {
+    this.confirmDialog.hide();
+  }
+
+  public confirmBtnClick = (): void => {
+    this.confirmDialog.show();
+  }
+
   redirectRegistro = () =>{
     this.router.navigateByUrl('registro');
   };
@@ -55,5 +80,17 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem("idSession");
     this.router.navigateByUrl("login");
   }
+
+  public confirmDlgButtons: ButtonPropsModel[] = [
+    { 
+      click: this.cerrarSesion.bind(this), 
+      buttonModel: { content: 'Cerrar Sesión', isPrimary: true } 
+    }, 
+
+    { 
+      click: this.hideDialog.bind(this), 
+      buttonModel: { content: 'Cancelar' } 
+    }
+  ];
 
 }
