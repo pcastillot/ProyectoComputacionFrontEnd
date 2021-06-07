@@ -110,9 +110,10 @@ button:focus{
   background-image: url(src/app/img/imagenEV.jpg);
   background-repeat: no-repeat;
   background-position: center;
+  max-width: 100%;
+  height: auto;
 }
 
 .quienesSomos{
-  color: white;
-  
+  color: white;  
 }
