@@ -13,9 +13,8 @@
 
 <div class="row">
     <div class="control-section col-11 center panel">
-        <ejs-grid #grid class="grid" [allowSorting]='true' [dataSource]='data' allowPaging='true' showColumnChooser='true' [toolbar]="toolbar" [pageSettings]='pageSettings' [editSettings]='editSettings'>
-            <e-columns>
-            </e-columns>
+        <ejs-grid #grid id="tabla" class="grid" [allowSorting]='true' [dataSource]='data' allowPaging='true' showColumnChooser='true' [toolbar]="toolbar" [pageSettings]='pageSettings' [editSettings]='editSettings' (toolbarClick?)="begin($event)">
+            
         </ejs-grid>
     </div>
 </div>

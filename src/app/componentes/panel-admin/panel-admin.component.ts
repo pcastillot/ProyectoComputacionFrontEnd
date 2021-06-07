@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
-import { Column, CommandModel, Grid, GridComponent, VirtualScrollService  } from '@syncfusion/ej2-angular-grids';
+import { Column, commandClick, CommandClickEventArgs, CommandModel, Grid, GridComponent, VirtualScrollService  } from '@syncfusion/ej2-angular-grids';
 import { DataService } from 'src/app/data.service';
 import { environment } from 'src/environments/environment';
 
@@ -46,34 +46,41 @@ export class PanelAdminComponent implements OnInit {
   public waterMark: string = 'Seleccione una tabla';
   // set the value to select an item based on mapped value at initial rendering
   public value: string = 'usuarios';
-  public onChange(args: any): void {
-      let value: Element = document.getElementById('value')!;
-      let text: Element = document.getElementById('text')!;
-      // update the text and value property values in property panel based on selected item in DropDownList
-      value.innerHTML = this.listObj.value.toString();
-      text.innerHTML = this.listObj.text;
-  }
 
   ngOnInit(): void {
     this.dataService.sendGetRequest(environment.getUsuarios).subscribe((data: any)=>{
       this.data = data;
     });
-    this.toolbar = ['ColumnChooser'];
-    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Normal', allowEditOnDblClick: false };
+    this.toolbar = ['Add', 'Edit', 'Delete', 'Update', 'Cancel', 'ColumnChooser'];
+    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true , newRowPosition: 'Top', showDeleteConfirmDialog: true, showConfirmDialog: true };
     this.orderidrules = { required: true };
     this.customeridrules = { required: true };
     this.freightrules =  { required: true };
     this.editparams = { params: { popupHeight: '300px' }};
     this.pageSettings = {pageCount: 5};
-    this.commands = [{ type: 'Edit', buttonOption: { iconCss: ' e-icons e-edit', cssClass: 'e-flat' } },
+    this.commands = [{ type: 'Edit', buttonOption: { iconCss: ' e-icons e-edit', cssClass: 'e-flat'} },
     { type: 'Delete', buttonOption: { iconCss: 'e-icons e-delete', cssClass: 'e-flat' } },
-    { type: 'Save', buttonOption: { iconCss: 'e-icons e-update', cssClass: 'e-flat' } },
+    { type: 'Save', buttonOption: { iconCss: 'e-icons e-update', cssClass: 'e-flat', click: () => this.editRow } },
     { type: 'Cancel', buttonOption: { iconCss: 'e-icons e-cancel-icon', cssClass: 'e-flat' } }];
+
+    
+    
+  }
+
+  begin(args:any){ 
+    alert(args.requestType);
+  } 
+
+  public dataBound = (args: any) =>{
+    alert(args)
+  }
+
+  public editRow(args: CommandClickEventArgs){
+    alert(JSON.stringify(args.rowData));
   }
 
 
-
-  public cambiarTabla(tabla: any){
+  public cambiarTabla(tabla: any) {
 
     this.gridObj.enableColumnVirtualization = false;
 
