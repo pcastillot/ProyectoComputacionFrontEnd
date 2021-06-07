@@ -8,7 +8,7 @@
             <br>
             <div class="row">
                 <ejs-dropdownlist #comunidad id="comunidad" class="col-7 dropdownlist" [dataSource]="comunidades" [fields]="comunidadesFields" (change?)="onComunidadChange();" [placeholder]="comunidadWatermark"></ejs-dropdownlist>
-                <button ejs-button class="col-2 e-outline boton" (click)='onComunidadChange();' [isPrimary]="true">Confirmar</button>
+                <button ejs-button class="col-2 e-outline e-success boton" (click)='onComunidadChange();' [isPrimary]="true">Confirmar</button>
                 <div class="col-1"></div>
             </div>
             <div class="row">
@@ -18,7 +18,7 @@
             
             <div class="padding-top row">
                 <ejs-dropdownlist #provincia id="provincia" class="col-7 dropdownlist" [dataSource]="provincias" [fields]="provinciasFields" [placeholder]="provinciaWatermark" [enabled]="false"></ejs-dropdownlist>
-                <button ejs-button #btnProvincia id="btnProvincia" class="col-2 e-outline boton" (click)='provinciaChange();' [disabled]="true" [isPrimary]="true">Confirmar</button>
+                <button ejs-button #btnProvincia id="btnProvincia" class="col-2 e-outline e-success boton" (click)='provinciaChange();' [disabled]="true" [isPrimary]="true">Confirmar</button>
                 <div class="col-1"></div>
             </div>  
             <div class="row">
@@ -41,7 +41,7 @@
             </div>
 
             <div class="boton-buscar">
-                <button #btnBuscar id="validateSubmit btnBuscar" (click)="buscar()" class="samplebtn e-control e-btn e-primary" style="height:40px;width: 150px;" data-ripple="true">Buscar</button>
+                <button #btnBuscar id="validateSubmit btnBuscar" (click)="buscar()" class="sample btn e-control e-btn e-success" style="height:40px;width: 150px;" data-ripple="true">Buscar</button>
             </div>
             
         </div>
