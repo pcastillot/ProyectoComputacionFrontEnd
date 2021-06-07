@@ -4,7 +4,6 @@
   }
   
   .col-inicio-02{
-    margin-top: 5%;
     margin-right: 20%;
     margin-left: 20%;
     margin-bottom: 7%;
@@ -40,6 +39,7 @@
   }
   
   .col-inicio-04{
+    background-color: burlywood;
     margin-top: 5%;
     margin-right: 5%;
     margin-left: 5%;
@@ -121,6 +121,9 @@
   }
 
   .content{
+    background-color: burlywood;
+  }
+  .desarrolladores{
     background-color: burlywood;
   }
   
