@@ -73,7 +73,7 @@ button:focus{
   flex-grow: 1;
   width: 45%;
 
-  opacity: 0.75;
+  opacity: 0.8;
 }
 .col2{
   background:#ffffff;
@@ -96,18 +96,14 @@ button:focus{
   flex-grow: 1;
   width: 45%;
   
-  opacity: 0.75;
-}
-
-col2:hover{
-  opacity:1.0;
+  opacity: 0.8;
 }
 
 .col-inicio-02{
   margin-top: 5%;
   margin-right: 5%;
   margin-left: 5%;
-  margin-bottom: 5%;
+  margin-bottom: 0%;
   text-align: center;
 }
 
@@ -115,4 +111,8 @@ col2:hover{
 
   background-image: url(src/app/img/Espv1.jpg);
 
+}
+
+.quienesSomos{
+  color: white;
 }
