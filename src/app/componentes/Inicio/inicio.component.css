@@ -106,7 +106,7 @@ button:focus{
   text-align: center;
 }
 
-.principal{
+.container{
   background-image: url(src/app/img/imagenEV.jpg);
   background-repeat: no-repeat;
   background-position: center;
