@@ -8,9 +8,9 @@ ejs-dropdownlist{
     padding-bottom: 20px;
     margin-bottom: 45px;
     border: 1px solid #ccc;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+    box-shadow: 0px 15px 15px -17px #5a70bb;
     border-radius: 5px;
-    background: #add8e3;
+    background-color: rgb(239, 241, 241);
 }
 
 .title{
@@ -31,6 +31,7 @@ ejs-dropdownlist{
 
 ejs-checkbox{
     margin-right: 30px;
+    color: green;
 }
 
 .e-label{
