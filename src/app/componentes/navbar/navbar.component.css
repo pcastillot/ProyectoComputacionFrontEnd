@@ -26,3 +26,6 @@ mdb-navbar{
     color: rgba(255,255,255,1);
     margin-right: 10px;
 }
+.nav-link{
+    font-size: 21px;
+}

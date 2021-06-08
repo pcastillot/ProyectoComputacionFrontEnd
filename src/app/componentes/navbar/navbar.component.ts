@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbDropdownConfig } from "@ng-bootstrap/ng-bootstrap";
+import { NgbDropdownConfig, NgbDropdownToggle } from "@ng-bootstrap/ng-bootstrap";
 import { ButtonPropsModel, DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { DataService } from 'src/app/data.service';
 import { environment } from 'src/environments/environment';
@@ -11,14 +11,20 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./navbar.component.css'],
   providers: [NgbDropdownConfig]
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, AfterViewInit {
 
   @ViewChild('confirmDialog')
   public confirmDialog: DialogComponent;
+  @ViewChild('ajustes')
+  public ajustes: NgbDropdownToggle;
+  
 
   constructor(private router: Router, config: NgbDropdownConfig, private dataService: DataService) { 
       config.placement = "bottom-right";
       config.autoClose = true;
+  }
+  ngAfterViewInit(): void {
+    console.log(this.ajustes);
   }
 
   public confirmHeader: string = '¿Estás seguro?';
