@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ComboBoxModule, DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { DropDownTreeModule } from '@syncfusion/ej2-angular-dropdowns';
 import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
-import { GridAllModule } from '@syncfusion/ej2-angular-grids';
+import { CommandColumnService, EditService, GridAllModule } from '@syncfusion/ej2-angular-grids';
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -87,7 +87,7 @@ import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.compo
     GridAllModule,
     DialogModule,
   ],
-  providers: [SplashScreenStateService, HomepageResolver],
+  providers: [SplashScreenStateService, HomepageResolver, EditService, CommandColumnService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
