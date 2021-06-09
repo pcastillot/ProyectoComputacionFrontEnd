@@ -23,18 +23,10 @@
         <li class="nav-item">
           <a class="nav-link waves-light" href="aboutus" mdbWavesEffect>Sobre nosotros</a>
         </li>
-
-        
+        <li class="nav-item">
+          <a class="nav-link waves-light" href="panelUsuario" mdbWavesEffect>Ajustes</a>
+        </li>
   
-        <!-- Dropdown -->
-        <div ngbDropdown>
-          <a ngbDropdownToggle #ajustes mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" style="color: rgb(255, 255, 255);" mdbWavesEffect>
-            Ajustes<span class="caret"></span></a>
-          <div ngbDropdownMenu>
-            <a class="dropdown-item waves-light" href="panelUsuario" mdbWavesEffect ngbDropdownItem>Configuración</a>
-            <a ngbDropdownItem>Perfil</a>  
-          </div>
-        </div>  
         
         <li *ngIf="isAdmin" class="nav-item">
           <a class="nav-link waves-light" href="panelAdmin" mdbWavesEffect>Panel Administrador</a>
