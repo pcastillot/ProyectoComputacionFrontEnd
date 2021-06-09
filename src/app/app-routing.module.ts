@@ -15,6 +15,7 @@ import { VivirComponent } from './componentes/vivir/vivir.component';
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component'
 import { ColegiosComponent } from './componentes/colegios/colegios.component';
 import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component'
+import { AccessGuardService } from './access-guard.service';
 
 
 const routes: Routes = [
@@ -26,14 +27,13 @@ const routes: Routes = [
   { path: 'pVentana', component: pVentanaComponent},
   { path: 'panelUsuario', component: PanelUsuarioComponent},
   { path: 'cambiarContrasena', component: CambiarContrasenaComponent},
-  { path: 'turismo', component: TurismoComponent},
-  { path: 'hospitales', component: HospitalesComponent},
-  { path: 'registro2', component: RegistroComponent },
+  { path: 'turismo', component: TurismoComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
+  { path: 'hospitales', component: HospitalesComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
   { path: 'aboutus', component: AboutUsComponent},
-  { path: 'vivir', component: VivirComponent},
-  { path: 'busqueda', component: BusquedaComponent},
-  { path: 'colegios', component: ColegiosComponent},
-  { path: 'panelAdmin', component: PanelAdminComponent},
+  { path: 'vivir', component: VivirComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
+  { path: 'busqueda', component: BusquedaComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
+  { path: 'colegios', component: ColegiosComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
+  { path: 'panelAdmin', component: PanelAdminComponent, data: { requiresAdmin: true }, canActivate: [AccessGuardService ]},
   {
     path:'',
     redirectTo: 'homepage',

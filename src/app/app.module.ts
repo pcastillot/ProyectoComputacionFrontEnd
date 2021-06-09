@@ -37,6 +37,7 @@ import { FiltrosComponent } from './componentes/filtros/filtros.component';
 import { ResultadosBusquedaComponent } from './componentes/resultados-busqueda/resultados-busqueda.component';
 import { ColegiosComponent } from './componentes/colegios/colegios.component';
 import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component';
+import { AccessGuardService } from './access-guard.service'
 
 
 
@@ -87,7 +88,7 @@ import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.compo
     GridAllModule,
     DialogModule,
   ],
-  providers: [SplashScreenStateService, HomepageResolver, EditService, CommandColumnService],
+  providers: [SplashScreenStateService, HomepageResolver, EditService, CommandColumnService, AccessGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

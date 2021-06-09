@@ -102,10 +102,10 @@ export class LoginComponent{
 
                     //Si la contrasena es correcta comprueba si es administrador
                 if(passOK==1){
-                    this.dataService.sendGetRequest(environment.isAdmin + correo).subscribe((data: any)=>{
-                        isAdmin = data;
-                        this.dataService.sendGetRequest(environment.getIdFromCorreo + correo).subscribe((data: any)=>{
-                            let idUsuario = data.idUsuario;
+                    this.dataService.sendGetRequest(environment.getIdFromCorreo + correo).subscribe((data: any)=>{
+                        let id = data.idUsuario;
+                        this.dataService.sendGetRequest(environment.isAdmin + id).subscribe((data: any)=>{
+                            let isAdmin = data;
                             /*
                             const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
                                 algorithm: 'RS256',
@@ -113,7 +113,7 @@ export class LoginComponent{
                                 subject: "idSession"
                             }
                             */
-                            localStorage.setItem('idSession', idUsuario);
+                            localStorage.setItem('idSession', id);
 
                             if(isAdmin==1){
                                 console.log("Iniciaste sesión como Administrador")
