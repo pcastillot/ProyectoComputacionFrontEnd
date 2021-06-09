@@ -119,10 +119,6 @@ export class VivirComponent implements OnInit {
       
   }
 
-  public prueba(): void{
-    alert("hola");
-  }
-
   public buscar(): void{
     if(this.municipioObj.text != null){
       document.getElementById('errorMunicipio')!.hidden = true;
