@@ -26,7 +26,7 @@ export class VivirComponent implements OnInit {
   @ViewChild('btnBuscar')
   public btnBuscar: ButtonComponent;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private router: Router) {
   }
 
   municipios: Municipio[] = [];
@@ -41,7 +41,8 @@ export class VivirComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.comunidadObj.change.call("onComunidadChange");
+    this.comunidadObj.addEventListener("change", (e:Event) => this.onComunidadChange())
+    this.provinciaObj.addEventListener("change", (e:Event) => this.provinciaChange())
   }
 
   // maps the appropriate column to fields property for country DropDownList
@@ -69,7 +70,6 @@ export class VivirComponent implements OnInit {
       console.log(data);
       if(this.comunidadObj.text != null){
         document.getElementById('errorComunidad')!.hidden = true;
-        this.btnProvincia.disabled = false;
 
         this.provincias = data;
         // enable the state DropDownList
@@ -119,14 +119,11 @@ export class VivirComponent implements OnInit {
       
   }
 
-  public prueba(): void{
-    alert("hola");
-  }
-
   public buscar(): void{
     if(this.municipioObj.text != null){
       document.getElementById('errorMunicipio')!.hidden = true;
       alert("Buscando...")
+      this.router.navigateByUrl("busqueda");
     }
 
     else{

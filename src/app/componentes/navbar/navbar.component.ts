@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   public confirmHeader: string = '¿Estás seguro?';
   public confirmCloseIcon: Boolean = true;
-  public target: string = '.body';
+  public target: string = 'body';
   public confirmWidth: string = '400px';
   public animationSettings: Object = { effect: 'None' };  
   public hidden: Boolean = false;

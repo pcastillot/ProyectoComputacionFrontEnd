@@ -8,8 +8,7 @@
             <br>
             <div class="row">
                 <ejs-dropdownlist #comunidad id="comunidad" class="col-7 dropdownlist" [dataSource]="comunidades" [fields]="comunidadesFields" (change?)="onComunidadChange();" [placeholder]="comunidadWatermark"></ejs-dropdownlist>
-                <button ejs-button class="col-2 e-outline e-success boton" (click)='onComunidadChange();' [isPrimary]="true">Confirmar</button>
-                <div class="col-1"></div>
+                
             </div>
             <div class="row">
                 <span id="errorComunidad" [hidden]="true" class="e-error error col-7">Debe introducir una comunidad</span>
@@ -18,8 +17,7 @@
             
             <div class="padding-top row">
                 <ejs-dropdownlist #provincia id="provincia" class="col-7 dropdownlist" [dataSource]="provincias" [fields]="provinciasFields" [placeholder]="provinciaWatermark" [enabled]="false"></ejs-dropdownlist>
-                <button ejs-button #btnProvincia id="btnProvincia" class="col-2 e-outline e-success boton" (click)='provinciaChange();' [disabled]="true" [isPrimary]="true">Confirmar</button>
-                <div class="col-1"></div>
+                
             </div>  
             <div class="row">
                 <span id="errorProvincia" [hidden]="true" class="e-error error col-7">Debe introducir una provincia</span>
@@ -28,7 +26,7 @@
 
             <div class="padding-top row">
                 <ejs-dropdownlist #municipio id="municipio" class="col-7 dropdownlist" [dataSource]="municipios" [fields]="municipiosFields" [placeholder]="municipioWatermark" [enabled]="false"></ejs-dropdownlist>
-                <div class="col-3"></div>
+
             </div>  
             <div class="row">
                 <span id="errorMunicipio" [hidden]="true" class="e-error error col-7">Debe introducir un municipio</span>

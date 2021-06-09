@@ -2,19 +2,14 @@
     margin-top: 30px;
 }
 
-.btnTabla{
-    height: 40px;
-    margin-top: 30px;   
-    margin-right: auto;
-}
-
-.lista{
-    margin-left: auto;
-    margin-right: 20px;
-}
-
 .grid{
     height: 100%;
     width: 100%;
     overflow: auto;
+}
+
+.txtList{
+    margin-top: 50px;
+    margin-bottom: -28px;
+    text-align: center;
 }

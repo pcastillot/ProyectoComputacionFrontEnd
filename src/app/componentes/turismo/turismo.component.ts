@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { DataService } from '../../data.service';
@@ -9,6 +9,7 @@ import { Provincia } from '../../modelo/provincias';
 import { Municipio } from '../../modelo/municipio';
 import { DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
 import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 /**
  * @title Tree with nested nodes
@@ -19,7 +20,7 @@ import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
   templateUrl: './turismo.component.html',
   styleUrls: ['./turismo.component.css']
 })
-export class TurismoComponent implements OnInit {
+export class TurismoComponent implements OnInit, AfterViewInit {
 
   @ViewChild('comunidad')
   public comunidadObj: DropDownListComponent;
@@ -32,7 +33,7 @@ export class TurismoComponent implements OnInit {
   @ViewChild('btnBuscar')
   public btnBuscar: ButtonComponent;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private router: Router) {
   }
 
   municipios: Municipio[] = [];
@@ -47,7 +48,8 @@ export class TurismoComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.comunidadObj.change.call("onComunidadChange");
+    this.comunidadObj.addEventListener("change", (e:Event) => this.onComunidadChange())
+    this.provinciaObj.addEventListener("change", (e:Event) => this.provinciaChange())
   }
 
   // maps the appropriate column to fields property for country DropDownList
@@ -75,7 +77,6 @@ export class TurismoComponent implements OnInit {
       console.log(data);
       if(this.comunidadObj.text != null){
         document.getElementById('errorComunidad')!.hidden = true;
-        this.btnProvincia.disabled = false;
 
         this.provincias = data;
         // enable the state DropDownList
@@ -129,6 +130,7 @@ export class TurismoComponent implements OnInit {
     if(this.municipioObj.text != null){
       document.getElementById('errorMunicipio')!.hidden = true;
       alert("Buscando...")
+      this.router.navigateByUrl("busqueda");
     }
 
     else{
