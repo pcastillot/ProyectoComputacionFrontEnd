@@ -20,7 +20,6 @@ export class HospitalesComponent implements OnInit {
         let id = params.id;
         this.dataService.sendGetRequest(environment.getHospitales + id).subscribe((data: any) => {
           this.hospital = data;
-          console.log(JSON.stringify(this.hospital));
         })
       }
     );

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { DropDownListComponent, ListBoxChangeEventArgs } from '@syncfusion/ej2-angular-dropdowns';
-import { Column, commandClick, CommandClickEventArgs, CommandModel, Grid, GridComponent, SearchSettingsModel, ToolbarService, VirtualScrollService  } from '@syncfusion/ej2-angular-grids';
-import { ClickEventArgs } from '@syncfusion/ej2-angular-navigations';
+import { ActionCompleteEventArgs, DropDownListComponent, ListBoxChangeEventArgs } from '@syncfusion/ej2-angular-dropdowns';
+import { ActionEventArgs, CellSaveArgs, Column, commandClick, CommandClickEventArgs, CommandModel, EditEventArgs, Grid, GridComponent, SaveEventArgs, SearchSettingsModel, ToolbarService, VirtualScrollService  } from '@syncfusion/ej2-angular-grids';
+import { AddEventArgs, ClickEventArgs, DataSourceChangedEventArgs } from '@syncfusion/ej2-angular-navigations';
 import { DataService } from 'src/app/data.service';
 import { Colegio } from 'src/app/modelo/colegio';
 import { Comunidad } from 'src/app/modelo/comunidad';
@@ -62,6 +62,13 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
   public value: string;
   public searchOptions: SearchSettingsModel;
 
+  //Validators
+  public emailValidator: object;
+  public idValidator: object;
+  public requiredValidator: object;
+  public rolValidator: object;
+  public numberValidator: object;
+
   @ViewChild('tablasList')
   public listObj: DropDownListComponent;
   // define the JSON of data
@@ -116,7 +123,7 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
 
     this.value = 'usuarios';
     this.toolbar = [{ text: 'Añadir', tooltipText: 'Añadir', id: 'Add', prefixIcon:'e-add' }, 'Search', 'ColumnChooser'];
-    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true , newRowPosition: 'Top', showDeleteConfirmDialog: true, showConfirmDialog: true };
+    this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true , newRowPosition: 'Top', showDeleteConfirmDialog: true, showConfirmDialog: true, mode: 'Dialog' };
     this.editparams = { params: { popupHeight: '300px' }};
     this.pageSettings = {pageCount: 5};
     this.commands = [{ type: 'Edit', buttonOption: { iconCss: ' e-icons e-edit', cssClass: 'e-flat'} },
@@ -124,111 +131,154 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
     { type: 'Save', buttonOption: { iconCss: 'e-icons e-update', cssClass: 'e-flat' } },
     { type: 'Cancel', buttonOption: { iconCss: 'e-icons e-cancel-icon', cssClass: 'e-flat' } }];
 
-    
-    
+    //Validators
+    this.idValidator = {required: true, number: true};
+    this.emailValidator = {email: true};
+    this.requiredValidator = {required: true};
+    this.rolValidator = {range: [0,1]}
+    this.numberValidator = {number: true};
     
   }
 
   ngAfterViewInit():void{
-    this.gridObjUsuarios.addEventListener("commandClick", (e:CommandClickEventArgs) => this.commandClick(e));
     this.gridObjUsuarios.addEventListener("toolbarClick", (e:ClickEventArgs) => this.toolbarClick(e));
+    this.gridObjUsuarios.addEventListener("actionComplete", (e: any) => this.actionComplete(e));
     
     this.listObj.addEventListener("change", (e:ListBoxChangeEventArgs) => this.cambiarTabla(e))
   }
 
-  public commandClick(args: CommandClickEventArgs): void {
+  public dataSourceChanged(args: DataSourceChangedEventArgs){
+    console.log("dataSourceChanged fired");
+    alert(args.data);
+  }
 
-    switch (this.seleccionado){
+  public actionComplete(args: any): void {
+
+    switch(this.seleccionado){
       case 'usuarios': {
-        if (args.commandColumn?.type == 'Save'){
-          let row = JSON.stringify(args.rowData);
-          let usuario: Usuario = JSON.parse(row);
-          alert("Guardando usuario con id: " + usuario.idUsuario + "\n" + JSON.stringify(usuario));
+        if ((args.requestType === 'beginEdit' || args.requestType === 'add')) {
+          const dialog = args.dialog;
+          // change the header of the dialog
+          dialog.header = args.requestType === 'beginEdit' ? 'Datos del usuario ' + args.rowData["idUsuario"] : 'Nuevo usuario';
+          //args.dialog.buttons[0].click = this.guardarCambios(args)
         }
     
-        else if (args.commandColumn?.type == 'Delete'){
-          let row = JSON.stringify(args.rowData);
-          let usuario: Usuario = JSON.parse(row);
-          alert("Elimininando: " + usuario.idUsuario);
+        else if (args.requestType === 'save'){
+          let usuario: Usuario = args.data;
+          console.log("Actualizando usuario: " + JSON.stringify(usuario));
+        }
+
+        else if (args.requestType === 'delete'){
+          let idUsuario = args.data[0].idUsuario;
+          alert("Usuario con id " + idUsuario + " eliminado");
         }
         break;
       }
 
       case 'municipios': {
-        if (args.commandColumn?.type == 'Save'){
-          let row = JSON.stringify(args.rowData);
-          let municipio: Municipio = JSON.parse(row);
-          alert("Guardando municipio con id: " + municipio.CODMU + "\n" + JSON.stringify(municipio));
+        if ((args.requestType === 'beginEdit' || args.requestType === 'add')) {
+          const dialog = args.dialog;
+          // change the header of the dialog
+          dialog.header = args.requestType === 'beginEdit' ? 'Datos del municipio ' + args.rowData["CODMU"] : 'Nuevo municipio';
+          //args.dialog.buttons[0].click = this.guardarCambios(args)
         }
     
-        else if (args.commandColumn?.type == 'Delete'){
-          let row = JSON.stringify(args.rowData);
-          let municipio: Municipio = JSON.parse(row);
-          alert("Elimininando: " + municipio.CODMU);
+        else if (args.requestType === 'save'){
+          let municipio: Municipio = args.data;
+          console.log("Actualizando municipio: " + JSON.stringify(municipio));
+        }
+
+        else if (args.requestType === 'delete'){
+          let idMunicipio = args.data[0].CODMU;
+          alert("Municipio con id " + idMunicipio + " eliminado");
         }
         break;
       }
 
       case 'provincias': {
-        if (args.commandColumn?.type == 'Save'){
-          let row = JSON.stringify(args.rowData);
-          let provincia: Provincia = JSON.parse(row);
-          alert("Guardando provincia con id: " + provincia.CODPROV + "\n" + JSON.stringify(provincia));
+        if ((args.requestType === 'beginEdit' || args.requestType === 'add')) {
+          const dialog = args.dialog;
+          // change the header of the dialog
+          dialog.header = args.requestType === 'beginEdit' ? 'Datos de la provincia ' + args.rowData["CODPROV"] : 'Nueva provincia';
+          //args.dialog.buttons[0].click = this.guardarCambios(args)
         }
     
-        else if (args.commandColumn?.type == 'Delete'){
-          let row = JSON.stringify(args.rowData);
-          let provincia: Provincia = JSON.parse(row);
-          alert("Elimininando: " + provincia.CODPROV);
+        else if (args.requestType === 'save'){
+          let provincia: Provincia = args.data;
+          console.log("Actualizando provincia: " + JSON.stringify(provincia));
+        }
+
+        else if (args.requestType === 'delete'){
+          let idProvincia = args.data[0].CODPROV;
+          alert("Provincia con id " + idProvincia + " eliminado");
         }
         break;
       }
 
       case 'comunidades': {
-        if (args.commandColumn?.type == 'Save'){
-          let row = JSON.stringify(args.rowData);
-          let comunidad: Comunidad = JSON.parse(row);
-          alert("Guardando comunidad con id: " + comunidad.CODAUTO + "\n" + JSON.stringify(comunidad));
+        if ((args.requestType === 'beginEdit' || args.requestType === 'add')) {
+          const dialog = args.dialog;
+          // change the header of the dialog
+          dialog.header = args.requestType === 'beginEdit' ? 'Datos dea comunidad ' + args.rowData["CODAUTO"] : 'Nueva comunidad';
+          //args.dialog.buttons[0].click = this.guardarCambios(args)
         }
     
-        else if (args.commandColumn?.type == 'Delete'){
-          let row = JSON.stringify(args.rowData);
-          let comunidad: Comunidad = JSON.parse(row);
-          alert("Elimininando: " + comunidad.CODAUTO);
+        else if (args.requestType === 'save'){
+          let comunidad: Comunidad = args.data;
+          console.log("Actualizando comunidad: " + JSON.stringify(comunidad));
+        }
+
+        else if (args.requestType === 'delete'){
+          let idComunidad = args.data[0].CODAUTO;
+          alert("Comunidad con id " + idComunidad + " eliminado");
         }
         break;
       }
 
       case 'colegios': {
-        if (args.commandColumn?.type == 'Save'){
-          let row = JSON.stringify(args.rowData);
-          let colegio: Colegio = JSON.parse(row);
-          alert("Guardando colegio con id: " + colegio.idColegio + "\n" + JSON.stringify(colegio));
+        if ((args.requestType === 'beginEdit' || args.requestType === 'add')) {
+          const dialog = args.dialog;
+          // change the header of the dialog
+          dialog.header = args.requestType === 'beginEdit' ? 'Datos del colegio ' + args.rowData["idColegio"] : 'Nuevo colegio';
+          //args.dialog.buttons[0].click = this.guardarCambios(args)
         }
     
-        else if (args.commandColumn?.type == 'Delete'){
-          let row = JSON.stringify(args.rowData);
-          let colegio: Colegio = JSON.parse(row);
-          alert("Elimininando: " + colegio.idColegio);
+        else if (args.requestType === 'save'){
+          let colegio: Colegio = args.data;
+          console.log("Actualizando colegio: " + JSON.stringify(colegio));
+        }
+
+        else if (args.requestType === 'delete'){
+          let idColegio = args.data[0].idColegio;
+          alert("Colegio con id " + idColegio + " eliminado");
         }
         break;
       }
 
       case 'hospitales': {
-        if (args.commandColumn?.type == 'Save'){
-          let row = JSON.stringify(args.rowData);
-          let hospital: Hospital = JSON.parse(row);
-          alert("Guardando hospital con id: " + hospital.CODCNH + "\n" + JSON.stringify(hospital));
+        if ((args.requestType === 'beginEdit' || args.requestType === 'add')) {
+          const dialog = args.dialog;
+          // change the header of the dialog
+          dialog.header = args.requestType === 'beginEdit' ? 'Datos del hospital ' + args.rowData["CODCNH"] : 'Nuevo hospital';
+          //args.dialog.buttons[0].click = this.guardarCambios(args)
         }
     
-        else if (args.commandColumn?.type == 'Delete'){
-          let row = JSON.stringify(args.rowData);
-          let hospital: Hospital = JSON.parse(row);
-          alert("Elimininando: " + hospital.CODCNH);
+        else if (args.requestType === 'save'){
+          let hospital: Hospital = args.data;
+          console.log("Actualizando hospital: " + JSON.stringify(hospital));
         }
+
+        else if (args.requestType === 'delete'){
+          let idHospital = args.data[0].CODCNH;
+          alert("Hospital con id " + idHospital + " eliminado");
+        }
+        break;
       }
+      
     }
+    
   }
+
 
   public delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
@@ -288,7 +338,7 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           await this.delay(500);
   
           // Do something after
-          this.gridObjUsuarios.addEventListener("commandClick", (e:CommandClickEventArgs) => this.commandClick(e));
+          this.gridObjUsuarios.addEventListener("actionComplete", (e:any) => this.actionComplete(e));
           this.gridObjUsuarios.addEventListener("toolbarClick", (e:ClickEventArgs) => this.toolbarClick(e));
         })();
         break;
@@ -300,7 +350,7 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           await this.delay(500);
   
           // Do something after
-          this.gridObjMunicipios.addEventListener("commandClick", (e:CommandClickEventArgs) => this.commandClick(e));
+          this.gridObjMunicipios.addEventListener("actionComplete", (e:any) => this.actionComplete(e));
           this.gridObjMunicipios.addEventListener("toolbarClick", (e:ClickEventArgs) => this.toolbarClick(e));
         })();
         break;
@@ -312,7 +362,7 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           await this.delay(500);
   
           // Do something after
-          this.gridObjProvincias.addEventListener("commandClick", (e:CommandClickEventArgs) => this.commandClick(e));
+          this.gridObjProvincias.addEventListener("actionComplete", (e:any) => this.actionComplete(e));
           this.gridObjProvincias.addEventListener("toolbarClick", (e:ClickEventArgs) => this.toolbarClick(e));
         })();
         break;
@@ -324,7 +374,7 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           await this.delay(500);
   
           // Do something after
-          this.gridObjComunidades.addEventListener("commandClick", (e:CommandClickEventArgs) => this.commandClick(e));
+          this.gridObjComunidades.addEventListener("actionComplete", (e:any) => this.actionComplete(e));
           this.gridObjComunidades.addEventListener("toolbarClick", (e:ClickEventArgs) => this.toolbarClick(e));
         })();
         break;
@@ -336,7 +386,7 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           await this.delay(500);
   
           // Do something after
-          this.gridObjColegios.addEventListener("commandClick", (e:CommandClickEventArgs) => this.commandClick(e));
+          this.gridObjColegios.addEventListener("actionComplete", (e:any) => this.actionComplete(e));
           this.gridObjColegios.addEventListener("toolbarClick", (e:ClickEventArgs) => this.toolbarClick(e));
         })();
         break;
@@ -348,7 +398,7 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           await this.delay(500);
   
           // Do something after
-          this.gridObjHospitales.addEventListener("commandClick", (e:CommandClickEventArgs) => this.commandClick(e));
+          this.gridObjHospitales.addEventListener("actionComplete", (e:any) => this.actionComplete(e));
           this.gridObjHospitales.addEventListener("toolbarClick", (e:ClickEventArgs) => this.toolbarClick(e));
         })();
         break;

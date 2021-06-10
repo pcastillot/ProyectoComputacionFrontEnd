@@ -20,7 +20,6 @@ export class ColegiosComponent implements OnInit {
       let id = params.id;
       this.dataService.sendGetRequest(environment.getColegios + id).subscribe((data: any) => {
         this.colegio = data;
-        console.log(JSON.stringify(this.colegio));
       })
     }
   );
