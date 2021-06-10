@@ -37,7 +37,8 @@ import { FiltrosComponent } from './componentes/filtros/filtros.component';
 import { ResultadosBusquedaComponent } from './componentes/resultados-busqueda/resultados-busqueda.component';
 import { ColegiosComponent } from './componentes/colegios/colegios.component';
 import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component';
-import { AccessGuardService } from './access-guard.service'
+import { AccessGuardService } from './access-guard.service';
+import { CheckpointComponent } from './componentes/checkpoint/checkpoint.component'
 
 
 
@@ -64,6 +65,7 @@ import { AccessGuardService } from './access-guard.service'
     ResultadosBusquedaComponent,
     ColegiosComponent,
     PanelAdminComponent,
+    CheckpointComponent,
     
   ],
   imports: [
