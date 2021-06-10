@@ -118,7 +118,7 @@ export class TurismoComponent implements OnInit, AfterViewInit {
       });
     }
 
-
+//
     else{
       document.getElementById('errorProvincia')!.hidden = false;
 
