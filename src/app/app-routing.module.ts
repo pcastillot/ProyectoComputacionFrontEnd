@@ -15,6 +15,7 @@ import { VivirComponent } from './componentes/vivir/vivir.component';
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component'
 import { ColegiosComponent } from './componentes/colegios/colegios.component';
 import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component'
+import { ExamenComponent } from './componentes/examen/examen.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'busqueda', component: BusquedaComponent},
   { path: 'colegios', component: ColegiosComponent},
   { path: 'panelAdmin', component: PanelAdminComponent},
+  { path: 'examen', component: ExamenComponent},
   {
     path:'',
     redirectTo: 'homepage',

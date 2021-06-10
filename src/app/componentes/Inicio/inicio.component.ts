@@ -45,6 +45,9 @@ export class InicioComponent implements OnInit {
   public confirmDlgBtnClick = (): void => {
     this.confirmDialog.hide();
   }
+  public redirectExamen = () => {
+    this.router.navigateByUrl("examen");
+  }
 
   public confirmDlgButtons: ButtonPropsModel[] = [
     { 

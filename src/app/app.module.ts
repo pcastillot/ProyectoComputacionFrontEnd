@@ -37,6 +37,7 @@ import { FiltrosComponent } from './componentes/filtros/filtros.component';
 import { ResultadosBusquedaComponent } from './componentes/resultados-busqueda/resultados-busqueda.component';
 import { ColegiosComponent } from './componentes/colegios/colegios.component';
 import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component';
+import { ExamenComponent } from './componentes/examen/examen.component';
 
 
 
@@ -63,6 +64,7 @@ import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.compo
     ResultadosBusquedaComponent,
     ColegiosComponent,
     PanelAdminComponent,
+    ExamenComponent,
     
   ],
   imports: [

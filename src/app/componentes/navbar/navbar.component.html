@@ -1,6 +1,6 @@
 
 <!--Navbar-->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark blue lighten-1" [containerInside]="false">
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark green lighten-1" [containerInside]="false">
 
     <!-- Navbar brand -->
     <mdb-navbar-brand>
@@ -45,7 +45,7 @@
       
       <ul *ngIf="idUsuario!=null" class="navbar-nav mr-right">
         <li class="navbar-text">
-          <span class="nav-link bienvenida" style="color: rgb(255, 255, 255);">Bienvenido {{nombreUsuario}}</span>
+          <span class="nav-link bienvenida" style="color: rgb(255, 255, 255);"></span>
         </li>
         <li class="navbar-text">
           <span class="nav-link cerrar-sesion" (click)="this.confirmDialog.show()">Cerrar Sesión</span>
