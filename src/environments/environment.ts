@@ -16,6 +16,7 @@ export const environment = {
   getColegios: "Colegios/",
   getHospitales: "Hospitales/",
   getIdFromCorreo: "Usuarios/getIdFromCorreo/",
+  deleteComunidad: "Comunidades/",
   production: false
 };
 

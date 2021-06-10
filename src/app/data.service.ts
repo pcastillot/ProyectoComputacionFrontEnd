@@ -8,12 +8,17 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class DataService {
+  
 
   private REST_API_SERVER = "http://localhost:8000/api/";
   constructor(private httpClient: HttpClient) { }
 
   public sendGetRequest(extension:string){
     return this.httpClient.get(this.REST_API_SERVER + extension);
+  }
+
+  public delete(extension: string) {
+    return this.httpClient.delete(this.REST_API_SERVER + extension);
   }
 
   public getComunidades(comunidades:string){

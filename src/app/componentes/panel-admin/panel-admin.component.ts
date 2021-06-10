@@ -165,7 +165,19 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
     
         else if (args.requestType === 'save'){
           let usuario: Usuario = args.data;
-          console.log("Actualizando usuario: " + JSON.stringify(usuario));
+          this.dataService.sendGetRequest(environment.getUsuarios + usuario.idUsuario).subscribe((data: any) => {
+            if(data==null){
+              this.dataService.addUser(usuario).subscribe((data: any) => {
+                console.log("usuario agregado");
+              });
+              
+            }
+
+            else{
+              console.log("Actualizando usuario");
+            }
+          });
+          
         }
 
         else if (args.requestType === 'delete'){
@@ -219,18 +231,22 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
         if ((args.requestType === 'beginEdit' || args.requestType === 'add')) {
           const dialog = args.dialog;
           // change the header of the dialog
-          dialog.header = args.requestType === 'beginEdit' ? 'Datos dea comunidad ' + args.rowData["CODAUTO"] : 'Nueva comunidad';
+          dialog.header = args.requestType === 'beginEdit' ? 'Datos de la comunidad ' + args.rowData["CODAUTO"] : 'Nueva comunidad';
           //args.dialog.buttons[0].click = this.guardarCambios(args)
         }
     
         else if (args.requestType === 'save'){
           let comunidad: Comunidad = args.data;
           console.log("Actualizando comunidad: " + JSON.stringify(comunidad));
+
         }
 
         else if (args.requestType === 'delete'){
           let idComunidad = args.data[0].CODAUTO;
-          alert("Comunidad con id " + idComunidad + " eliminado");
+          this.dataService.delete(environment.deleteComunidad + idComunidad).subscribe((data: any) => {
+            console.log("Comunidad con id " + idComunidad + " eliminada");
+          })
+          
         }
         break;
       }
