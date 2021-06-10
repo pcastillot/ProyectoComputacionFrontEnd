@@ -4,15 +4,15 @@
         <h1>Información de los hospitales</h1>
     </div>
     <div class="info col-lg-6 col-md-6 col-sm-10">
-        <label>Nombre del hospital:</label>
+        <label class="col-3 text-right">Nombre del hospital:</label><label>{{ hospital.Nombre_Centro }}</label>
         <hr>
-        <label>Número de teléfono:</label>
+        <label class="col-3 text-right">Número de teléfono:</label><label>{{ hospital.Telefono_Principal }}</label>
         <hr>
-        <label>Provincia:</label>
+        <label class="col-3 text-right">Provincia:</label><label>{{ hospital.Provincia }}</label>
         <hr>
-        <label>Correo electrónico:</label>
+        <label class="col-3 text-right">Correo electrónico:</label><label>{{ hospital.Email }}</label>
         <hr>
-        <label>Tipo de hospital:</label>
+        <label class="col-3 text-right">Tipo de hospital:</label><label>{{ hospital.Clase_de_Centro }}</label>
     </div>
     <div class="mapa col-lg-10 col-md-10 col-sm-11">
         <app-map></app-map>

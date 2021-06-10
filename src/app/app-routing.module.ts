@@ -30,11 +30,11 @@ const routes: Routes = [
   { path: 'panelUsuario', component: PanelUsuarioComponent},
   { path: 'cambiarContrasena', component: CambiarContrasenaComponent},
   { path: 'turismo', component: TurismoComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
-  { path: 'hospitales', component: HospitalesComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
+  { path: 'hospitales/:id', component: HospitalesComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
   { path: 'aboutus', component: AboutUsComponent},
   { path: 'vivir', component: VivirComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
   { path: 'busqueda', component: BusquedaComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
-  { path: 'colegios', component: ColegiosComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
+  { path: 'colegios/:id', component: ColegiosComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
   { path: 'panelAdmin', component: PanelAdminComponent, data: { requiresAdmin: true }, canActivate: [AccessGuardService ]},
   { path: 'componenteJavi', component: ComponenteJaviComponent},
   {

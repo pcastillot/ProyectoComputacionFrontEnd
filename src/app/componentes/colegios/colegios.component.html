@@ -4,17 +4,18 @@
         <h1>Información de los colegios</h1>
     </div>
     <div class="info col-lg-6 col-md-6 col-sm-10">
-        <label>Nombre del colegio:</label>
+        <label class="col-3 text-right">Tipo de colegio:</label><label>{{ colegio.Denominacion_generica }}</label>
         <hr>
-        <label>Número de teléfono:</label>
+        <label class="col-3 text-right">Nombre del colegio:</label><label> {{ colegio.Denominacion_especifica }}</label>
         <hr>
-        <label>Localidad:</label>
+        <label class="col-3 text-right">Número de teléfono:</label><label>{{ colegio.Telefono }}</label>
         <hr>
-        <label>Calle:</label>
+        <label class="col-3 text-right">Localidad:</label><label>{{ colegio.Localidad }}</label>
         <hr>
-        <label>C. Postal:</label>
+        <label class="col-3 text-right">Calle:</label><label>{{ colegio.Domicilio }}</label>
         <hr>
-        <label>Tipo de colegio:</label>
+        <label class="col-3 text-right">C. Postal:</label><label>{{ colegio.C_Postal }}</label>
+        
     </div>
     <div class="mapa col-lg-10 col-md-10 col-sm-11">
         <app-map></app-map>

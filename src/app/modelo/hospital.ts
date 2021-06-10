@@ -5,7 +5,7 @@ export class Hospital{
     public  Tipo_Vía : string;
     public  Nombre_Vía : string;
     public  Número_Vía : string;
-    public  Teléfono_Principal : string;
+    public  Telefono_Principal : string;
     public  Cód_Municipio : string;
     public  Municipio : string; 
     public  Cód_Provincia : string;
