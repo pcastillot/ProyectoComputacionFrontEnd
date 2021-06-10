@@ -23,6 +23,10 @@ export class DataService {
     return this.httpClient.get(this.REST_API_SERVER);
   }
 
+  public delete(extension: string) {//nuevo
+    return this.httpClient.delete(this.REST_API_SERVER + extension);
+  }
+
   public updateColegio(colegio: Colegio) {
     const headers = { 'content-type': 'application/json' }
     const body = JSON.stringify(colegio)

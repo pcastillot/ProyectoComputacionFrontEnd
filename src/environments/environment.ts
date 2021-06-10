@@ -9,7 +9,10 @@ export const environment = {
   getMunicipios: "Municipios/",
   getComunidades:"Comunidades/",
   getProvincias:"Provincias/",
+  getProvinciasFromMunicipio:"Buqueda/filtrarProvinciaFromMunicipio",//nuevo
+  getMuniFromProvincias:"Busqueda/filtrarMunicipiosFromProvincia",//nuevo
   getProvincias_comunidad:"Provincias/showFromComunidad/",
+  crearComunidad: "Comunidades/createComunidad",//nuevo
   getMunicipios_provicia:"Municipios/showFromProvincia/",
   crearUser: "Usuarios/createUser/",
   getUsuarios: "Usuarios/",

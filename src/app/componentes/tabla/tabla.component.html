@@ -1,0 +1,155 @@
+<app-navbar></app-navbar>
+<div>
+    <h1>Hola {{ nombreUsuario }}</h1>
+    <small> id user: {{ idUsuario }}</small>
+    <br>
+    <small> es damin? {{ isAdmin }}</small>
+</div>
+<div class="principal" id="Principal">
+    <div id="col-0">
+        <h1>ID Item Borrado: <small> {{ comunida.CODAUTO }} </small></h1>
+    </div>
+    <div id="col-1">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" *ngFor="let titulo of titulosColumnas">
+                        {{titulo}}
+                    </th>
+                    <th>
+                        Borrar elemento
+                    </th>
+                    <th>
+                        Select
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Utilizamos dos for anidados para recorrer cada fila y el for interno recorre las celdas de cada fila: -->
+                <tr *ngFor="let comunidad of comunidades; let i = index">
+                    <td>
+                        {{comunidad.CODAUTO}}
+                    </td>
+                    <td>
+                        {{comunidad.AUTONOMIA}}
+                    </td>
+                    <td>
+                        {{comunidad.TEXTO_AUTONOMIA}}
+                    </td>
+                    <td>
+                        <!--<button (click)="borrarElemento(i, comunidad)">Borrar</button>-->
+                        <button (click)="borrarDb(i, comunidad)">Borrar</button>
+                    </td>
+                    <td>
+                        <!--<button (click)="borrarElemento(i, comunidad)">Borrar</button>-->
+                        <button (click)="seleccionar(i, comunidad)">Select</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="col-2">
+        <div id="titulo_col-3">
+            <h1>Añadir nuevo elemento</h1>
+            <hr>
+        </div>
+        <div id="formulario_col-3">
+            <form (ngSubmit)='agregarComunidad()'>
+                <input [(ngModel)]='codauto' type="number" name="codauto" id="CODAUTO" placeholder="CODAUTO">
+                <br>
+
+                <input [(ngModel)]='autonomina' type="text" name="autonomina" id="AUTONOMIA" placeholder="AUTONOMIA">
+                <br>
+
+                <input [(ngModel)]='texto_autonomia' type="text" name="texto_autonomia" id="TEXTO_AUTONOMIA"
+                    placeholder="TEXTO_AUTONOMIA">
+                <br>
+
+                <div id="btn_form_col-2">
+                    <button type="submit" id="btnAgregar_col-2">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="col-3">
+        <div id="titulo_col-3">
+            <h1>Editar Elemento</h1>
+            <hr>
+        </div>
+        <div id="formulario_col-2">
+            <form (ngSubmit)='editarComunidad()'>
+
+                <label>Elegir el id del item: </label>
+                <select [(ngModel)]='opcionSeleccionado' name="idComunidades" id="idComunidades" (change)="capturar()">
+                    <option *ngFor="let id of idComunidades">
+                        {{ id }}
+                    </option>
+                </select>
+                <br>
+
+                <input [(ngModel)]='editAtonomia' type="text" name="autonomina" id="AUTONOMIA" placeholder="AUTONOMIA">
+                <br>
+
+                <input [(ngModel)]='editTexto_autonomia' type="text" name="texto_autonomia" id="TEXTO_AUTONOMIA"
+                    placeholder="TEXTO_AUTONOMIA">
+                <br>
+
+                <div id="btn_form_col-2">
+                    <button type="submit" id="btnAgregar_col-2">Editar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="col-1">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Provincia
+                    </th>
+                    <th>
+                        Select
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Utilizamos dos for anidados para recorrer cada fila y el for interno recorre las celdas de cada fila: -->
+                <tr *ngFor="let provincia of provinciasFromComunidad; let i = index">
+                    <td>
+                        {{provincia.NOMBRE}}
+                    </td>
+                    <td>
+                        <button (click)="seleccionarProvincia(provincia)">Select</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="col-1">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        municipio
+                    </th>
+                    <th>
+                        Buscar
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Utilizamos dos for anidados para recorrer cada fila y el for interno recorre las celdas de cada fila: -->
+                <tr *ngFor="let municipio of municipiosFromProvincias; let i = index">
+                    <td>
+                        {{municipio.MUNICIPIO}}
+                    </td>
+                    <td>
+                        <button (click)="buscar(municipio)">Bucar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

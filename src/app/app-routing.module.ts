@@ -16,6 +16,7 @@ import { BusquedaComponent } from './componentes/busqueda/busqueda.component'
 import { ColegiosComponent } from './componentes/colegios/colegios.component';
 import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component'
 import { AccessGuardService } from './access-guard.service';
+import { TablaComponent } from './componentes/tabla/tabla.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'navbar', component: NavbarComponent },
   { path: 'inicio', component: InicioComponent },
   { path: 'pVentana', component: pVentanaComponent},
+  { path: 'tabla', component: TablaComponent},
   { path: 'panelUsuario', component: PanelUsuarioComponent},
   { path: 'cambiarContrasena', component: CambiarContrasenaComponent},
   { path: 'turismo', component: TurismoComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
