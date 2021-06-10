@@ -38,6 +38,7 @@ import { ResultadosBusquedaComponent } from './componentes/resultados-busqueda/r
 import { ColegiosComponent } from './componentes/colegios/colegios.component';
 import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component';
 import { AccessGuardService } from './access-guard.service'
+import { ComponenteJaviComponent } from './componentes/componenteJavi/componenteJavi.component';
 
 
 
@@ -64,7 +65,7 @@ import { AccessGuardService } from './access-guard.service'
     ResultadosBusquedaComponent,
     ColegiosComponent,
     PanelAdminComponent,
-    
+    ComponenteJaviComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,6 +88,7 @@ import { AccessGuardService } from './access-guard.service'
     SidebarModule,
     GridAllModule,
     DialogModule,
+    FormsModule,
   ],
   providers: [SplashScreenStateService, HomepageResolver, EditService, CommandColumnService, AccessGuardService],
   bootstrap: [AppComponent]
