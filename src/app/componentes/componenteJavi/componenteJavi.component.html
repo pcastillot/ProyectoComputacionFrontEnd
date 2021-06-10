@@ -1,0 +1,35 @@
+<div class="TABLA">
+    <h1>ADD COLUMN</h1>
+    <form (ngSubmit)='add()'>
+        <a> Texto a introducir en la tabla </a>
+        <input [(ngModel)]='titulo_2' type="text" name="titulo_2">
+        <a> ID a introducir </a>
+        <input [(ngModel)]='id' type="number" name="id">  
+        <button type="submit">Añadir Comunidad</button>             
+    </form>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" *ngFor="let indiceEncabezados of encabezados">
+                    {{indiceEncabezados}}
+                </th>
+                <th>
+                    Borrar elemento
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let indice of rellenos; let variableId = index">
+                <td>
+                    {{indice.TEXTO_AUTONOMIA}}
+                </td>
+                <td>
+                    {{indice.CODAUTO}}
+                </td>
+                <td>
+                    <button (click)="delete(variableId, CeldaTexto)">Borrar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

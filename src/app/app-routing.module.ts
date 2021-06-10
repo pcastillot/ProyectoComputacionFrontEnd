@@ -14,8 +14,10 @@ import { AboutUsComponent } from './componentes/about-us/about-us.component';
 import { VivirComponent } from './componentes/vivir/vivir.component';
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component'
 import { ColegiosComponent } from './componentes/colegios/colegios.component';
-import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component'
+import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component';
 import { AccessGuardService } from './access-guard.service';
+import { ComponenteJaviComponent } from './componentes/componenteJavi/componenteJavi.component';
+
 
 
 const routes: Routes = [
@@ -34,6 +36,7 @@ const routes: Routes = [
   { path: 'busqueda', component: BusquedaComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
   { path: 'colegios', component: ColegiosComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
   { path: 'panelAdmin', component: PanelAdminComponent, data: { requiresAdmin: true }, canActivate: [AccessGuardService ]},
+  { path: 'componenteJavi', component: ComponenteJaviComponent},
   {
     path:'',
     redirectTo: 'homepage',
