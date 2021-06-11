@@ -9,6 +9,7 @@ import { Hospital } from 'src/app/modelo/hospital';
 import { environment } from 'src/environments/environment';
 import { DataManager, Query, ODataV4Adaptor } from "@syncfusion/ej2-data";
 import { CheckboxComponent } from 'angular-bootstrap-md';
+import { TextBoxComponent } from '@syncfusion/ej2-angular-inputs';
 
 @Component({
   selector: 'app-busqueda',
@@ -27,6 +28,9 @@ export class BusquedaComponent implements OnInit, AfterViewInit {
   
   @ViewChild('checkboxHospitales')
   public checkHospitales: CheckboxComponent;
+  
+  @ViewChild('search')
+  public searchBox: TextBoxComponent;
   
   public closeOnDocumentClick: boolean = false;
 
