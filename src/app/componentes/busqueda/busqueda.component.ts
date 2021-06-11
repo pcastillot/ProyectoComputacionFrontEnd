@@ -105,7 +105,9 @@ export class BusquedaComponent implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit(): void {
-    
+    if(this.dataSource.length === 0){
+      this.listView.headerTitle = "No hay resultados para su búsqueda";
+    }
   }
 
 

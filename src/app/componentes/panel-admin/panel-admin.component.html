@@ -96,6 +96,10 @@
                 <e-column headerText='Comandos' width=140 [commands]='commands'></e-column>
             </e-columns>
         </ejs-grid>
+
+        <ejs-dialog #alertDialog [buttons]='alertDlgButtons' [visible]='hidden' [header]='alertHeader' [animationSettings]='animationSettings' [content]='alertContent' [showCloseIcon]='showCloseIcon' [target]='target'
+            [width]='alertWidth'>
+        </ejs-dialog>
     </div>
 </div>
 

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators, FormsModule, AbstractControl } from
 import { Router } from '@angular/router';
 import { DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
 import { FormValidators } from '@syncfusion/ej2-angular-inputs';
+import { ButtonPropsModel, DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { DataService } from 'src/app/data.service';
 import { Municipio } from 'src/app/modelo/municipio';
 import { Usuario } from 'src/app/modelo/usuarios';
@@ -16,10 +17,23 @@ import { environment } from 'src/environments/environment';
 })
 export class PanelUsuarioComponent implements OnInit {
 
-  @ViewChild('municipios')
-  public cbMunicipios: DropDownListComponent;
+  @ViewChild('alertDialog')
+  public alertDialog: DialogComponent;
+
+  @ViewChild('municipio')
+  public municipio: DropDownListComponent;
   reactForm: FormGroup;
   public usuario: Usuario;
+
+  public alertHeader: string = 'Cambios realizados';
+  public alertContent: string = 'Los cambios han sido realizados correctamente';
+  public showCloseIcon: Boolean = false;
+  public hidden: Boolean = false;
+  public alertWidth: string = '400px';
+  public target: string = 'body';
+  public animationSettings: Object = { effect: 'None' };
+  public visible: Boolean = true;
+  public hide: any;
 
   constructor(private dataService: DataService, private router: Router) {
     
@@ -64,9 +78,22 @@ export class PanelUsuarioComponent implements OnInit {
     
   }
 
+  public alertDlgButtons: ButtonPropsModel[] = [{ 
+    click: this.alertDlgBtnClick.bind(this), 
+    buttonModel: { content: 'Aceptar', isPrimary: true } 
+  }];
+
+  public alertDlgBtnClick(){
+    this.router.navigateByUrl("inicio");
+  }
+
   public guardarCambios(){
-    alert("Guardando cambios")
-    this.router.navigateByUrl('inicio')
+    this.usuario.idMunicipio = "" + this.municipio.value;
+    this.dataService.updateUsuario(this.usuario).subscribe((data: any) => {
+      console.log(data);
+      this.alertDialog.show();
+    })
+    //this.router.navigateByUrl('inicio')
   }
 
   public localFields: Object = { text: 'MUNICIPIO', value: 'CODMU' };

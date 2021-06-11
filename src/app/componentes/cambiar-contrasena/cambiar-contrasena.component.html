@@ -14,7 +14,7 @@
     
                 <div class="form-group">
                     <div class="e-float-input">
-                      <input [(ngModel)]="usuario.contrasena" id="password" type="password" formControlName="password" />
+                      <input [(ngModel)]="contrasena" id="password" type="password" formControlName="password" />
                       <span class="e-float-line"></span>
                       <label for="password" class="e-float-text">Contraseña actual</label>
                       <div *ngIf="password!.errors">
@@ -28,6 +28,7 @@
                 <div class="form-group">
                     <div class="e-float-input">
                         <input
+                            [(ngModel)]="nuevaContrasena"
                             id="new_password"
                             type="password"
                             formControlName="new_password"
@@ -45,6 +46,7 @@
                 <div class="form-group">
                     <div class="e-float-input">
                         <input
+                            [(ngModel)]="confNuevaContrasena"
                             id="new_password_repeat"
                             type="password"
                             formControlName="new_password_repeat"
@@ -67,6 +69,10 @@
                     </div>
                 </div>
             </form>
+            
+            <ejs-dialog #alertDialog [buttons]='alertDlgButtons' [visible]='hidden' [header]='alertHeader' [animationSettings]='animationSettings' [content]='alertContent' [showCloseIcon]='showCloseIcon' [target]='target'
+                [width]='alertWidth'>
+            </ejs-dialog>
 
         </div>
 

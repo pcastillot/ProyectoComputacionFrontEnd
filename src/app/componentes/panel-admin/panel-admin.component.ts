@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { ActionCompleteEventArgs, DropDownListComponent, ListBoxChangeEventArgs } from '@syncfusion/ej2-angular-dropdowns';
-import { ActionEventArgs, CellSaveArgs, Column, commandClick, CommandClickEventArgs, CommandModel, EditEventArgs, Grid, GridComponent, SaveEventArgs, SearchSettingsModel, ToolbarService, VirtualScrollService  } from '@syncfusion/ej2-angular-grids';
+import { ActionBeginEventArgs, ActionCompleteEventArgs, DropDownListComponent, ListBoxChangeEventArgs } from '@syncfusion/ej2-angular-dropdowns';
+import { ActionEventArgs, CellSaveArgs, Column, commandClick, CommandClickEventArgs, CommandModel, DialogEditEventArgs, EditEventArgs, Grid, GridComponent, SaveEventArgs, SearchSettingsModel, ToolbarService, VirtualScrollService  } from '@syncfusion/ej2-angular-grids';
 import { AddEventArgs, ClickEventArgs, DataSourceChangedEventArgs } from '@syncfusion/ej2-angular-navigations';
+import { ButtonPropsModel, DialogComponent } from '@syncfusion/ej2-angular-popups';
+import { IconsModule } from 'angular-bootstrap-md';
 import { DataService } from 'src/app/data.service';
 import { Colegio } from 'src/app/modelo/colegio';
 import { Comunidad } from 'src/app/modelo/comunidad';
@@ -10,6 +12,7 @@ import { Municipio } from 'src/app/modelo/municipio';
 import { Provincia } from 'src/app/modelo/provincias';
 import { Usuario } from 'src/app/modelo/usuarios';
 import { environment } from 'src/environments/environment';
+import { isJSDocImplementsTag } from 'typescript';
 
 @Component({
   selector: 'app-panel-admin',
@@ -42,6 +45,9 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
   @ViewChild('tablas')
   public tablasObj: DropDownListComponent;
 
+  @ViewChild('alertDialog')
+  public alertDialog: DialogComponent;
+
   public dataUsuarios: Usuario[];
   public dataMunicipios: Municipio[];
   public dataProvincias: Provincia[];
@@ -61,6 +67,16 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
   public seleccionado: any;
   public value: string;
   public searchOptions: SearchSettingsModel;
+
+  public alertHeader: string = '';
+  public alertContent: string = '';
+  public showCloseIcon: Boolean = false;
+  public hidden: Boolean = false;
+  public alertWidth: string = '400px';
+  public target: string = 'body';
+  public animationSettings: Object = { effect: 'None' };
+  public visible: Boolean = true;
+  public hide: any;
 
   //Validators
   public emailValidator: object;
@@ -147,6 +163,15 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
     this.listObj.addEventListener("change", (e:ListBoxChangeEventArgs) => this.cambiarTabla(e))
   }
 
+  public alertDlgButtons: ButtonPropsModel[] = [{ 
+    click: this.alertDlgBtnClick.bind(this), 
+    buttonModel: { content: 'Aceptar', isPrimary: true } 
+  }];
+
+  public alertDlgBtnClick(){
+    this.alertDialog.hide();
+  }
+
   public dataSourceChanged(args: DataSourceChangedEventArgs){
     console.log("dataSourceChanged fired");
     alert(args.data);
@@ -160,6 +185,8 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           const dialog = args.dialog;
           // change the header of the dialog
           dialog.header = args.requestType === 'beginEdit' ? 'Datos del usuario ' + args.rowData["idUsuario"] : 'Nuevo usuario';
+          dialog.element.querySelectorAll(".e-primary")[0].innerHTML = "Guardar";
+          dialog.element.querySelectorAll(".e-flat")[2].innerHTML = "Cancelar";
           //args.dialog.buttons[0].click = this.guardarCambios(args)
         }
     
@@ -168,15 +195,18 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           this.dataService.sendGetRequest(environment.getUsuarios + usuario.idUsuario).subscribe((data: any) => {
             if(data==null){
               this.dataService.addUser(usuario).subscribe((data: any) => {
-                console.log("usuario agregado");
+                this.alertHeader = "Usuario agregado";
+                this.alertContent = "Usuario con id " + usuario.idUsuario + " agregado con éxito";
+                this.alertDialog.show();
               });
               
             }
 
             else{
               this.dataService.updateUsuario(usuario).subscribe((data: any) => {
-                console.log(data);
-                console.log("Usuario actualizado");
+                this.alertHeader = "Usuario actualizado";
+                this.alertContent = "Usuario con id " + usuario.idUsuario + " actualizado con éxito";
+                this.alertDialog.show();
               })
             }
           });
@@ -186,7 +216,9 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
         else if (args.requestType === 'delete'){
           let idUsuario = args.data[0].idUsuario;
           this.dataService.delete(environment.getUsuarios + idUsuario).subscribe((data: any) => {
-            console.log(data);
+            this.alertHeader = "Usuario eliminado";
+            this.alertContent = "Usuario con id " + idUsuario + " eliminado con éxito";
+            this.alertDialog.show();
           });
         }
         break;
@@ -197,6 +229,8 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           const dialog = args.dialog;
           // change the header of the dialog
           dialog.header = args.requestType === 'beginEdit' ? 'Datos del municipio ' + args.rowData["CODMU"] : 'Nuevo municipio';
+          dialog.element.querySelectorAll(".e-primary")[0].innerHTML = "Guardar";
+          dialog.element.querySelectorAll(".e-flat")[2].innerHTML = "Cancelar";
           //args.dialog.buttons[0].click = this.guardarCambios(args)
         }
     
@@ -205,15 +239,18 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           this.dataService.sendGetRequest(environment.getMunicipios + municipio.CODMU).subscribe((data: any) => {
             if(data==null){
               this.dataService.addMunicipio(municipio).subscribe((data: any) => {
-                console.log("Municipio agregado");
+                this.alertHeader = "Municipio agregado";
+                this.alertContent = "Municipio con id " + municipio.CODMU + " agregado con éxito";
+                this.alertDialog.show();
               });
               
             }
 
             else{
               this.dataService.updateMunicipio(municipio).subscribe((data: any) => {
-                console.log(data);
-                console.log("Municipio actualizado");
+                this.alertHeader = "Municipio actualizado";
+                this.alertContent = "Municipio con id " + municipio.CODMU + " actualizado con éxito";
+                this.alertDialog.show();
               })
             }
           });
@@ -222,7 +259,9 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
         else if (args.requestType === 'delete'){
           let idMunicipio = args.data[0].CODMU;
           this.dataService.delete(environment.getMunicipios + idMunicipio).subscribe((data: any) => {
-            console.log(data);
+            this.alertHeader = "Municipio eliminado";
+            this.alertContent = "Municipio con id " + idMunicipio + " eliminado con éxito";
+            this.alertDialog.show();
           });
         }
         break;
@@ -233,6 +272,8 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           const dialog = args.dialog;
           // change the header of the dialog
           dialog.header = args.requestType === 'beginEdit' ? 'Datos de la provincia ' + args.rowData["CODPROV"] : 'Nueva provincia';
+          dialog.element.querySelectorAll(".e-primary")[0].innerHTML = "Guardar";
+          dialog.element.querySelectorAll(".e-flat")[2].innerHTML = "Cancelar";
           //args.dialog.buttons[0].click = this.guardarCambios(args)
         }
     
@@ -241,15 +282,18 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           this.dataService.sendGetRequest(environment.getProvincias + provincia.CODPROV).subscribe((data: any) => {
             if(data==null){
               this.dataService.addProvincia(provincia).subscribe((data: any) => {
-                console.log("Provincia agregada");
+                this.alertHeader = "Provincia agregada";
+                this.alertContent = "Provincia con id " + provincia.CODPROV + " agregada con éxito";
+                this.alertDialog.show();
               });
               
             }
 
             else{
               this.dataService.updateProvincia(provincia).subscribe((data: any) => {
-                console.log(data);
-                console.log("Provincia actualizada");
+                this.alertHeader = "Provincia actualizada";
+                this.alertContent = "Provincia con id " + provincia.CODPROV + " actualizada con éxito";
+                this.alertDialog.show();
               })
             }
           });
@@ -258,7 +302,9 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
         else if (args.requestType === 'delete'){
           let idProvincia = args.data[0].CODPROV;
           this.dataService.delete(environment.getProvincias + idProvincia).subscribe((data: any) => {
-            console.log(data);
+            this.alertHeader = "Provincia eliminada";
+            this.alertContent = "Provincia con id " + idProvincia + " eliminada con éxito";
+            this.alertDialog.show();
           });
         }
         break;
@@ -269,6 +315,8 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           const dialog = args.dialog;
           // change the header of the dialog
           dialog.header = args.requestType === 'beginEdit' ? 'Datos de la comunidad ' + args.rowData["CODAUTO"] : 'Nueva comunidad';
+          dialog.element.querySelectorAll(".e-primary")[0].innerHTML = "Guardar";
+          dialog.element.querySelectorAll(".e-flat")[2].innerHTML = "Cancelar";
           //args.dialog.buttons[0].click = this.guardarCambios(args)
         }
     
@@ -277,7 +325,9 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           this.dataService.sendGetRequest(environment.getComunidades + comunidad.CODAUTO).subscribe((data: any) => {
             if(data==null){
               this.dataService.addComunidad(comunidad).subscribe((data: any) => {
-                console.log("Comunidad agregada");
+                this.alertHeader = "Comunidad agregada";
+                this.alertContent = "Comunidad con id " + comunidad.CODAUTO + " agregada con éxito";
+                this.alertDialog.show();
               });
               
             }
@@ -285,7 +335,9 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
             else{
               this.dataService.updateComunidad(comunidad).subscribe((data: any) => {
                 console.log(data);
-                console.log("Comunidad actualizada");
+                this.alertHeader = "Comunidad actualizada";
+                this.alertContent = "Comunidad con id " + comunidad.CODAUTO + " actualizada con éxito";
+                this.alertDialog.show();
               })
             }
           });
@@ -295,7 +347,10 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
         else if (args.requestType === 'delete'){
           let idComunidad = args.data[0].CODAUTO;
           this.dataService.delete(environment.getComunidades + idComunidad).subscribe((data: any) => {
-            console.log("Comunidad con id " + idComunidad + " eliminada");
+            console.log(data);
+            this.alertHeader = "Comunidad eliminada";
+            this.alertContent = "Comunidad con id " + idComunidad + " eliminada con éxito";
+            this.alertDialog.show();
           })
           
         }
@@ -307,6 +362,8 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           const dialog = args.dialog;
           // change the header of the dialog
           dialog.header = args.requestType === 'beginEdit' ? 'Datos del colegio ' + args.rowData["idColegio"] : 'Nuevo colegio';
+          dialog.element.querySelectorAll(".e-primary")[0].innerHTML = "Guardar";
+          dialog.element.querySelectorAll(".e-flat")[2].innerHTML = "Cancelar";
           //args.dialog.buttons[0].click = this.guardarCambios(args)
         }
     
@@ -316,15 +373,18 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           this.dataService.sendGetRequest(environment.getColegios + colegio.idColegio).subscribe((data: any) => {
             if(data==null){
               this.dataService.addColegio(colegio).subscribe((data: any) => {
-                console.log("Colegio agregado");
+                this.alertHeader = "Colegio agregado";
+                this.alertContent = "Colegio con id " + colegio.idColegio + " agregado con éxito";
+                this.alertDialog.show();
               });
               
             }
 
             else{
               this.dataService.updateColegio(colegio).subscribe((data: any) => {
-                console.log(data);
-                console.log("Colegio actualizado");
+                this.alertHeader = "Colegio actualizado";
+                this.alertContent = "Colegio con id " + colegio.idColegio + " actualizado con éxito";
+                this.alertDialog.show();
               })
             }
           });
@@ -333,7 +393,9 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
         else if (args.requestType === 'delete'){
           let idColegio = args.data[0].idColegio;
           this.dataService.delete(environment.getColegios + idColegio).subscribe((data: any) => {
-            console.log("Colegio con id " + idColegio + " eliminada");
+            this.alertHeader = "Colegio eliminado";
+            this.alertContent = "Colegio con id " + idColegio + " eliminado con éxito";
+            this.alertDialog.show();
           })
         }
         break;
@@ -344,6 +406,8 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           const dialog = args.dialog;
           // change the header of the dialog
           dialog.header = args.requestType === 'beginEdit' ? 'Datos del hospital ' + args.rowData["CODCNH"] : 'Nuevo hospital';
+          dialog.element.querySelectorAll(".e-primary")[0].innerHTML = "Guardar";
+          dialog.element.querySelectorAll(".e-flat")[2].innerHTML = "Cancelar";
           //args.dialog.buttons[0].click = this.guardarCambios(args)
         }
     
@@ -353,15 +417,18 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           this.dataService.sendGetRequest(environment.getHospitales + hospital.CODCNH).subscribe((data: any) => {
             if(data==null){
               this.dataService.addHospital(hospital).subscribe((data: any) => {
-                console.log("Hospital agregado");
+                this.alertHeader = "Hospital agregado";
+                this.alertContent = "Hospital con id " + hospital.CODCNH + " agregado con éxito";
+                this.alertDialog.show();
               });
               
             }
 
             else{
               this.dataService.updateHospital(hospital).subscribe((data: any) => {
-                console.log(data);
-                console.log("Hospital actualizado");
+                this.alertHeader = "Hospital actualizado";
+                this.alertContent = "Hospital con id " + hospital.CODCNH + " actualizado con éxito";
+                this.alertDialog.show();
               })
             }
           });
@@ -370,7 +437,9 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
         else if (args.requestType === 'delete'){
           let idHospital = args.data[0].CODCNH;
           this.dataService.delete(environment.getHospitales + idHospital).subscribe((data: any) => {
-            console.log("Hospital con id " + idHospital + " eliminada");
+            this.alertHeader = "Hospital eliminado";
+            this.alertContent = "Hospital con id " + idHospital + " eliminado con éxito";
+            this.alertDialog.show();
           })
         }
         break;
