@@ -169,12 +169,13 @@ export class BusquedaComponent implements OnInit, AfterViewInit {
     
   }
 
-  public busqueda(event: any){
+  public busqueda(event: any, search: string){
     event.preventDefault();
 
-    alert("Buscando...");
-    let busqueda = "";
-    let data = this.dataSource;
+    const regExp = new RegExp(search, 'i');
+    let data = this.dataSource.filter(item => regExp.test(item.titulo) || regExp.test(item.descripcion) || regExp.test(item.direccion));
+    this.listView.dataSource = data;
+    this.listView.headerTitle = "Resultados de su búsqueda '" + search + "' en " + this.municipio;
   }
 
   public abrirItem(args: MouseEvent, tipo: string, id: string){

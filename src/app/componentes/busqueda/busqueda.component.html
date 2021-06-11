@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 
 <div class="row barra-busqueda">
-    <input class="input-busqueda form-control col-lg-7 col-md-7 col-sm-10" type="text" placeholder="Búsqueda" aria-label="">
-    <button id="validateSubmit" (click)="busqueda($event)" class="samplebtn btn-busqueda e-control e-btn e-primary col-lg-1 col-md-1 col-sm-10" data-ripple="true">Buscar</button>
+    <input #search class="input-busqueda form-control col-lg-7 col-md-7 col-sm-10" type="text" placeholder="Búsqueda" aria-label="">
+    <button id="validateSubmit" (click)="busqueda($event, search.value)" class="samplebtn btn-busqueda e-control e-btn e-primary col-lg-1 col-md-1 col-sm-10" data-ripple="true">Buscar</button>
 </div>
 
 <div class="divider-new"></div>
