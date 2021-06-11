@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormsModule, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
 import { FormValidators } from '@syncfusion/ej2-angular-inputs';
 import { DataService } from 'src/app/data.service';
 import { Municipio } from 'src/app/modelo/municipio';
@@ -15,22 +16,27 @@ import { environment } from 'src/environments/environment';
 })
 export class PanelUsuarioComponent implements OnInit {
 
+  @ViewChild('municipios')
+  public cbMunicipios: DropDownListComponent;
   reactForm: FormGroup;
-  usuario = new Usuario();
+  public usuario: Usuario;
 
   constructor(private dataService: DataService, private router: Router) {
-    this.reactForm = new FormGroup({
-      'check': new FormControl('', [FormValidators.required]),
-      'email_check': new FormControl('', [FormValidators.email]),
-      'password': new FormControl('', [FormValidators.required]),
-      'municipios': new FormControl('', [FormValidators.required]),
-      'password_repeat': new FormControl('', [FormValidators.required]),
-      'apellidos': new FormControl('', [FormValidators.required]),
-    });
+    
   }
   municipios: Municipio[] =[];
 
   ngOnInit(): void {
+    let idUsuario = localStorage.getItem("idSession");
+    this.dataService.sendGetRequest(environment.getUsuarios + idUsuario).subscribe((data: any) => {
+      this.usuario = data;
+      this.reactForm = new FormGroup({
+        'check': new FormControl(this.usuario.nombre, [FormValidators.required]),
+        'email_check': new FormControl(this.usuario.correo, [FormValidators.email]),
+        'municipios': new FormControl('', [FormValidators.required]),
+        'apellidos': new FormControl(this.usuario.apellido, [FormValidators.required]),
+      });
+    });
     this.dataService.sendGetRequest(environment.getMunicipios).subscribe((data: any)=>{
       this.municipios = data;
     });

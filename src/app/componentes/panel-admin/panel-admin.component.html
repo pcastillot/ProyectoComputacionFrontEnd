@@ -16,15 +16,15 @@
     <div class="control-section col-11 center panel">
         <ejs-grid #gridUsuarios *ngIf='seleccionado=="usuarios"' id="tabla-usuarios" class="grid" [allowSorting]='true' [dataSource]='dataUsuarios' allowPaging='true' showColumnChooser='true' [toolbar]="toolbar" [pageSettings]='pageSettings' [editSettings]='editSettings'>
             <e-columns>
-                <e-column field='idUsuario' headerText='ID Usuario' width='100' format='' textAlign='Right' [validationRules]='idValidator'></e-column>
+                <e-column field='idUsuario' headerText='ID Usuario' width='100' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
                 <e-column field='nombre' headerText='Nombre' width='100' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
                 <e-column field='apellido' headerText='Apellidos' width='150' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
-                <e-column field='correo' headerText='Correo' width='150' format='' textAlign='Center' [validationRules]='requiredValidator'></e-column>
-                <e-column field='contrasena' headerText='Contraseña' width='150' format='' textAlign='Center' [validationRules]='requiredValidator'></e-column>
-                <e-column field='idMunicipio' headerText='ID Municipio' width='100' format='' textAlign='Center' [validationRules]='idValidator'></e-column>
-                <e-column field='rol' headerText='Rol' width='50' format='' textAlign='Center' [validationRules]='rolValidator'></e-column>
-                <e-column field='created_at' headerText='Creado' width='150' format='' textAlign='Center'></e-column>
-                <e-column field='updated_at' headerText='Actualizado' width='150' format='' textAlign='Center'></e-column>
+                <e-column field='correo' headerText='Correo' width='150' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
+                <e-column field='contrasena' headerText='Contraseña' width='150' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
+                <e-column field='idMunicipio' headerText='ID Municipio' width='100' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
+                <e-column field='rol' headerText='Rol' width='50' format='' textAlign='Left' [validationRules]='rolValidator'></e-column>
+                <e-column field='created_at' headerText='Creado' width='150' format='' textAlign='Left'></e-column>
+                <e-column field='updated_at' headerText='Actualizado' width='150' format='' textAlign='Left'></e-column>
                 <e-column headerText='Comandos' width=140 [commands]='commands'></e-column>
             </e-columns>
             
@@ -32,44 +32,44 @@
 
         <ejs-grid #gridMunicipios *ngIf='seleccionado=="municipios"' id="tabla-municipios" class="grid" [allowSorting]='true' [dataSource]='dataMunicipios' allowPaging='true' showColumnChooser='true' [toolbar]="toolbar" [pageSettings]='pageSettings' [editSettings]='editSettings'>
             <e-columns>
-                <e-column field='CODMU' headerText='ID Municipio' width='50' format='' textAlign='Right' [validationRules]='idValidator'></e-column>
-                <e-column field='MUNICIPIO' headerText='Municipio' width='150' format='' textAlign='Center' [validationRules]='requiredValidator'></e-column>
-                <e-column field='CODPROV' headerText='ID Provincia' width='70' format='' textAlign='Center' [validationRules]='idValidator'></e-column>
+                <e-column field='CODMU' headerText='ID Municipio' width='50' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
+                <e-column field='MUNICIPIO' headerText='Municipio' width='150' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
+                <e-column field='CODPROV' headerText='ID Provincia' width='70' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
                 <e-column headerText='Comandos' width=140 [commands]='commands'></e-column>
             </e-columns>
         </ejs-grid>
 
         <ejs-grid #gridProvincias *ngIf='seleccionado=="provincias"' id="tabla-provincias" class="grid" [allowSorting]='true' [dataSource]='dataProvincias' allowPaging='true' showColumnChooser='true' [toolbar]="toolbar" [pageSettings]='pageSettings' [editSettings]='editSettings'>
             <e-columns>
-                <e-column field='CODPROV' headerText='ID Provincia' width='50' format='' textAlign='Right' [validationRules]='idValidator'></e-column>
-                <e-column field='NOMBRE' headerText='Provincia' width='150' format='' textAlign='Center' [validationRules]='requiredValidator'></e-column>
-                <e-column field='CODAUTO' headerText='ID Com. Autónoma' width='200' format='' textAlign='Center' [validationRules]='idValidator'></e-column>
+                <e-column field='CODPROV' headerText='ID Provincia' width='50' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
+                <e-column field='NOMBRE' headerText='Provincia' width='150' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
+                <e-column field='CODAUTO' headerText='ID Com. Autónoma' width='200' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
                 <e-column headerText='Comandos' width=140 [commands]='commands'></e-column>
             </e-columns>
         </ejs-grid>
 
         <ejs-grid #gridComunidades *ngIf='seleccionado=="comunidades"' id="tabla-comunidades" class="grid" [allowSorting]='true' [dataSource]='dataComunidades' allowPaging='true' showColumnChooser='true' [toolbar]="toolbar" [pageSettings]='pageSettings' [editSettings]='editSettings'>
             <e-columns>
-                <e-column field='CODAUTO' headerText='ID Com. Autónoma' width='50' format='' textAlign='Right' [validationRules]='idValidator'></e-column>
-                <e-column field='AUTONOMIA' headerText='Com. Autónoma' width='150' format='' textAlign='Center' [validationRules]='requiredValidator'></e-column>
-                <e-column field='TEXTO_AUTONOMIA' headerText='Texto Com. Autónoma' width='200' format='' textAlign='Center' [validationRules]='requiredValidator'></e-column>
+                <e-column field='CODAUTO' headerText='ID Com. Autónoma' width='50' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
+                <e-column field='AUTONOMIA' headerText='Com. Autónoma' width='150' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
+                <e-column field='TEXTO_AUTONOMIA' headerText='Texto Com. Autónoma' width='200' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
                 <e-column headerText='Comandos' width=140 [commands]='commands'></e-column>
             </e-columns>
         </ejs-grid>
 
         <ejs-grid #gridColegios *ngIf='seleccionado=="colegios"' id="tabla-colegios" class="grid" [allowSorting]='true' [dataSource]='dataColegios' allowPaging='true' showColumnChooser='true' [toolbar]="toolbar" [pageSettings]='pageSettings' [editSettings]='editSettings'>
             <e-columns>
-                <e-column field='idColegio' headerText='ID Colegio' width='120' format='' textAlign='Right' [validationRules]='idValidator'></e-column>
-                <e-column field='idMunicipio' headerText='ID Municipio' width='150' format='' textAlign='Center' [validationRules]='numberValidator'></e-column>
+                <e-column field='idColegio' headerText='ID Colegio' width='120' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
+                <e-column field='idMunicipio' headerText='ID Municipio' width='150' format='' textAlign='Left' [validationRules]='numberValidator'></e-column>
                 <e-column field='Localidad' headerText='Localidad' width='200' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
-                <e-column field='idProvincia' headerText='ID Provincia' width='130' format='' textAlign='Center' [validationRules]='idValidator'></e-column>
+                <e-column field='idProvincia' headerText='ID Provincia' width='130' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
                 <e-column field='Provincia' headerText='Provincia' width='130' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
-                <e-column field='Denominación_genérica' headerText='Denominación genérica' width='250' format='' textAlign='Center' [validationRules]='requiredValidator'></e-column>
-                <e-column field='Denominación_específica' headerText='Denominación específica' width='170' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
+                <e-column field='Denominacion_generica' headerText='Denominación genérica' width='250' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
+                <e-column field='Denominacion_especifica' headerText='Denominación específica' width='170' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
                 <e-column field='Naturaleza' headerText='Naturaleza' width='150' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
                 <e-column field='Domicilio' headerText='Domicilio' width='200' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
                 <e-column field='C_Postal' headerText='Cód. Postal' width='120' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
-                <e-column field='Teléfono' headerText='Teléfono' width='150' format='' textAlign='Left'></e-column>
+                <e-column field='Telefono' headerText='Teléfono' width='150' format='' textAlign='Left'></e-column>
                 <e-column headerText='Comandos' width=140 [commands]='commands'></e-column>
             </e-columns>
         </ejs-grid>
@@ -79,21 +79,21 @@
                 <e-column field='CCN' headerText='CCN' width='130' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
                 <e-column field='CODCNH' headerText='Id Hospital' width='150' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
                 <e-column field='Nombre_Centro' headerText='Hospital' width='300' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
-                <e-column field='Tipo_Vía' headerText='Tipo de vía' width='120' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
-                <e-column field='Número_Vía' headerText='Número' width='100' format='' textAlign='Center' [validationRules]='idValidator'></e-column>
-                <e-column field='Teléfono_Principal' headerText='Teléfono' width='150' format='' textAlign='Center' [validationRules]='idValidator'></e-column>
-                <e-column field='Cód_Municipio' headerText='ID Municipio' width='120' format='' textAlign='Right' [validationRules]='idValidator'></e-column>
-                <e-column field='Municipio' headerText='Municipio' width='150' format='' textAlign='Center' [validationRules]='requiredValidator'></e-column>
-                <e-column field='Cód_Provincia' headerText='ID Provincia' width='120' format='' textAlign='Center' [validationRules]='idValidator'></e-column>
+                <e-column field='Tipo_Via' headerText='Tipo de vía' width='120' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
+                <e-column field='Numero_Via' headerText='Número' width='100' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
+                <e-column field='Telefono_Principal' headerText='Teléfono' width='150' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
+                <e-column field='Cod_Municipio' headerText='ID Municipio' width='120' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
+                <e-column field='Municipio' headerText='Municipio' width='150' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
+                <e-column field='Cod_Provincia' headerText='ID Provincia' width='120' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
                 <e-column field='Provincia' headerText='Provincia' width='150' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
-                <e-column field='Cód_CCAA' headerText='ID Com. Autónoma' width='150' format='' textAlign='Center' [validationRules]='idValidator'></e-column>
+                <e-column field='Cod_CCAA' headerText='ID Com. Autónoma' width='150' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
                 <e-column field='CCAA' headerText='Com. Autónoma' width='200' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
-                <e-column field='Código_Postal' headerText='Cod. Postal' width='150' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
-                <e-column field='CAMAS' headerText='Nº camas' width='120' format='' textAlign='Center' [validationRules]='numberValidator'></e-column>
+                <e-column field='Codigo_Postal' headerText='Cod. Postal' width='150' format='' textAlign='Left' [validationRules]='idValidator'></e-column>
+                <e-column field='CAMAS' headerText='Nº camas' width='120' format='' textAlign='Left' [validationRules]='numberValidator'></e-column>
                 <e-column field='Clase_de_Centro' headerText='Clase centro' width='200' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
                 <e-column field='Dependencia_Funcional' headerText='Dependencia funcional' width='200' format='' textAlign='Left' [validationRules]='requiredValidator'></e-column>
                 <e-column field='Nombre_del_Complejo' headerText='Nombre del complejo' width='300' format='' textAlign='Left'></e-column>
-                <e-column field='Email' headerText='Correo' width='300' format='' textAlign='Center' [validationRules]='emailValidator'></e-column>
+                <e-column field='Email' headerText='Correo' width='300' format='' textAlign='Left' [validationRules]='emailValidator'></e-column>
                 <e-column headerText='Comandos' width=140 [commands]='commands'></e-column>
             </e-columns>
         </ejs-grid>

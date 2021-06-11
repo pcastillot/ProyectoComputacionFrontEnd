@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/data.service';
 
 @Component({
   selector: 'app-busqueda',
@@ -8,13 +9,14 @@ import { Router } from '@angular/router';
 })
 export class BusquedaComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dataService: DataService) { }
   public dataSource: any[];
 
   public headerTitle: string = "Resultados de su búsqueda";
   public cssClass: string = 'e-list-template';
 
   ngOnInit(): void {
+    
     this.dataSource = [{
       "id": "1",
       "titulo": "Colegio 1",
@@ -54,9 +56,9 @@ export class BusquedaComponent implements OnInit {
   public abrirItem(args: MouseEvent, tipo: string, id: string){
     alert("Abriendo " + tipo + " con id: " + id);
     if(tipo == "hospital")
-      this.router.navigateByUrl("hospitales");
+      this.router.navigateByUrl("hospitales/" + id);
     else if(tipo =="colegio")
-      this.router.navigateByUrl("colegios");
+      this.router.navigateByUrl("colegios/" + id);
   }
 
 }
