@@ -7,6 +7,7 @@ import { Municipio } from 'src/app/modelo/municipio';
 import { Provincia } from 'src/app/modelo/provincias';
 import { environment } from 'src/environments/environment';
 import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
+import { CheckboxComponent } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-vivir',
@@ -25,6 +26,12 @@ export class VivirComponent implements OnInit {
   public btnProvincia: ButtonComponent;
   @ViewChild('btnBuscar')
   public btnBuscar: ButtonComponent;
+  @ViewChild('checkboxColegios')
+  public checkColegios: CheckboxComponent;
+  @ViewChild('checkboxHospitales')
+  public checkHospitales: CheckboxComponent;
+  @ViewChild('checkboxViviendas')
+  public checkViviendas: CheckboxComponent;
 
   constructor(private dataService: DataService, private router: Router) {
   }
@@ -123,7 +130,13 @@ export class VivirComponent implements OnInit {
     if(this.municipioObj.text != null){
       document.getElementById('errorMunicipio')!.hidden = true;
       alert("Buscando...")
-      this.router.navigateByUrl("busqueda");
+      let idMunicipio = this.municipioObj.value;
+      let hospitales = this.checkHospitales.checked ? 1 : 0;
+      let colegios = this.checkColegios.checked ? 1 : 0;
+      let viviendas = this.checkViviendas.checked;
+
+
+      this.router.navigate(["busqueda", idMunicipio, colegios, hospitales]);
     }
 
     else{

@@ -10,6 +10,7 @@ import { Municipio } from '../../modelo/municipio';
 import { DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
 import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { CheckboxComponent } from 'angular-bootstrap-md';
 
 /**
  * @title Tree with nested nodes
@@ -32,6 +33,12 @@ export class TurismoComponent implements OnInit, AfterViewInit {
   public btnProvincia: ButtonComponent;
   @ViewChild('btnBuscar')
   public btnBuscar: ButtonComponent;
+  @ViewChild('checkboxColegios')
+  public checkColegios: CheckboxComponent;
+  @ViewChild('checkboxHospitales')
+  public checkHospitales: CheckboxComponent;
+  @ViewChild('checkboxViviendas')
+  public checkViviendas: CheckboxComponent;
 
   constructor(private dataService: DataService, private router: Router) {
   }
@@ -130,7 +137,13 @@ export class TurismoComponent implements OnInit, AfterViewInit {
     if(this.municipioObj.text != null){
       document.getElementById('errorMunicipio')!.hidden = true;
       alert("Buscando...")
-      this.router.navigateByUrl("busqueda");
+      let idMunicipio = this.municipioObj.value;
+      let hospitales = this.checkHospitales.checked ? 1 : 0;
+      //let colegios = this.checkColegios.checked ? 1 : 0;
+      let viviendas = this.checkViviendas.checked;
+
+
+      this.router.navigate(["busqueda", idMunicipio, 0, hospitales]);
     }
 
     else{

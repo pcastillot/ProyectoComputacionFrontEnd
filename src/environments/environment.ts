@@ -16,7 +16,14 @@ export const environment = {
   getColegios: "Colegios/",
   getHospitales: "Hospitales/",
   getIdFromCorreo: "Usuarios/getIdFromCorreo/",
-  deleteComunidad: "Comunidades/",
+  getColegiosFromMunicipio: "Busqueda/filtrarColegiosFromMunicipio/",
+  getHospitalesFromMunicipio: "Busqueda/filtrarHospitalesFromMunicipio/",
+  usuario: "Usuarios",
+  municipio: "Municipios",
+  provincia: "Provincias",
+  comunidad: "Comunidades",
+  hospital: "Hospitales",
+  colegio: "Colegios",
   production: false
 };
 

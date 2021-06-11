@@ -42,12 +42,12 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
   @ViewChild('tablas')
   public tablasObj: DropDownListComponent;
 
-  public dataUsuarios: Object[];
-  public dataMunicipios: Object[];
-  public dataProvincias: Object[];
-  public dataComunidades: Object[];
-  public dataColegios: Object[];
-  public dataHospitales: Object[];
+  public dataUsuarios: Usuario[];
+  public dataMunicipios: Municipio[];
+  public dataProvincias: Provincia[];
+  public dataComunidades: Comunidad[];
+  public dataColegios: Colegio[];
+  public dataHospitales: Hospital[];
 
 
   public toolbar: any[];
@@ -174,7 +174,10 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
             }
 
             else{
-              console.log("Actualizando usuario");
+              this.dataService.updateUsuario(usuario).subscribe((data: any) => {
+                console.log(data);
+                console.log("Usuario actualizado");
+              })
             }
           });
           
@@ -182,7 +185,9 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
 
         else if (args.requestType === 'delete'){
           let idUsuario = args.data[0].idUsuario;
-          alert("Usuario con id " + idUsuario + " eliminado");
+          this.dataService.delete(environment.getUsuarios + idUsuario).subscribe((data: any) => {
+            console.log(data);
+          });
         }
         break;
       }
@@ -197,12 +202,28 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
     
         else if (args.requestType === 'save'){
           let municipio: Municipio = args.data;
-          console.log("Actualizando municipio: " + JSON.stringify(municipio));
+          this.dataService.sendGetRequest(environment.getMunicipios + municipio.CODMU).subscribe((data: any) => {
+            if(data==null){
+              this.dataService.addMunicipio(municipio).subscribe((data: any) => {
+                console.log("Municipio agregado");
+              });
+              
+            }
+
+            else{
+              this.dataService.updateMunicipio(municipio).subscribe((data: any) => {
+                console.log(data);
+                console.log("Municipio actualizado");
+              })
+            }
+          });
         }
 
         else if (args.requestType === 'delete'){
           let idMunicipio = args.data[0].CODMU;
-          alert("Municipio con id " + idMunicipio + " eliminado");
+          this.dataService.delete(environment.getMunicipios + idMunicipio).subscribe((data: any) => {
+            console.log(data);
+          });
         }
         break;
       }
@@ -217,12 +238,28 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
     
         else if (args.requestType === 'save'){
           let provincia: Provincia = args.data;
-          console.log("Actualizando provincia: " + JSON.stringify(provincia));
+          this.dataService.sendGetRequest(environment.getMunicipios + provincia.CODPROV).subscribe((data: any) => {
+            if(data==null){
+              this.dataService.addProvincia(provincia).subscribe((data: any) => {
+                console.log("Provincia agregada");
+              });
+              
+            }
+
+            else{
+              this.dataService.updateProvincia(provincia).subscribe((data: any) => {
+                console.log(data);
+                console.log("Provincia actualizada");
+              })
+            }
+          });
         }
 
         else if (args.requestType === 'delete'){
           let idProvincia = args.data[0].CODPROV;
-          alert("Provincia con id " + idProvincia + " eliminado");
+          this.dataService.delete(environment.getProvincias + idProvincia).subscribe((data: any) => {
+            console.log(data);
+          });
         }
         break;
       }
@@ -237,13 +274,27 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
     
         else if (args.requestType === 'save'){
           let comunidad: Comunidad = args.data;
-          console.log("Actualizando comunidad: " + JSON.stringify(comunidad));
+          this.dataService.sendGetRequest(environment.getComunidades + comunidad.CODAUTO).subscribe((data: any) => {
+            if(data==null){
+              this.dataService.addComunidad(comunidad).subscribe((data: any) => {
+                console.log("Comunidad agregada");
+              });
+              
+            }
+
+            else{
+              this.dataService.updateComunidad(comunidad).subscribe((data: any) => {
+                console.log(data);
+                console.log("Comunidad actualizada");
+              })
+            }
+          });
 
         }
 
         else if (args.requestType === 'delete'){
           let idComunidad = args.data[0].CODAUTO;
-          this.dataService.delete(environment.deleteComunidad + idComunidad).subscribe((data: any) => {
+          this.dataService.delete(environment.getComunidades + idComunidad).subscribe((data: any) => {
             console.log("Comunidad con id " + idComunidad + " eliminada");
           })
           
@@ -261,12 +312,28 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
     
         else if (args.requestType === 'save'){
           let colegio: Colegio = args.data;
-          console.log("Actualizando colegio: " + JSON.stringify(colegio));
+          this.dataService.sendGetRequest(environment.getColegios + colegio.idColegio).subscribe((data: any) => {
+            if(data==null){
+              this.dataService.addColegio(colegio).subscribe((data: any) => {
+                console.log("Colegio agregado");
+              });
+              
+            }
+
+            else{
+              this.dataService.updateColegio(colegio).subscribe((data: any) => {
+                console.log(data);
+                console.log("Colegio actualizado");
+              })
+            }
+          });
         }
 
         else if (args.requestType === 'delete'){
           let idColegio = args.data[0].idColegio;
-          alert("Colegio con id " + idColegio + " eliminado");
+          this.dataService.delete(environment.getColegios + idColegio).subscribe((data: any) => {
+            console.log("Comunidad con id " + idColegio + " eliminada");
+          })
         }
         break;
       }
@@ -281,12 +348,28 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
     
         else if (args.requestType === 'save'){
           let hospital: Hospital = args.data;
-          console.log("Actualizando hospital: " + JSON.stringify(hospital));
+          this.dataService.sendGetRequest(environment.getHospitales + hospital.CODCNH).subscribe((data: any) => {
+            if(data==null){
+              this.dataService.addHospital(hospital).subscribe((data: any) => {
+                console.log("Hospital agregado");
+              });
+              
+            }
+
+            else{
+              this.dataService.updateHospital(hospital).subscribe((data: any) => {
+                console.log(data);
+                console.log("Hospital actualizado");
+              })
+            }
+          });
         }
 
         else if (args.requestType === 'delete'){
           let idHospital = args.data[0].CODCNH;
-          alert("Hospital con id " + idHospital + " eliminado");
+          this.dataService.delete(environment.getHospitales + idHospital).subscribe((data: any) => {
+            console.log("Hospital con id " + idHospital + " eliminada");
+          })
         }
         break;
       }

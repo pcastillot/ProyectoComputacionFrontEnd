@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'hospitales/:id', component: HospitalesComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
   { path: 'aboutus', component: AboutUsComponent},
   { path: 'vivir', component: VivirComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
-  { path: 'busqueda', component: BusquedaComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
+  { path: 'busqueda/:municipio/:colegios/:hospitales', component: BusquedaComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
   { path: 'colegios/:id', component: ColegiosComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
   { path: 'panelAdmin', component: PanelAdminComponent, data: { requiresAdmin: true }, canActivate: [AccessGuardService ]},
   { path: 'componenteJavi', component: ComponenteJaviComponent},
