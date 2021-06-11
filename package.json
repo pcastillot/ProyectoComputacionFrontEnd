@@ -34,6 +34,7 @@
     "@syncfusion/ej2-angular-navigations": "^19.1.63",
     "@syncfusion/ej2-angular-notifications": "^19.1.54",
     "@syncfusion/ej2-angular-popups": "^19.1.66",
+    "@syncfusion/ej2-data": "^19.1.63",
     "@types/chart.js": "^2.9.32",
     "angular-bootstrap-md": "^11.1.0",
     "animate.css": "^4.1.1",

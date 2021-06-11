@@ -33,7 +33,6 @@ import { MapComponent } from './componentes/map/map.component';
 import { AboutUsComponent } from './componentes/about-us/about-us.component';
 import { VivirComponent } from './componentes/vivir/vivir.component';
 import { BusquedaComponent } from './componentes/busqueda/busqueda.component';
-import { FiltrosComponent } from './componentes/filtros/filtros.component';
 import { ResultadosBusquedaComponent } from './componentes/resultados-busqueda/resultados-busqueda.component';
 import { ColegiosComponent } from './componentes/colegios/colegios.component';
 import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component';
@@ -61,7 +60,6 @@ import { ComponenteJaviComponent } from './componentes/componenteJavi/componente
     VivirComponent,
     AboutUsComponent,
     BusquedaComponent,
-    FiltrosComponent,
     ResultadosBusquedaComponent,
     ColegiosComponent,
     PanelAdminComponent,
