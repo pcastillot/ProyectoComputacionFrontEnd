@@ -1,9 +1,11 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
 import { ActionBeginEventArgs, ActionCompleteEventArgs, DropDownListComponent, ListBoxChangeEventArgs } from '@syncfusion/ej2-angular-dropdowns';
 import { ActionEventArgs, CellSaveArgs, Column, commandClick, CommandClickEventArgs, CommandModel, DialogEditEventArgs, EditEventArgs, Grid, GridComponent, SaveEventArgs, SearchSettingsModel, ToolbarService, VirtualScrollService  } from '@syncfusion/ej2-angular-grids';
 import { AddEventArgs, ClickEventArgs, DataSourceChangedEventArgs } from '@syncfusion/ej2-angular-navigations';
 import { ButtonPropsModel, DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { IconsModule } from 'angular-bootstrap-md';
+import { element } from 'protractor';
 import { DataService } from 'src/app/data.service';
 import { Colegio } from 'src/app/modelo/colegio';
 import { Comunidad } from 'src/app/modelo/comunidad';
@@ -177,6 +179,10 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
     alert(args.data);
   }
 
+  private closeDialog(dialog: any){
+
+  }
+
   public actionComplete(args: any): void {
 
     switch(this.seleccionado){
@@ -185,9 +191,10 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           const dialog = args.dialog;
           // change the header of the dialog
           dialog.header = args.requestType === 'beginEdit' ? 'Datos del usuario ' + args.rowData["idUsuario"] : 'Nuevo usuario';
-          dialog.element.querySelectorAll(".e-primary")[0].innerHTML = "Guardar";
-          dialog.element.querySelectorAll(".e-flat")[2].innerHTML = "Cancelar";
-          //args.dialog.buttons[0].click = this.guardarCambios(args)
+          let btnGuardar: HTMLElement = dialog.element.querySelectorAll(".e-primary")[0];
+          btnGuardar.innerHTML = "Guardar";
+          btnGuardar.className = btnGuardar.className + " col-12 center";
+          dialog.element.querySelectorAll(".e-flat")[2].remove();
         }
     
         else if (args.requestType === 'save'){
@@ -229,9 +236,10 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           const dialog = args.dialog;
           // change the header of the dialog
           dialog.header = args.requestType === 'beginEdit' ? 'Datos del municipio ' + args.rowData["CODMU"] : 'Nuevo municipio';
-          dialog.element.querySelectorAll(".e-primary")[0].innerHTML = "Guardar";
-          dialog.element.querySelectorAll(".e-flat")[2].innerHTML = "Cancelar";
-          //args.dialog.buttons[0].click = this.guardarCambios(args)
+          let btnGuardar: HTMLElement = dialog.element.querySelectorAll(".e-primary")[0];
+          btnGuardar.innerHTML = "Guardar";
+          btnGuardar.className = btnGuardar.className + " col-12 center";
+          dialog.element.querySelectorAll(".e-flat")[2].remove();
         }
     
         else if (args.requestType === 'save'){
@@ -272,9 +280,10 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           const dialog = args.dialog;
           // change the header of the dialog
           dialog.header = args.requestType === 'beginEdit' ? 'Datos de la provincia ' + args.rowData["CODPROV"] : 'Nueva provincia';
-          dialog.element.querySelectorAll(".e-primary")[0].innerHTML = "Guardar";
-          dialog.element.querySelectorAll(".e-flat")[2].innerHTML = "Cancelar";
-          //args.dialog.buttons[0].click = this.guardarCambios(args)
+          let btnGuardar: HTMLElement = dialog.element.querySelectorAll(".e-primary")[0];
+          btnGuardar.innerHTML = "Guardar";
+          btnGuardar.className = btnGuardar.className + " col-12 center";
+          dialog.element.querySelectorAll(".e-flat")[2].remove();
         }
     
         else if (args.requestType === 'save'){
@@ -315,9 +324,10 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           const dialog = args.dialog;
           // change the header of the dialog
           dialog.header = args.requestType === 'beginEdit' ? 'Datos de la comunidad ' + args.rowData["CODAUTO"] : 'Nueva comunidad';
-          dialog.element.querySelectorAll(".e-primary")[0].innerHTML = "Guardar";
-          dialog.element.querySelectorAll(".e-flat")[2].innerHTML = "Cancelar";
-          //args.dialog.buttons[0].click = this.guardarCambios(args)
+          let btnGuardar: HTMLElement = dialog.element.querySelectorAll(".e-primary")[0];
+          btnGuardar.innerHTML = "Guardar";
+          btnGuardar.className = btnGuardar.className + " col-12 center";
+          dialog.element.querySelectorAll(".e-flat")[2].remove();
         }
     
         else if (args.requestType === 'save'){
@@ -362,9 +372,10 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           const dialog = args.dialog;
           // change the header of the dialog
           dialog.header = args.requestType === 'beginEdit' ? 'Datos del colegio ' + args.rowData["idColegio"] : 'Nuevo colegio';
-          dialog.element.querySelectorAll(".e-primary")[0].innerHTML = "Guardar";
-          dialog.element.querySelectorAll(".e-flat")[2].innerHTML = "Cancelar";
-          //args.dialog.buttons[0].click = this.guardarCambios(args)
+          let btnGuardar: HTMLElement = dialog.element.querySelectorAll(".e-primary")[0];
+          btnGuardar.innerHTML = "Guardar";
+          btnGuardar.className = btnGuardar.className + " col-12 center";
+          dialog.element.querySelectorAll(".e-flat")[2].remove();
         }
     
         else if (args.requestType === 'save'){
@@ -406,9 +417,10 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           const dialog = args.dialog;
           // change the header of the dialog
           dialog.header = args.requestType === 'beginEdit' ? 'Datos del hospital ' + args.rowData["CODCNH"] : 'Nuevo hospital';
-          dialog.element.querySelectorAll(".e-primary")[0].innerHTML = "Guardar";
-          dialog.element.querySelectorAll(".e-flat")[2].innerHTML = "Cancelar";
-          //args.dialog.buttons[0].click = this.guardarCambios(args)
+          let btnGuardar: HTMLElement = dialog.element.querySelectorAll(".e-primary")[0];
+          btnGuardar.innerHTML = "Guardar";
+          btnGuardar.className = btnGuardar.className + " col-12 center";
+          dialog.element.querySelectorAll(".e-flat")[2].remove();
         }
     
         else if (args.requestType === 'save'){
