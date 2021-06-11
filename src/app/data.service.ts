@@ -73,7 +73,8 @@ export class DataService {
   //Updates
   public updateColegio(colegio: Colegio) {
     const headers = { 'content-type': 'application/json' }
-    const body = JSON.stringify(colegio)
+    const body = JSON.stringify(colegio);
+    console.log(body);
     return this.httpClient.put(this.REST_API_SERVER + environment.getColegios + colegio.idColegio, body, { 'headers': headers })
   }
 
@@ -104,7 +105,7 @@ export class DataService {
   public updateComunidad(comunidad: Comunidad) {
     const headers = { 'content-type': 'application/json' }
     const body = JSON.stringify(comunidad)
-    return this.httpClient.put(this.REST_API_SERVER + environment.getUsuarios + comunidad.CODAUTO, body, { 'headers': headers })
+    return this.httpClient.put(this.REST_API_SERVER + environment.getComunidades + comunidad.CODAUTO, body, { 'headers': headers })
   }
 
   

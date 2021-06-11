@@ -6,11 +6,11 @@ export class Hospital{
     public  Nombre_Via : string;
     public  Numero_Via : string;
     public  Telefono_Principal : string;
-    public  Cód_Municipio : string;
+    public  Cod_Municipio : string;
     public  Municipio : string; 
-    public  Cód_Provincia : string;
+    public  Cod_Provincia : string;
     public  Provincia : string;
-    public  Cód_CCAA : string;
+    public  Cod_CCAA : string;
     public  CCAA : string;
     public  Codigo_Postal : string;
     public  CAMAS : string; 

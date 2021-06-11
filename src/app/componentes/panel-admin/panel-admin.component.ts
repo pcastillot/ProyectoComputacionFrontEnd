@@ -238,7 +238,7 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
     
         else if (args.requestType === 'save'){
           let provincia: Provincia = args.data;
-          this.dataService.sendGetRequest(environment.getMunicipios + provincia.CODPROV).subscribe((data: any) => {
+          this.dataService.sendGetRequest(environment.getProvincias + provincia.CODPROV).subscribe((data: any) => {
             if(data==null){
               this.dataService.addProvincia(provincia).subscribe((data: any) => {
                 console.log("Provincia agregada");
@@ -312,6 +312,7 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
     
         else if (args.requestType === 'save'){
           let colegio: Colegio = args.data;
+          console.log(colegio);
           this.dataService.sendGetRequest(environment.getColegios + colegio.idColegio).subscribe((data: any) => {
             if(data==null){
               this.dataService.addColegio(colegio).subscribe((data: any) => {
@@ -332,7 +333,7 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
         else if (args.requestType === 'delete'){
           let idColegio = args.data[0].idColegio;
           this.dataService.delete(environment.getColegios + idColegio).subscribe((data: any) => {
-            console.log("Comunidad con id " + idColegio + " eliminada");
+            console.log("Colegio con id " + idColegio + " eliminada");
           })
         }
         break;
@@ -348,6 +349,7 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
     
         else if (args.requestType === 'save'){
           let hospital: Hospital = args.data;
+          console.log(hospital);
           this.dataService.sendGetRequest(environment.getHospitales + hospital.CODCNH).subscribe((data: any) => {
             if(data==null){
               this.dataService.addHospital(hospital).subscribe((data: any) => {
@@ -410,7 +412,7 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
         }
         break;
       }
-      case 'hospital': {
+      case 'hospitales': {
         if(args.item.text == 'Añadir'){
           this.gridObjHospitales.addRecord();
         }
