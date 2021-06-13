@@ -28,15 +28,13 @@
                 <ejs-dropdownlist #municipio id="municipio" class="col-7 dropdownlist" [dataSource]="municipios" [fields]="municipiosFields" [placeholder]="municipioWatermark" [enabled]="false"></ejs-dropdownlist>
 
             </div>  
-            <div class="row">
-                <span id="errorMunicipio" [hidden]="true" class="e-error error col-7">Debe introducir un municipio</span>
-                <div class="col-3"></div>
+            <div class="row center">
+                <span id="errorMunicipio" [hidden]="true" class="e-error error col-12">Debe introducir un municipio</span>
             </div>
 
             <div  class="row check-group">
                 <ejs-checkbox #checkboxColegios label="Colegios" [checked]="true"></ejs-checkbox>
                 <ejs-checkbox #checkboxHospitales label="Hospitales" [checked]="true"></ejs-checkbox>
-                <ejs-checkbox #checkboxViviendas label="Viviendas" [checked]="true"></ejs-checkbox>
             </div>
 
             <div class="boton-buscar">
@@ -44,5 +42,9 @@
             </div>
             
         </div>
+
+        <ejs-dialog #alertDialog [buttons]='alertDlgButtons' [visible]='hidden' [header]='alertHeader' [animationSettings]='animationSettings' [content]='alertContent' [showCloseIcon]='showCloseIcon' [target]='target'
+                [width]='alertWidth'>
+        </ejs-dialog>
     </div>
 </div>

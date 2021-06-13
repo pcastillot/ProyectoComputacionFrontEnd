@@ -33,7 +33,6 @@
 
             <div class="row check-group">
                 <ejs-checkbox #checkboxHospitales label="Hospitales" [checked]="true"></ejs-checkbox>
-                <ejs-checkbox #checkboxViviendas label="Alquiler" [checked]="true"></ejs-checkbox>
             </div>
 
             <div class="boton-buscar">
@@ -41,5 +40,10 @@
             </div>
             
         </div>
+
+        <ejs-dialog #alertDialog [buttons]='alertDlgButtons' [visible]='hidden' [header]='alertHeader' [animationSettings]='animationSettings' [content]='alertContent' [showCloseIcon]='showCloseIcon' [target]='target'
+                [width]='alertWidth'>
+        </ejs-dialog>
+        
     </div>
 </div>

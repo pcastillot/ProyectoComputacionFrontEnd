@@ -11,6 +11,7 @@ import { DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
 import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { CheckboxComponent } from 'angular-bootstrap-md';
+import { ButtonPropsModel, DialogComponent } from '@syncfusion/ej2-angular-popups';
 
 /**
  * @title Tree with nested nodes
@@ -39,6 +40,28 @@ export class TurismoComponent implements OnInit, AfterViewInit {
   public checkHospitales: CheckboxComponent;
   @ViewChild('checkboxViviendas')
   public checkViviendas: CheckboxComponent;
+  @ViewChild('alertDialog')
+  public alertDialog: DialogComponent;
+
+  public alertHeader: string = 'Error';
+  public alertContent: string = 'Debe seleccionar lo que desea buscar';
+  public showCloseIcon: Boolean = false;
+  public hidden: Boolean = false;
+  public alertWidth: string = '400px';
+  public target: string = 'body';
+  public animationSettings: Object = { effect: 'None' };
+  public visible: Boolean = true;
+  public hide: any;
+
+  public alertDlgBtnClick = (): void => {
+    this.alertDialog.hide();
+  }
+
+
+  public alertDlgButtons: ButtonPropsModel[] = [{ 
+    click: this.alertDlgBtnClick.bind(this), 
+    buttonModel: { content: 'Aceptar', isPrimary: true } 
+  }];
 
   constructor(private dataService: DataService, private router: Router) {
   }
@@ -136,14 +159,16 @@ export class TurismoComponent implements OnInit, AfterViewInit {
   public buscar(): void{
     if(this.municipioObj.text != null){
       document.getElementById('errorMunicipio')!.hidden = true;
-      alert("Buscando...")
       let idMunicipio = this.municipioObj.value;
       let hospitales = this.checkHospitales.checked ? 1 : 0;
       //let colegios = this.checkColegios.checked ? 1 : 0;
-      let viviendas = this.checkViviendas.checked;
 
-
-      this.router.navigate(["busqueda", idMunicipio, 0, hospitales]);
+      if(hospitales === 1){
+        this.router.navigate(["busqueda", idMunicipio, 0, hospitales]);
+      }
+      else{
+        this.alertDialog.show();
+      }
     }
 
     else{

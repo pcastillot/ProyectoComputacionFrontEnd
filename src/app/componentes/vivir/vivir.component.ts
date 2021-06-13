@@ -8,6 +8,7 @@ import { Provincia } from 'src/app/modelo/provincias';
 import { environment } from 'src/environments/environment';
 import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
 import { CheckboxComponent } from 'angular-bootstrap-md';
+import { ButtonPropsModel, DialogComponent } from '@syncfusion/ej2-angular-popups';
 
 @Component({
   selector: 'app-vivir',
@@ -32,6 +33,8 @@ export class VivirComponent implements OnInit {
   public checkHospitales: CheckboxComponent;
   @ViewChild('checkboxViviendas')
   public checkViviendas: CheckboxComponent;
+  @ViewChild('alertDialog')
+  public alertDialog: DialogComponent;
 
   constructor(private dataService: DataService, private router: Router) {
   }
@@ -39,6 +42,26 @@ export class VivirComponent implements OnInit {
   municipios: Municipio[] = [];
   provincias: Provincia[] = [];
   comunidades: Comunidad[] = [];
+
+  public alertHeader: string = 'Error';
+  public alertContent: string = 'Debe seleccionar lo que desea buscar';
+  public showCloseIcon: Boolean = false;
+  public hidden: Boolean = false;
+  public alertWidth: string = '400px';
+  public target: string = 'body';
+  public animationSettings: Object = { effect: 'None' };
+  public visible: Boolean = true;
+  public hide: any;
+
+  public alertDlgBtnClick = (): void => {
+    this.alertDialog.hide();
+  }
+
+
+  public alertDlgButtons: ButtonPropsModel[] = [{ 
+    click: this.alertDlgBtnClick.bind(this), 
+    buttonModel: { content: 'Aceptar', isPrimary: true } 
+  }];
   
   ngOnInit(): void {
     this.dataService.sendGetRequest(environment.getComunidades).subscribe((data: any)=>{
@@ -129,14 +152,17 @@ export class VivirComponent implements OnInit {
   public buscar(): void{
     if(this.municipioObj.text != null){
       document.getElementById('errorMunicipio')!.hidden = true;
-      alert("Buscando...")
       let idMunicipio = this.municipioObj.value;
       let hospitales = this.checkHospitales.checked ? 1 : 0;
       let colegios = this.checkColegios.checked ? 1 : 0;
-      let viviendas = this.checkViviendas.checked;
 
-
-      this.router.navigate(["busqueda", idMunicipio, colegios, hospitales]);
+      if(colegios === 1 || hospitales === 1){
+        this.router.navigate(["busqueda", idMunicipio, colegios, hospitales]);
+      }
+      else{
+        this.alertDialog.show();
+      }
+      
     }
 
     else{
