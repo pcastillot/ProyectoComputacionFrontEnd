@@ -1,5 +1,5 @@
 #menu-panel{
-    text-align: right;
+    text-align: center;
     height: 100%;
     margin-top: auto;
     margin-bottom: auto;
@@ -23,6 +23,7 @@ button{
         margin-bottom: 100px;
         margin-right: 0px;
         text-align: center;
+        height: 80px;
     }
 
     .element-container{
@@ -30,9 +31,11 @@ button{
         top: 0%;
         margin-left: auto;
         margin-right: auto;
+        margin-top: 40px;
     }
 
     button{
         margin-bottom: 15px;
     }
+
 }

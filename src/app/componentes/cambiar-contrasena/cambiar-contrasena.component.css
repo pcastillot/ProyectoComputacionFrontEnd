@@ -71,7 +71,8 @@ th {
 }
 
 .menu-panel{
-    margin-right: 120px;
+    margin-right: 0px;
+    text-align: center;
 }
 
 @media (max-width: 767px){

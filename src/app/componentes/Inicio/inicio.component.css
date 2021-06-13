@@ -69,8 +69,6 @@ button:focus{
   background-color: #81a9b3;
   text-align: center;
   float: left;
-  flex-grow: 1;
-  width: 45%;
 
   opacity: 0.8;
 }
@@ -92,8 +90,6 @@ button:focus{
   background-color: #81a9b3;
   text-align: center;
   float: right;
-  flex-grow: 1;
-  width: 45%;
   
   opacity: 0.8;
 }
@@ -120,8 +116,19 @@ button:focus{
   border-radius:15px;
   color: white;
 
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: auto;
+  margin-right: auto;
 
   opacity: 0.7;
+}
+
+@media (max-width: 767px){
+  .col1{
+      margin-left: auto;
+      margin-right: auto;
+  }
+  .col2{
+    margin-left: auto;
+    margin-right: auto;
+}
 }

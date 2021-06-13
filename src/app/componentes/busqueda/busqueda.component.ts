@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { DataManager, Query, ODataV4Adaptor } from "@syncfusion/ej2-data";
 import { CheckboxComponent } from 'angular-bootstrap-md';
 import { TextBoxComponent } from '@syncfusion/ej2-angular-inputs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-busqueda',
@@ -62,46 +63,55 @@ export class BusquedaComponent implements OnInit, AfterViewInit {
 
   private getData(): void{
     this.dataSource=[];
-    console.log("" + this.buscarColegios + " " + this.buscarHospitales)
     if(this.buscarColegios==="1" && this.buscarHospitales === "1"){
       this.dataService.sendGetRequest(environment.getColegiosFromMunicipio + this.buscarMunicipio).subscribe((data: any) => {
         let colegiosData: Colegio[] = data;
-        console.log(colegiosData);
-        colegiosData.forEach(colegio => {
-          this.dataSource.push({
-            "id": colegio.idColegio,
-            "titulo": colegio.Denominacion_generica + " " + colegio.Denominacion_especifica,
-            "descripcion": colegio.Naturaleza,
-            "direccion": colegio.Domicilio,
-            "tipo": "colegio"
-          });
-        });
+        //console.log(colegiosData);
+        if(colegiosData.length > 0)
+          this.insertColegios(colegiosData);
 
         this.dataService.sendGetRequest(environment.getHospitalesFromMunicipio + this.buscarMunicipio).subscribe((data: any) => {
           let hospitalesData: Hospital[] = data;
           console.log(hospitalesData);
-          hospitalesData.forEach(hospital => {
-            console.log(hospital);
-            this.dataSource.push({
-              "id": hospital.CODCNH,
-              "titulo": hospital.Nombre_Centro,
-              "descripcion": hospital.Clase_de_Centro + ". " + hospital.Dependencia_Funcional,
-              "direccion": hospital.Tipo_Via + ", " + hospital.Nombre_Via + ", " + hospital.Numero_Via,
-              "tipo": "hospital"
-            });
-            
-          });
+          if(hospitalesData.length > 0)
+            this.insertHospitales(hospitalesData);
+          
           console.log(this.dataSource);
-          this.listView.refresh();
-        
-          if(this.dataSource.length === 0){
-            this.listView.headerTitle = "No hay resultados para su búsqueda en " + this.municipio;
-          } else{
-            this.listView.headerTitle = "Resultados de su búsqueda en " + this.municipio;
+          if(this.dataSource.length > 0){
+            this.headerTitle = "Resultados de su búsqueda en " + this.municipio;
           }
+          this.listView.refresh();
+
+          
+        }, (error: HttpErrorResponse) => {
+          console.log("error: 2" + error.status)
+          this.headerTitle = "No hay resultados para su búsqueda en " + this.municipio;
+          this.listView.refresh();
         });
 
 
+        
+      }, (error: HttpErrorResponse) => {
+        console.log("Colegios: " + error.status);
+
+        this.dataService.sendGetRequest(environment.getHospitalesFromMunicipio + this.buscarMunicipio).subscribe((data: any) => {
+          let hospitalesData: Hospital[] = data;
+          //console.log(hospitalesData);
+          if(hospitalesData.length > 0)
+            this.insertHospitales(hospitalesData);
+          
+          //console.log(this.dataSource);
+          if(this.dataSource.length > 0){
+            this.headerTitle = "Resultados de su búsqueda en " + this.municipio;
+          }
+          this.listView.refresh();
+
+          
+        }, (error: HttpErrorResponse) => {
+          console.log("Hospitales: " + error.status)
+          this.headerTitle = "No hay resultados para su búsqueda en " + this.municipio;
+          this.listView.refresh();
+        });
         
       });
 
@@ -110,7 +120,7 @@ export class BusquedaComponent implements OnInit, AfterViewInit {
     else if(this.buscarColegios==="1"){
       this.dataService.sendGetRequest(environment.getColegiosFromMunicipio + this.buscarMunicipio).subscribe((data: any) => {
         let colegiosData: Colegio[] = data;
-        console.log(colegiosData);
+        //console.log(colegiosData);
         colegiosData.forEach(colegio => {
           this.dataSource.push({
             "id": colegio.idColegio,
@@ -122,12 +132,12 @@ export class BusquedaComponent implements OnInit, AfterViewInit {
         });
 
         this.listView.refresh();
-        
-        if(this.dataSource.length === 0){
-          this.listView.headerTitle = "No hay resultados para su búsqueda en " + this.municipio;
-        } else{
-          this.listView.headerTitle = "Resultados de su búsqueda en " + this.municipio;
-        }
+        this.listView.headerTitle = "Resultados de su búsqueda en " + this.municipio;
+
+      }, (error: any) => {
+        console.log("error: " + error)
+        this.listView.headerTitle = "No hay resultados para su búsqueda en " + this.municipio;
+        this.listView.refresh();
       });
     }
 
@@ -148,13 +158,41 @@ export class BusquedaComponent implements OnInit, AfterViewInit {
 
         this.listView.refresh();
         
-        if(this.dataSource.length === 0){
-          this.listView.headerTitle = "No hay resultados para su búsqueda en " + this.municipio;
-        } else{
+        
+        if(this.dataSource.length > 0){
           this.listView.headerTitle = "Resultados de su búsqueda en " + this.municipio;
         }
+      }, (error: any) => {
+        console.log("error: " + error)
+        this.listView.headerTitle = "No hay resultados para su búsqueda en " + this.municipio;
       });
     }
+  }
+
+
+  insertHospitales(hospitalesData: Hospital[]) {
+    hospitalesData.forEach(hospital => {
+      console.log(hospital);
+      this.dataSource.push({
+        "id": hospital.CODCNH,
+        "titulo": hospital.Nombre_Centro,
+        "descripcion": hospital.Clase_de_Centro + ". " + hospital.Dependencia_Funcional,
+        "direccion": hospital.Tipo_Via + ", " + hospital.Nombre_Via + ", " + hospital.Numero_Via,
+        "tipo": "hospital"
+      });
+      
+    });
+  }
+  insertColegios(colegiosData: Colegio[]) {
+    colegiosData.forEach(colegio => {
+      this.dataSource.push({
+        "id": colegio.idColegio,
+        "titulo": colegio.Denominacion_generica + " " + colegio.Denominacion_especifica,
+        "descripcion": colegio.Naturaleza,
+        "direccion": colegio.Domicilio,
+        "tipo": "colegio"
+      });
+    });
   }
 
   ngAfterViewInit(): void {

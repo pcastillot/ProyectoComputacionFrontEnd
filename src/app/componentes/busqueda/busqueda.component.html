@@ -1,12 +1,12 @@
 <app-navbar></app-navbar>
 
-<div class="row barra-busqueda">
+<div class="row barra-busqueda no-margin">
     <input #search class="input-busqueda form-control col-lg-7 col-md-7 col-sm-10" type="text" placeholder="Búsqueda" aria-label="" (keyup)="busqueda($event, search.value)">
 </div>
 
 <div class="divider-new"></div>
 
-<div class="row">
+<div class="row no-margin">
 
     <div class="filtros col-2">
         <div id="wrapper" class="filtros">
@@ -42,8 +42,7 @@
             <ejs-listview id='listview_template' #listviewInstance [dataSource]='dataSource' [cssClass]='cssClass'
                 [headerTitle]='headerTitle' [showHeader]='true'>
                 <ng-template #template let-dataSource="">
-                    <div class="{{dataSource.tipo}} clearfix e-list-wrapper e-list-multi-line e-list-avatar" (click)='abrirItem($event, dataSource.tipo, dataSource.id)'>
-                        <span *ngIf="dataSource.imgSrc !== ''" class="e-avatar e-avatar-{{dataSource.imgSrc}}"></span>
+                    <div class="clearfix e-list-wrapper e-list-multi-line" (click)='abrirItem($event, dataSource.tipo, dataSource.id)'>
                         <span class="e-list-item-header">{{dataSource.titulo}} </span>
                         <span class="e-list-content e-text-overflow" [innerHTML]="dataSource.descripcion"></span>
                         <div id="list-logo">

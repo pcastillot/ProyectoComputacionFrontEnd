@@ -200,6 +200,7 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
         else if (args.requestType === 'save'){
           let usuario: Usuario = args.data;
           this.dataService.sendGetRequest(environment.getUsuarios + usuario.idUsuario).subscribe((data: any) => {
+            console.log(data);
             if(data==null){
               this.dataService.addUser(usuario).subscribe((data: any) => {
                 this.alertHeader = "Usuario agregado";
