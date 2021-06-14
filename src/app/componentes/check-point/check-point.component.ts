@@ -29,6 +29,7 @@ export class CheckPointComponent implements OnInit, AfterViewInit {
 
   constructor(private dataService: DataService, private router: Router) {
   }
+  mostrarVentana:boolean = false;
 
   municipios: Municipio[] = [];
   provincias: Provincia[] = [];
@@ -103,6 +104,16 @@ export class CheckPointComponent implements OnInit, AfterViewInit {
       });
     }else {
       document.getElementById('errorProvincia')!.hidden = false;
+    }
+  }
+
+  buscar2():void{
+    if (this.municipioObj.text != null) {
+      this.mostrarVentana = true;
+      document.getElementById('errorMunicipio')!.hidden = true;
+      //this.router.navigateByUrl("busqueda");
+    } else {
+      document.getElementById('errorMunicipio')!.hidden = false;
     }
   }
 

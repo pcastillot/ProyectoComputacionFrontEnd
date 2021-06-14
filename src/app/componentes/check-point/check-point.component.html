@@ -47,7 +47,12 @@
                     class="sample btn e-control e-btn e-success" style="height:40px;width: 150px;"
                     data-ripple="true">Buscar</button>
             </div>
+            <div class="hola">
+                <button #btnBuscar id="boton-buscar" (click)="buscar2()" 
+                    data-ripple="true">Buscar 2</button>
+            </div>
 
         </div>
     </div>
-</div>
+
+</div><app-busqueda *ngIf="mostrarVentana"></app-busqueda>
