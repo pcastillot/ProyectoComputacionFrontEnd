@@ -48,5 +48,4 @@ export class FiltrosComponent implements OnInit {
     onCreated(e: any): void {
         this.sidebar.element.style.visibility = 'visible';
     }
-
 }

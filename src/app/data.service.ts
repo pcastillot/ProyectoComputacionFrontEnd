@@ -16,6 +16,10 @@ export class DataService {
     return this.httpClient.get(this.REST_API_SERVER + extension);
   }
 
+  public delete(extension: string) {//nuevo
+    return this.httpClient.delete(this.REST_API_SERVER + extension);
+  }
+
   public getComunidades(comunidades:string){
     return this.httpClient.get(this.REST_API_SERVER + comunidades);
   }

@@ -1,0 +1,78 @@
+#Principal{
+    width: 100%;
+    height: 100%;
+    background-color: #d1d1d1;
+    margin: 2% auto;
+    padding: 3em;
+}
+
+#col-0{
+    height: 20% auto;
+    background-color: #747474;
+    border-radius: 1em;
+    text-align: center;
+}
+#col-1{
+    height: 60% auto;
+    background-color: aliceblue;
+    border-radius: 1em;
+    text-align: center;
+}
+#col-2{
+    height: 20% auto;
+    background-color: rgb(219, 236, 251);
+    border-radius: 1em;
+}
+#col-3{
+    margin-top: 1em;
+    height: 20% auto;
+    background-color: rgb(90, 126, 158);
+    border-radius: 1em;
+}
+#titulo_col-2{
+    text-align: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+#titulo_col-3{
+    text-align: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+#formulario_col-2{
+    padding-left: 36%;
+    padding-right: 36%;
+}
+#formulario_col-3{
+    padding-left: 36%;
+    padding-right: 36%;
+}
+#btn_form_col-2{
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+#btnAgregar_col-2{
+    width: 100%;
+}
+
+input{
+    width: 100%;
+    margin: 0.3em;
+    border-radius: 0.3em;
+    border-style: none;
+}
+button {
+    background-color: black;
+    border-radius: 5px;
+    border: 0px;
+    color: white;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 5px 10px;
+}
+
+button:hover {
+    background-color: #3e4144;
+}

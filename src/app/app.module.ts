@@ -37,9 +37,9 @@ import { FiltrosComponent } from './componentes/filtros/filtros.component';
 import { ResultadosBusquedaComponent } from './componentes/resultados-busqueda/resultados-busqueda.component';
 import { ColegiosComponent } from './componentes/colegios/colegios.component';
 import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component';
-import { AccessGuardService } from './access-guard.service'
-
-
+import { AccessGuardService } from './access-guard.service';
+import { TablaComponent } from './componentes/tabla/tabla.component';
+import { CheckPointComponent } from './componentes/check-point/check-point.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +64,8 @@ import { AccessGuardService } from './access-guard.service'
     ResultadosBusquedaComponent,
     ColegiosComponent,
     PanelAdminComponent,
-    
+    TablaComponent,
+    CheckPointComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +87,7 @@ import { AccessGuardService } from './access-guard.service'
     CheckBoxModule,
     SidebarModule,
     GridAllModule,
-    DialogModule,
+    DialogModule
   ],
   providers: [SplashScreenStateService, HomepageResolver, EditService, CommandColumnService, AccessGuardService],
   bootstrap: [AppComponent]

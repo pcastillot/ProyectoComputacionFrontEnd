@@ -16,6 +16,8 @@ import { BusquedaComponent } from './componentes/busqueda/busqueda.component'
 import { ColegiosComponent } from './componentes/colegios/colegios.component';
 import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component'
 import { AccessGuardService } from './access-guard.service';
+import { TablaComponent } from './componentes/tabla/tabla.component';
+import { CheckPointComponent } from './componentes/check-point/check-point.component';
 
 
 const routes: Routes = [
@@ -34,6 +36,8 @@ const routes: Routes = [
   { path: 'busqueda', component: BusquedaComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
   { path: 'colegios', component: ColegiosComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
   { path: 'panelAdmin', component: PanelAdminComponent, data: { requiresAdmin: true }, canActivate: [AccessGuardService ]},
+  { path: 'sebas', component: TablaComponent},//nuevo
+  { path: 'checkPoint', component: CheckPointComponent },//nuevo 2
   {
     path:'',
     redirectTo: 'homepage',
