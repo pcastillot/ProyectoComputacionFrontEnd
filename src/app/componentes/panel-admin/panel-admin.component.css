@@ -13,3 +13,17 @@
     margin-bottom: -28px;
     text-align: center;
 }
+
+.data-card{
+    margin-top: 40px;
+    height: auto;
+}
+
+.user-card{
+    margin-left: 25px
+}
+
+.back{
+    height: 100%;
+    background-color: rgb(255, 102, 102, 0.678) !important
+}

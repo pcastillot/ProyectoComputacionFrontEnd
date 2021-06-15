@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { DropDownListComponent, ListBoxChangeEventArgs } from '@syncfusion/ej2-angular-dropdowns';
-import { Column, commandClick, CommandClickEventArgs, CommandModel, Grid, GridComponent, SearchSettingsModel, ToolbarService, VirtualScrollService  } from '@syncfusion/ej2-angular-grids';
+import { CommandClickEventArgs, CommandModel, GridComponent, SearchSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { ClickEventArgs } from '@syncfusion/ej2-angular-navigations';
+import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { DataService } from 'src/app/data.service';
 import { Colegio } from 'src/app/modelo/colegio';
 import { Comunidad } from 'src/app/modelo/comunidad';
@@ -14,13 +15,11 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-panel-admin',
   templateUrl: './panel-admin.component.html',
-  styleUrls: ['./panel-admin.component.css'],
-  providers: [VirtualScrollService, ToolbarService]
+  styleUrls: ['./panel-admin.component.css']
 })
-export class PanelAdminComponent implements OnInit, AfterViewInit {
+export class PanelAdminComponent implements OnInit {
 
   
-
   @ViewChild('gridUsuarios')
   public gridObjUsuarios: GridComponent;
 
@@ -41,6 +40,22 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
 
   @ViewChild('tablas')
   public tablasObj: DropDownListComponent;
+
+  @ViewChild('titleCard')
+  public titleCard: ElementRef;
+
+  @ViewChild('subtitleCard')
+  public subtitleCard: ElementRef;
+
+  @ViewChild('contentCard')
+  public contentCard: ElementRef;
+
+  @ViewChild('titleDataCard')
+  public titleDataCard: ElementRef;
+
+  @ViewChild('contentDataCard')
+  public contentDataCard: ElementRef;
+
 
   public dataUsuarios: Object[];
   public dataMunicipios: Object[];
@@ -80,8 +95,11 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
   // set the placeholder to DropDownList input element
   public waterMark: string = 'Seleccione una tabla';
   // set the value to select an item based on mapped value at initial rendering
+
+
+  public usuario: Usuario;
   
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private renderer: Renderer2) {
     
   }
 
@@ -119,11 +137,15 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true , newRowPosition: 'Top', showDeleteConfirmDialog: true, showConfirmDialog: true };
     this.editparams = { params: { popupHeight: '300px' }};
     this.pageSettings = {pageCount: 5};
-    this.commands = [{ type: 'Edit', buttonOption: { iconCss: ' e-icons e-edit', cssClass: 'e-flat'} },
+    this.commands = [    { type: 'None', buttonOption: { iconCss: 'e-icons e-copy', cssClass: 'e-flat' } },
+      { type: 'Edit', buttonOption: { iconCss: ' e-icons e-edit', cssClass: 'e-flat'} },
     { type: 'Delete', buttonOption: { iconCss: 'e-icons e-delete', cssClass: 'e-flat' } },
     { type: 'Save', buttonOption: { iconCss: 'e-icons e-update', cssClass: 'e-flat' } },
     { type: 'Cancel', buttonOption: { iconCss: 'e-icons e-cancel-icon', cssClass: 'e-flat' } }];
 
+
+    
+    
     
     
     
@@ -132,8 +154,22 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
   ngAfterViewInit():void{
     this.gridObjUsuarios.addEventListener("commandClick", (e:CommandClickEventArgs) => this.commandClick(e));
     this.gridObjUsuarios.addEventListener("toolbarClick", (e:ClickEventArgs) => this.toolbarClick(e));
-    
     this.listObj.addEventListener("change", (e:ListBoxChangeEventArgs) => this.cambiarTabla(e))
+
+    let idUsuario = localStorage.getItem("idSession");
+    this.dataService.sendGetRequest(environment.getUsuarios + idUsuario).subscribe((data: any)=>{
+      this.usuario = data;
+      let title = "Bienvenido al panel "+this.usuario.nombre+" "+this.usuario.apellido;
+      this.renderer.appendChild(this.titleCard.nativeElement, this.renderer.createText(title));
+
+      let subtitle = "Rol: " + this.usuario.rol + "\nCorreo: " + this.usuario.correo;
+      this.renderer.appendChild(this.subtitleCard.nativeElement, this.renderer.createText(subtitle));
+
+      let content = "Aquí podrás visualizar los datos de todos los elementos de la base de datos";
+      this.renderer.appendChild(this.contentCard.nativeElement, this.renderer.createText(content));
+
+    });
+    
   }
 
   public commandClick(args: CommandClickEventArgs): void {
@@ -151,6 +187,20 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           let usuario: Usuario = JSON.parse(row);
           alert("Elimininando: " + usuario.idUsuario);
         }
+    
+        else if (args.commandColumn?.type == 'None'){
+          let row = JSON.stringify(args.rowData);
+          let usuario: Usuario = JSON.parse(row);
+
+          let titulo = "Usuario " + usuario.idUsuario;
+          document.getElementById("titleDataCard")!.innerHTML = titulo;
+          
+          this.dataService.sendGetRequest(environment.getMunicipios + usuario.idMunicipio).subscribe((data: any) => {
+            let content = "<p>idUsuario: " + usuario.idUsuario + "</p><p>Nombre: " + usuario.nombre + "</p><p>Apellidos: " + usuario.apellido + "</p><p>Rol: " + usuario.rol +"</p><p>Correo: " + usuario.correo + "</p><p>idMunicipio: " + usuario.idMunicipio + "</p><p>Nombre Municipio: " + data.MUNICIPIO;
+            document.getElementById("contentDataCard")!.innerHTML = content;
+          });
+
+        }
         break;
       }
 
@@ -165,6 +215,18 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           let row = JSON.stringify(args.rowData);
           let municipio: Municipio = JSON.parse(row);
           alert("Elimininando: " + municipio.CODMU);
+        }
+
+        else if (args.commandColumn?.type == 'None'){
+          let row = JSON.stringify(args.rowData);
+          let municipio: Municipio = JSON.parse(row);
+
+          let titulo = "Municipio " + municipio.CODMU;
+          document.getElementById("titleDataCard")!.innerHTML = titulo;
+
+          let content = "<p>idMunicipio: " + municipio.CODMU + "</p><p>Nombre: " + municipio.MUNICIPIO + "</p><p>idProvincia: " + municipio.CODPROV;
+          document.getElementById("contentDataCard")!.innerHTML = content;
+
         }
         break;
       }
@@ -181,6 +243,18 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           let provincia: Provincia = JSON.parse(row);
           alert("Elimininando: " + provincia.CODPROV);
         }
+        
+        else if (args.commandColumn?.type == 'None'){
+          let row = JSON.stringify(args.rowData);
+          let provincia: Provincia = JSON.parse(row);
+
+          let titulo = "Provincia " + provincia.CODPROV;
+          document.getElementById("titleDataCard")!.innerHTML = titulo;
+
+          let content = "<p>idProvincia: " + provincia.CODPROV + "</p><p>Nombre: " + provincia.NOMBRE + "</p><p>idAutonomia: " + provincia.CODAUTO;
+          document.getElementById("contentDataCard")!.innerHTML = content;
+
+        }
         break;
       }
 
@@ -196,6 +270,19 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           let comunidad: Comunidad = JSON.parse(row);
           alert("Elimininando: " + comunidad.CODAUTO);
         }
+
+        else if (args.commandColumn?.type == 'None'){
+          let row = JSON.stringify(args.rowData);
+          let comunidad: Comunidad = JSON.parse(row);
+
+          let titulo = "Comunidad " + comunidad.CODAUTO;
+          document.getElementById("titleDataCard")!.innerHTML = titulo;
+
+          let content = "<p>idComunidad: " + comunidad.CODAUTO + "</p><p>Nombre: " + comunidad.AUTONOMIA + "</p><p>Texto Autonomia: " + comunidad.TEXTO_AUTONOMIA;
+          document.getElementById("contentDataCard")!.innerHTML = content;
+
+        }
+
         break;
       }
 
@@ -210,6 +297,19 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
           let row = JSON.stringify(args.rowData);
           let colegio: Colegio = JSON.parse(row);
           alert("Elimininando: " + colegio.idColegio);
+        }
+        
+        else if (args.commandColumn?.type == 'None'){
+          let row = JSON.stringify(args.rowData);
+          let colegio: Colegio = JSON.parse(row);
+
+          let titulo = "Colegio " + colegio.idColegio;
+          document.getElementById("titleDataCard")!.innerHTML = titulo;
+          let content = "<p>idColegio: " + colegio.idColegio + "</p><p>idMunicipio: " + colegio.idMunicipio + "</p><p>Localidad: " + colegio.Localidad + "</p><p>idProvincia: " + colegio.idProvincia +"</p><p>Provincia: " + colegio.Provincia + "</p><p>Denominacion generica: " + colegio.Denominación_genérica + "</p><p>Denominacion especifica: " + colegio.Denominación_específica + "</p><p>Naturaleza: " + colegio.Naturaleza + "</p><p>Domicilio: " + colegio.Domicilio + "</p><p>Codigo Postal: " + colegio.C_Postal + "</p><p>Telefono: " + colegio.Teléfono;
+          document.getElementById("contentDataCard")!.innerHTML = content;
+          
+          
+
         }
         break;
       }
@@ -240,6 +340,7 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
         if(args.item.text == 'Añadir'){
           this.gridObjUsuarios.addRecord();
         }
+
         break;
       }
       
@@ -356,6 +457,5 @@ export class PanelAdminComponent implements OnInit, AfterViewInit {
       
     }
   }
-
 
 }

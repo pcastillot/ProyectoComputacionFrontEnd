@@ -38,6 +38,7 @@ import { ResultadosBusquedaComponent } from './componentes/resultados-busqueda/r
 import { ColegiosComponent } from './componentes/colegios/colegios.component';
 import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component';
 import { AccessGuardService } from './access-guard.service'
+import { PanelAdminCopyComponent } from './componentes/panel-admin-copy/panel-admin.component'
 
 
 
@@ -64,6 +65,7 @@ import { AccessGuardService } from './access-guard.service'
     ResultadosBusquedaComponent,
     ColegiosComponent,
     PanelAdminComponent,
+    PanelAdminCopyComponent,
     
   ],
   imports: [
