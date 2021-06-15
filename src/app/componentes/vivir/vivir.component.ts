@@ -16,7 +16,6 @@ import { ButtonPropsModel, DialogComponent } from '@syncfusion/ej2-angular-popup
   styleUrls: ['./vivir.component.css']
 })
 export class VivirComponent implements OnInit {
-  
   @ViewChild('comunidad')
   public comunidadObj: DropDownListComponent;
   @ViewChild('provincia')
@@ -27,14 +26,10 @@ export class VivirComponent implements OnInit {
   public btnProvincia: ButtonComponent;
   @ViewChild('btnBuscar')
   public btnBuscar: ButtonComponent;
-  @ViewChild('checkboxColegios')
-  public checkColegios: CheckboxComponent;
-  @ViewChild('checkboxHospitales')
-  public checkHospitales: CheckboxComponent;
-  @ViewChild('checkboxViviendas')
-  public checkViviendas: CheckboxComponent;
-  @ViewChild('alertDialog')
-  public alertDialog: DialogComponent;
+
+  rellenosMunicipios: Municipio[] = [];
+  encabezados = ['MUNICIPIOS DE ESPAÑA'];
+    
 
   constructor(private dataService: DataService, private router: Router) {
   }
@@ -42,31 +37,14 @@ export class VivirComponent implements OnInit {
   municipios: Municipio[] = [];
   provincias: Provincia[] = [];
   comunidades: Comunidad[] = [];
-
-  public alertHeader: string = 'Error';
-  public alertContent: string = 'Debe seleccionar lo que desea buscar';
-  public showCloseIcon: Boolean = false;
-  public hidden: Boolean = false;
-  public alertWidth: string = '400px';
-  public target: string = 'body';
-  public animationSettings: Object = { effect: 'None' };
-  public visible: Boolean = true;
-  public hide: any;
-
-  public alertDlgBtnClick = (): void => {
-    this.alertDialog.hide();
-  }
-
-
-  public alertDlgButtons: ButtonPropsModel[] = [{ 
-    click: this.alertDlgBtnClick.bind(this), 
-    buttonModel: { content: 'Aceptar', isPrimary: true } 
-  }];
   
   ngOnInit(): void {
     this.dataService.sendGetRequest(environment.getComunidades).subscribe((data: any)=>{
       this.comunidades = data;
       console.log(data);
+    });
+    this.dataService.sendGetRequest(environment.getMunicipios).subscribe((data: any)=>{
+      this.rellenosMunicipios = data;
     });
   }
 
@@ -90,6 +68,18 @@ export class VivirComponent implements OnInit {
   //set the placeholder to city DropDownList input
   public municipioWatermark: string = "Selecciona un municipio";
 
+  CeldaTexto: Comunidad = new Comunidad(0, '', '');
+  
+    delete(id_celdatexto:number, CeldaTexto:Comunidad){
+      this.rellenosMunicipios.splice(id_celdatexto, 1);
+      this.CeldaTexto = CeldaTexto;
+    }
+  
+    id: number = 0;
+    titulo_1:string = '';
+
+    // EL SEGUNDO TITULO NO LO VAMOS A UTILIZAR AUNQUE NECESITAMOS SACARLOS DEBIDO A LA PETICION DE LA API
+    titulo_2:string = '';
 
 
   public onComunidadChange(): void {
@@ -152,22 +142,12 @@ export class VivirComponent implements OnInit {
   public buscar(): void{
     if(this.municipioObj.text != null){
       document.getElementById('errorMunicipio')!.hidden = true;
-      let idMunicipio = this.municipioObj.value;
-      let hospitales = this.checkHospitales.checked ? 1 : 0;
-      let colegios = this.checkColegios.checked ? 1 : 0;
-
-      if(colegios === 1 || hospitales === 1){
-        this.router.navigate(["busqueda", idMunicipio, colegios, hospitales]);
-      }
-      else{
-        this.alertDialog.show();
-      }
-      
+      alert("Buscando...")
+      this.router.navigateByUrl("busqueda");
     }
 
     else{
       document.getElementById('errorMunicipio')!.hidden = false;
     }
   }
-
 }
