@@ -17,6 +17,7 @@ import { ColegiosComponent } from './componentes/colegios/colegios.component';
 import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component';
 import { AccessGuardService } from './access-guard.service';
 import { ComponenteJaviComponent } from './componentes/componenteJavi/componenteJavi.component';
+import { CheckPointComponent } from './componentes/check-point/check-point.component';
 
 
 
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'inicio', component: InicioComponent },
+  { path: 'checkPoint', component: CheckPointComponent, data: { requiresLogin: true }, canActivate: [AccessGuardService]},//nuevo
   { path: 'pVentana', component: pVentanaComponent},
   { path: 'panelUsuario', component: PanelUsuarioComponent},
   { path: 'cambiarContrasena', component: CambiarContrasenaComponent},

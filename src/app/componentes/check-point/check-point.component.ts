@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { DataService } from '../../data.service';
@@ -13,16 +13,13 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { CheckboxComponent } from 'angular-bootstrap-md';
 import { ButtonPropsModel, DialogComponent } from '@syncfusion/ej2-angular-popups';
 
-/**
- * @title Tree with nested nodes
- */
 
 @Component({
-  selector: 'app-turismo',
-  templateUrl: './turismo.component.html',
-  styleUrls: ['./turismo.component.css']
+  selector: 'app-check-point',
+  templateUrl: './check-point.component.html',
+  styleUrls: ['./check-point.component.css']
 })
-export class TurismoComponent implements OnInit, AfterViewInit {
+export class CheckPointComponent implements OnInit {
 
   @ViewChild('comunidad')
   public comunidadObj: DropDownListComponent;
@@ -69,25 +66,12 @@ export class TurismoComponent implements OnInit, AfterViewInit {
   municipios: Municipio[] = [];
   provincias: Provincia[] = [];
   comunidades: Comunidad[] = [];
-  idUsuario: any;//nuevo
-  nombreUsuario: string;//nuevo
-  isAdmin: boolean;//nuevo
   
   ngOnInit(): void {
     this.dataService.sendGetRequest(environment.getComunidades).subscribe((data: any)=>{
       this.comunidades = data;
       console.log(data);
     });
-    //*******************************   nuevo   *******************************
-    this.idUsuario = null;
-    if (localStorage.getItem("idSession")) {
-      this.idUsuario = localStorage.getItem("idSession");
-      this.dataService.sendGetRequest(environment.getUsuarios + this.idUsuario).subscribe((data: any) => {
-        this.nombreUsuario = data.nombre + " " + data.apellido;
-        let rol = data.rol;
-        rol == 0 ? this.isAdmin = false : this.isAdmin = true;
-      });
-    }
   }
 
   ngAfterViewInit(): void {
@@ -110,6 +94,8 @@ export class TurismoComponent implements OnInit, AfterViewInit {
   //set the placeholder to city DropDownList input
   public municipioWatermark: string = "Selecciona un municipio";
 
+
+
   public onComunidadChange(): void {
 
     console.log(this.comunidadObj.text);
@@ -118,6 +104,7 @@ export class TurismoComponent implements OnInit, AfterViewInit {
       console.log(data);
       if(this.comunidadObj.text != null){
         document.getElementById('errorComunidad')!.hidden = true;
+
         this.provincias = data;
         // enable the state DropDownList
         this.provinciaObj.enabled = true;
@@ -131,13 +118,20 @@ export class TurismoComponent implements OnInit, AfterViewInit {
         this.municipioObj.enabled = false;
         //bind the property cahnges to City DropDownList
         this.municipioObj.dataBind();
-      } else{
+      }
+
+      else{
         document.getElementById('errorComunidad')!.hidden = false;
-      }  
+
+      }
+
+      
     });
+
   }
 
   public provinciaChange(): void {
+
     if(this.provinciaObj.text != null){
       document.getElementById('errorProvincia')!.hidden = true;
       this.dataService.sendGetRequest(environment.getMunicipios_provicia + this.provinciaObj.value).subscribe((data: any)=>{
@@ -149,9 +143,14 @@ export class TurismoComponent implements OnInit, AfterViewInit {
         // bind the property change to city DropDownList
         this.municipioObj.dataBind();
       });
-    }else{
+    }
+
+
+    else{
       document.getElementById('errorProvincia')!.hidden = false;
-    }   
+
+    }
+      
   }
 
   public buscar(): void{
@@ -167,26 +166,11 @@ export class TurismoComponent implements OnInit, AfterViewInit {
       else{
         this.alertDialog.show();
       }
-    }else{
+    }
+
+    else{
       document.getElementById('errorMunicipio')!.hidden = false;
     }
   }
-  mostrarVentana:boolean = false;
-  public buscar2():void{
-    if (this.municipioObj.text != null) {
-      document.getElementById('errorMunicipio')!.hidden = true;
-      let idMunicipio = this.municipioObj.value;
-      let hospitales = this.checkHospitales.checked ? 1 : 0;
-      if (hospitales === 1) {
-        this.mostrarVentana = true;
-        ["busqueda", idMunicipio, 0, hospitales]
-        //this.router.navigate(["busqueda", idMunicipio, 0, hospitales]);
-      }
-      else {
-        this.alertDialog.show();
-      }
-    } else {
-      document.getElementById('errorMunicipio')!.hidden = false;
-    }
-  }
+
 }

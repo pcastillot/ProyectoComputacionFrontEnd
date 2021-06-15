@@ -38,6 +38,7 @@ import { ColegiosComponent } from './componentes/colegios/colegios.component';
 import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component';
 import { AccessGuardService } from './access-guard.service'
 import { ComponenteJaviComponent } from './componentes/componenteJavi/componenteJavi.component';
+import { CheckPointComponent } from './componentes/check-point/check-point.component';
 
 
 
@@ -64,6 +65,7 @@ import { ComponenteJaviComponent } from './componentes/componenteJavi/componente
     ColegiosComponent,
     PanelAdminComponent,
     ComponenteJaviComponent,
+    CheckPointComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<div class="col-lg-12 control-section">
+    <div id="wrapper" style='margin-top: 20px'>
+        <div id='content' class='card col-lg-6 col-md-8 col-sm-11 control-wrapper' style="margin: 50px auto 0;">
+            
+            <span class="title">¿Qué municipio te gustaría conocer?</span>
+            <br>
+            <div class="row">
+                <ejs-dropdownlist #comunidad id="comunidad" class="col-7 dropdownlist" [dataSource]="comunidades" [fields]="comunidadesFields" [placeholder]="comunidadWatermark"></ejs-dropdownlist>
+                
+            </div>
+            <div class="row">
+                <span id="errorComunidad" [hidden]="true" class="e-error error col-7">Debe introducir una comunidad</span>
+                <div class="col-5"></div>
+            </div>
+            
+            <div class="padding-top row">
+                <ejs-dropdownlist #provincia id="provincia" class="col-7 dropdownlist" [dataSource]="provincias" [fields]="provinciasFields" [placeholder]="provinciaWatermark" [enabled]="false"></ejs-dropdownlist>
+                
+            </div>  
+            <div class="row">
+                <span id="errorProvincia" [hidden]="true" class="e-error error col-7">Debe introducir una provincia</span>
+                <div class="col-5"></div>
+            </div>
+
+            <div class="padding-top row">
+                <ejs-dropdownlist #municipio id="municipio" class="col-7 dropdownlist" [dataSource]="municipios" [fields]="municipiosFields" [placeholder]="municipioWatermark" [enabled]="false"></ejs-dropdownlist>
+                
+            </div>  
+            <div class="row">
+                <span id="errorMunicipio" [hidden]="true" class="center e-error error col-3">Debe introducir un municipio</span>
+            </div>
+
+            <div class="row check-group">
+                <ejs-checkbox #checkboxHospitales label="Hospitales" [checked]="true"></ejs-checkbox>
+            </div>
+
+            <div class="boton-buscar">
+                <button #btnBuscar id="validateSubmit btnBuscar" (click)="buscar()" class="sample btn e-control e-btn e-success" style="height:40px;width: 150px;" data-ripple="true">Buscar</button>
+            </div>
+            
+        </div>
+
+        <ejs-dialog #alertDialog [buttons]='alertDlgButtons' [visible]='hidden' [header]='alertHeader' [animationSettings]='animationSettings' [content]='alertContent' [showCloseIcon]='showCloseIcon' [target]='target'
+                [width]='alertWidth'>
+        </ejs-dialog>
+        
+    </div>
+</div>
