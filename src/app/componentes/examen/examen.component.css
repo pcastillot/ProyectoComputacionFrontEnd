@@ -21,18 +21,16 @@
   }
   
   .quienesSomos{
-    background-color: #9CBA7F;
+    background-color: #add8e3;
     border-radius: 10px;
     border:solid 1px #ccc;
-    font-family: 'Franklin Gothic Medium';
     box-shadow: 0px 20px 15px -15px #818181;
   }
   .descripcionProblema{
-    background-color: #9CBA7F;
+    background-color: #add8e3;
     border-radius: 10px;
     border:solid 1px #ccc;
     box-shadow: 0px 20px 15px -15px #818181;
-    font-family: Arial, Helvetica, sans-serif;
   }
   
   .col-inicio-03{
@@ -49,7 +47,7 @@
   }
   
   .col-inicio-04{
-    background-color: #4A7023;
+    background-color: #93b7c0;
     margin-top: 5%;
     margin-right: 5%;
     margin-left: 5%;
@@ -71,11 +69,10 @@
   
     float: left;
   
-    background:#9CBA7F;
+    background:#add8e3;
     border:solid 1px #ccc;
     border-radius:15px;
     box-shadow: 0px 20px 15px -15px #818181;
-    font-family:'Times New Roman', Times, serif;
   }
   .carlos{
     margin-top: 5%;
@@ -90,7 +87,7 @@
   
     float: right;
   
-    background:#9CBA7F;
+    background:#add8e3;
     border:solid 1px #ccc;
     border-radius:15px;
     box-shadow: 0px 20px 15px -15px #818181;
@@ -108,7 +105,7 @@
   
     float: left;
   
-    background:#9CBA7F;
+    background:#add8e3;
     border:solid 1px #ccc;
     border-radius:15px;
     box-shadow: 0px 20px 15px -15px #818181;
@@ -126,15 +123,17 @@
   
     float: right;
   
-    background:#9CBA7F;
+    background:#add8e3;
     border:solid 1px #ccc;
     border-radius:15px;
     box-shadow: 0px 20px 15px -15px #818181;
   }
 
-  
+  .content{
+    background-color: rgb(207, 214, 216);
+  }
   .desarrolladores{
-    background-color: #4A7023;
+    background-color: #add8e3;
     border:solid 1px #ccc;
   }
   

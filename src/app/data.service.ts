@@ -33,6 +33,10 @@ export class DataService {
     return this.httpClient.get(this.REST_API_SERVER);
   }
 
+  public getUser(usuarios:string){
+    return this.httpClient.get(this.REST_API_SERVER + usuarios);
+  }
+
   //Adds
   public addMunicipio(municipio: Municipio){
     const headers = { 'content-type': 'application/json'}

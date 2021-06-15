@@ -37,7 +37,7 @@ import { ResultadosBusquedaComponent } from './componentes/resultados-busqueda/r
 import { ColegiosComponent } from './componentes/colegios/colegios.component';
 import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component';
 import { AccessGuardService } from './access-guard.service'
-import { ComponenteJaviComponent } from './componentes/componenteJavi/componenteJavi.component';
+import { ExamenComponent } from './componentes/examen/examen.component';
 
 
 
@@ -63,7 +63,7 @@ import { ComponenteJaviComponent } from './componentes/componenteJavi/componente
     ResultadosBusquedaComponent,
     ColegiosComponent,
     PanelAdminComponent,
-    ComponenteJaviComponent,
+    ExamenComponent,
   ],
   imports: [
     BrowserModule,

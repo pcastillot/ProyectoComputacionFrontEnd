@@ -16,7 +16,8 @@ import { BusquedaComponent } from './componentes/busqueda/busqueda.component'
 import { ColegiosComponent } from './componentes/colegios/colegios.component';
 import { PanelAdminComponent } from './componentes/panel-admin/panel-admin.component';
 import { AccessGuardService } from './access-guard.service';
-import { ComponenteJaviComponent } from './componentes/componenteJavi/componenteJavi.component';
+import { ExamenComponent } from './componentes/examen/examen.component';
+
 
 
 
@@ -36,7 +37,7 @@ const routes: Routes = [
   { path: 'busqueda/:municipio/:colegios/:hospitales', component: BusquedaComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
   { path: 'colegios/:id', component: ColegiosComponent, data: { requiresLogin: true }, canActivate: [ AccessGuardService ]},
   { path: 'panelAdmin', component: PanelAdminComponent, data: { requiresAdmin: true }, canActivate: [AccessGuardService ]},
-  { path: 'componenteJavi', component: ComponenteJaviComponent},
+  { path: 'examen', component: ExamenComponent},
   {
     path:'',
     redirectTo: 'homepage',

@@ -34,6 +34,10 @@ export class InicioComponent implements OnInit {
     
   }
 
+
+  public redirectExamen = () => {
+    this.router.navigateByUrl("examen");
+  }
   public redirectLogin = () => {
     this.router.navigateByUrl("login");
   }
